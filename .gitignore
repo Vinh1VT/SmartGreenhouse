@@ -1,0 +1,4 @@
+.env
+Server/influxdb/data
+Server/grafana/data
+Server/nodered/data
