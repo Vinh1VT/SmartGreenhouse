@@ -12,3 +12,8 @@ void setup_UART(void)
         Serial.begin(Serial_baudrate);
     #endif
 }
+
+void write_UART(char *string)
+{
+    uart.println(string);
+}

@@ -26,6 +26,12 @@ Initialise the UART pins
 */
 void setup_UART(void);
 
+/*
+Write string in the UART connexion
+in : 
+    char *string
+*/
+void write_UART(char *string);
 
 
 #endif
