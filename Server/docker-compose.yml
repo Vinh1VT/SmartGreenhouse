@@ -1,4 +1,6 @@
+
 services:
+  # === InfluxDB ===
   influxdb:
     image: influxdb:latest
     container_name: influxdb
@@ -16,33 +18,38 @@ services:
       - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUXDB_TOKEN}
     restart: unless-stopped
 
+  # === VISUALISATION ===
   grafana:
-    image: grafana/grafana:latest
+    build: ./grafana
     container_name: grafana
     ports:
       - "127.0.0.1:3000:3000"
     volumes:
-      - ./grafana/data:/var/lib/grafana
+      - grafana_data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
     environment:
       - GF_SECURITY_ADMIN_USER=${GRAFANA_ADMIN_USER}
       - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      - INFLUX_URL=http://influxdb:8086
       - INFLUX_TOKEN=${INFLUXDB_TOKEN}
       - INFLUX_ORG=${INFLUXDB_ORG}
       - INFLUX_BUCKET=${INFLUXDB_BUCKET}
-      - INFLUX_URL=http://influxdb:8086
     depends_on:
       - influxdb
     restart: unless-stopped
 
+  # === LOGIQUE & CONNEXION TTN ===
   node-red:
-    image: nodered/node-red:latest
+    build: ./nodered
     container_name: node-red
     ports:
       - "127.0.0.1:1880:1880"
+    user: "1000:1000"
     volumes:
       - ./nodered/data:/data
     environment:
+      - TZ=Europe/Paris
+      # Clés API pour TTN et InfluxDB
       - TTN_SERVER=${TTN_SERVER}
       - TTN_APP_ID=${TTN_APP_ID}
       - TTN_API_KEY=${TTN_API_KEY}
@@ -50,10 +57,10 @@ services:
       - INFLUX_TOKEN=${INFLUXDB_TOKEN}
       - INFLUX_ORG=${INFLUXDB_ORG}
       - INFLUX_BUCKET=${INFLUXDB_BUCKET}
-      - TZ=Europe/Paris
     depends_on:
       - influxdb
     restart: unless-stopped
 
 volumes:
   influxdb_config:
+  grafana_data:
