@@ -9,7 +9,7 @@ Il faut avoir installé docker et docker compose, se placer dans le dossier Serv
 2. Lancer et build l'image via la commande :
 ``` docker compose up -d --build```
 
-3. Ajouter manuellement dans node red les informations du serveur TTN ($(TTN_APP_ID) et $(TTN_API_KEY) dans le .env) 
+3. Ajouter manuellement dans node red les informations du serveur TTN ( (TTN_APP_ID) et (TTN_API_KEY) dans le .env) 
 
 
 
