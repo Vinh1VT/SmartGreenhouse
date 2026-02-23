@@ -2,9 +2,9 @@
 #include "driver_UART.h"
 #include "driver_LoRa.h"
 
-static void empty_array_command(char *array, int len)
+static void empty_array_command_from(char *array, int len, int start)
 {
-    for (int i = 0; i < MAX_COMMAND_LENGTH; i++)
+    for (int i = start; i < MAX_COMMAND_LENGTH; i++)
     {
         array[i] = '\0';
     }
@@ -54,9 +54,8 @@ void write_LoRa(char *command)
 
 int send_msg_LoRa(char *msg)
 {
-    char command[LoRa_MAX_MSG_LENGTH];
-    empty_array_command(command, LoRa_MAX_MSG_LENGTH);
-    command = "AT+MSG=";
+    char command[LoRa_MAX_MSG_LENGTH] = "AT+MSG=";
+    empty_array_command_from(command, LoRa_MAX_MSG_LENGTH, 7);
 
     for (int i = 0; i < (LoRa_MAX_MSG_LENGTH - 8) && msg[i] != '\0'; i++)
     {
