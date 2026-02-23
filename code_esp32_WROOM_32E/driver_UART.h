@@ -15,6 +15,18 @@
     #define UART2_baudrate 9600
 #endif
 
+/* set the default size of the read buffer */
+#ifndef UART2_read_buffer_size
+    #define UART2_read_buffer_size 1024
+#endif
+
+/* set the default  */
+#ifndef UART2_timeout_delay
+    #define UART2_timeout_delay 10000 /*20 sec*/
+#endif
+
+/* set the default timeout ?*/
+
 #if DEBUG == 1
 /* Communication with PC */
     #define USE_SERIAL Serial
@@ -28,10 +40,34 @@ void setup_UART(void);
 
 /*
 Write string in the UART connexion
-in : 
-    char *string
+input : 
+    string : the string written to the UART connexion
 */
 void write_UART(char *string);
 
+/*
+Return a character read from the UART connexion
+output :
+    char : the read character, 0 if their is nothing to read
+*/
+char read_byte_UART(void);
+
+/*
+Read a maximum of UART2_read_buffer_size character
+input :
+    nb_bytes : the number of bytes to read.
+output :
+    int : 1 if the UART buffer is not empty, 0 else.
+*/
+int read_bytes_UART(int nb_bytes);
+
+/*
+Read the UART connexion until either the word is found or the number of read character exceed UART2_read_buffer_size or timeout
+input :
+    string : the word that is to find
+output :
+    int : 0 if found, 1 if not found and 2 if timeout
+*/
+int read_until_motif_found_UART(char *string);
 
 #endif
