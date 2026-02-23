@@ -74,7 +74,7 @@ def send_to_influxdb(line_protocol_data):
 
 if __name__ == "__main__":
     client = mqtt.Client()
-    client.username_pw_set(username=TTN_USER, password=TTN_PASSWORD)continue
+    client.username_pw_set(username=TTN_USER, password=TTN_PASSWORD)
     client.on_connect = on_connect
     client.on_message = on_message
 
