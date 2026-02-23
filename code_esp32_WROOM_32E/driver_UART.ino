@@ -1,10 +1,11 @@
 #include <Arduino.h>
 #include <HardwareSerial.h>
-#include "driver_uart.h"
+#include "driver_UART.h"
+#include "driver_LoRa.h"
 
-#define MIN(int i1, int i2) (i1 > i2) ? i2 : i1
+#define MIN(i1, i2) ((i1 > i2) ? i2 : i1)
 
-char *read_buffer_uart[UART2_read_buffer_size];
+char read_buffer_uart[UART2_read_buffer_size];
 
 HardwareSerial uart(2);
 
@@ -28,6 +29,7 @@ void setup_UART(void)
 
 void write_UART(char *string)
 {
+    Serial.printf("%s\n", string);
     uart.println(string);
 }
 
@@ -67,10 +69,12 @@ int read_until_motif_found_UART(char *string)
     int current = 0;
     int find_current = 0;
 
-    while (millis - time < UART2_timeout_delay && current < UART2_read_buffer_size)
+    Serial.printf("test\n");
+
+    while (millis() - last_time < UART2_timeout_delay && current < UART2_read_buffer_size)
     {
         char byte_read;
-        if (byte_read = read_byte_UART)
+        if (byte_read = read_byte_UART())
         {
             read_buffer_uart[current] = byte_read;
 
@@ -98,7 +102,7 @@ int read_until_motif_found_UART(char *string)
             Serial.printf("Read to much, buffer full\n");
         }else
         {
-            Serial.printf("Timeout");
+            Serial.printf("Timeout\n");
         }
     #endif
 
