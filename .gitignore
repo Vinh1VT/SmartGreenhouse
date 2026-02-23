@@ -1,11 +1,2 @@
 .env
-
-Server/influxdb/data/
-Server/influxdb/config/
-
-Server/grafana/data/
-
-Server/nodered/data/*
-!Server/nodered/data/package.json
-!Server/nodered/data/flows.json
-!Server/nodered/data/settings.js
+**/.idea/
