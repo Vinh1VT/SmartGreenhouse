@@ -29,8 +29,6 @@ void setup_LoRa(void)
     write_UART(AT_DR2);
     read_until_motif_found_UART("DR");
     read_until_motif_found_UART("DR");
-
-    empty_array_command();
 }
 
 int connect_LoRa(void)
