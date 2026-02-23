@@ -6,7 +6,7 @@ static void empty_array_command(char *array, int len)
 {
     for (int i = 0; i < MAX_COMMAND_LENGTH; i++)
     {
-        LoRa_send_array[i] = '\0';
+        array[i] = '\0';
     }
 }
 
