@@ -37,4 +37,9 @@ void readADC36() {
     Serial.println(" V");
 
   }
+
+  
+    digitalWrite(ANA_COMMANDE_0, 0);
+    digitalWrite(ANA_COMMANDE_1, 0);
+    digitalWrite(ANA_COMMANDE_2, 0);
 }
