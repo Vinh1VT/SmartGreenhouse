@@ -2,29 +2,28 @@ import os
 import requests
 import json
 import paho.mqtt.client as mqtt
+from datetime import datetime
+import calendar
 
 
-#Ouvertures des variables d'environnement
+# Ouvertures des variables d'environnement
 
-
-#TTN
+# TTN
 TTN_BROKER = os.getenv("TTN_BROKER")
 TTN_USER = os.getenv("TTN_USER")
 TTN_PASSWORD = os.getenv("TTN_PASSWORD")
 TTN_TOPIC = "v3/+/devices/+/up"
 
-#InfluxDB
+# InfluxDB
 INFLUX_URL = os.getenv("INFLUX_URL")
 INFLUX_ORG = os.getenv("INFLUX_ORG")
 INFLUX_BUCKET = os.getenv("INFLUX_BUCKET")
 INFLUX_TOKEN = os.getenv("INFLUX_TOKEN")
 
-#Certifical ssl
+# Certificat ssl
 SSL_CERT_PATH = os.getenv("SSL_CERT_PATH")
 
-
-
-if not all([TTN_USER,TTN_PASSWORD,TTN_BROKER,INFLUX_URL,INFLUX_ORG,INFLUX_BUCKET,INFLUX_TOKEN,SSL_CERT_PATH]):
+if not all([TTN_USER, TTN_PASSWORD, TTN_BROKER, INFLUX_URL, INFLUX_ORG, INFLUX_BUCKET, INFLUX_TOKEN, SSL_CERT_PATH]):
     print("Variables d'environnement non initialisées")
     exit(1)
 
@@ -36,54 +35,77 @@ def on_connect(client, userdata, flags, rc):
         print("Connected to broker")
         client.subscribe(TTN_TOPIC)
         print("Subscribed to topic")
-    else :
+    else:
         print("Connection failed")
 
 
 def on_message(client, userdata, msg):
-    try :
+    try:
         payload = json.loads(msg.payload.decode("utf-8"))
 
-        device_id = payload.get("end_device_ids",{}).get("device_id","unknown_device")
-        uplink_message = payload.get("uplink_message",{})
+        device_id = payload.get("end_device_ids", {}).get("device_id", "unknown_device")
+        uplink_message = payload.get("uplink_message", {})
         decoded_payload = uplink_message.get("decoded_payload")
 
         if not decoded_payload:
-            print(f"No decoded payload, message ignored")
+            print(f"[{device_id}] No decoded payload, message ignored")
             return
 
-        fields = []
+        # 1. RÉCUPÉRATION DE L'HEURE EXACTE TTN (Corrigée)
+        ttn_time_str = uplink_message.get("received_at")
+        if ttn_time_str:
+            # Nettoie les millisecondes ET le 'Z' final pour éviter un crash
+            clean_time = ttn_time_str.split('.')[0].replace('Z', '')
+            dt = datetime.strptime(clean_time, "%Y-%m-%dT%H:%M:%S")
+            base_timestamp = calendar.timegm(dt.timetuple())
+        else:
+            import time
+            base_timestamp = int(time.time())
 
-        anomaly = decoded_payload.get("sensor_anomaly",False)
-        fields.append(f"sensor_anomaly={str(anomaly)}")
+        # 2. SÉPARATION DES DONNÉES CLASSIQUES ET DU VENTILATEUR
+        fields_classiques = []
+        fan_states = decoded_payload.pop("ventilateur_etats", None)
 
-        for key,value in decoded_payload.items():
+        anomaly = decoded_payload.get("sensor_anomaly", False)
+        fields_classiques.append(f"sensor_anomaly={'true' if anomaly else 'false'}")
+
+        for key, value in decoded_payload.items():
             if key == "sensor_anomaly":
                 continue
 
-            if isinstance(value,dict):
+            if isinstance(value, dict):
                 for position, sensor_val in value.items():
-                    fields.append(f"{key}_{position}={sensor_val}")
+                    fields_classiques.append(f"{key}_{position}={sensor_val}")
             else:
-                fields.append(f"{key}={value}")
+                fields_classiques.append(f"{key}={value}")
 
+        lines_to_send = []
 
-        if fields:
-            fields_str = ",".join(fields)
+        # 3. CONSTRUCTION LIGNE CLASSIQUE (Capteurs au temps T)
+        if fields_classiques:
+            fields_str = ",".join(fields_classiques)
+            lines_to_send.append(f"environnement,device={device_id} {fields_str} {base_timestamp}")
 
-            line_protocol_data = f"environnement,device={device_id} {fields_str}"
-            print("Sending message to DB")
+        # 4. CONSTRUCTION DES LIGNES VENTILATEUR (Sécurisée)
+        if fan_states and isinstance(fan_states, list) and len(fan_states) > 0:
+            cycle_total_secondes = 30 * 60
+            nb_tranches = len(fan_states)
+            duree_tranche = cycle_total_secondes // nb_tranches
+
+            for i, state in enumerate(fan_states):
+                ts_tranche = base_timestamp - ((nb_tranches - 1 - i) * duree_tranche)
+                lines_to_send.append(f"environnement,device={device_id} etat_ventilateur={state} {ts_tranche}")
+
+        # 5. ENVOI EN BLOC VERS INFLUXDB
+        if lines_to_send:
+            line_protocol_data = "\n".join(lines_to_send)
+            print(f"[{device_id}] Pushing data to DB (Base time: {base_timestamp})...")
             send_to_influxdb(line_protocol_data)
-
-
 
     except json.JSONDecodeError:
         print("Error : JSON is invalid")
-    except Exception as e :
+    except Exception as e:
         print(f"Error : {e}")
-
-
-
 
 
 ###### FONCTIONS HTTP INFLUXDB
@@ -95,23 +117,22 @@ def send_to_influxdb(line_protocol_data):
         "Accept": "application/json"
     }
 
-
     params = {
         "org": INFLUX_ORG,
         "bucket": INFLUX_BUCKET,
-        "precision" : "s"
+        "precision": "s"
     }
 
+    try:
+        # Simplifié en requests.post()
+        response = requests.post(INFLUX_URL, params=params, headers=headers, data=line_protocol_data, verify=SSL_CERT_PATH, timeout=5)
 
-    try :
-        response = requests.request("POST", INFLUX_URL, params=params,headers=headers, data=line_protocol_data,verify=SSL_CERT_PATH,timeout=5)
-
-        if response.status_code == 204 :
+        if response.status_code == 204:
             print("Data pushed")
-        else :
+        else:
             print(f"Failed to push data {response.status_code} : {response.text}")
 
-    except requests.exceptions.RequestException as e :
+    except requests.exceptions.RequestException as e:
         print(f"Exception : {e}")
 
 
@@ -128,4 +149,3 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         print("\nStopping")
         client.disconnect()
-
