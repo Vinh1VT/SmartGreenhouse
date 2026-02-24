@@ -5,6 +5,8 @@ import paho.mqtt.client as mqtt
 from datetime import datetime
 import calendar
 
+from dotenv import load_dotenv
+load_dotenv()
 
 # Ouvertures des variables d'environnement
 
