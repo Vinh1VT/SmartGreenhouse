@@ -1479,6 +1479,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 45.72) (xy 196.85 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2fc6ae39-cbd9-4fa1-aa09-b8a67f084216")
+	)
+	(wire
+		(pts
 			(xy 36.83 97.79) (xy 40.64 97.79)
 		)
 		(stroke
@@ -1886,16 +1896,6 @@
 			(type default)
 		)
 		(uuid "7680efd7-58b3-4aa7-b884-911606326998")
-	)
-	(wire
-		(pts
-			(xy 156.21 43.18) (xy 196.85 43.18)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "76ad8e93-27ce-4a05-80d8-eaac44f9c297")
 	)
 	(wire
 		(pts
@@ -2309,6 +2309,16 @@
 	)
 	(wire
 		(pts
+			(xy 156.21 43.18) (xy 196.85 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca7957cf-8212-4666-84c9-56bdabed7952")
+	)
+	(wire
+		(pts
 			(xy 114.3 85.09) (xy 119.38 85.09)
 		)
 		(stroke
@@ -2386,16 +2396,6 @@
 			(type default)
 		)
 		(uuid "d65f981e-8c8e-4fd1-8e99-f8c2d8723136")
-	)
-	(wire
-		(pts
-			(xy 156.21 45.72) (xy 196.85 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d8ff0336-db83-40bf-8c9a-cd519ab10832")
 	)
 	(wire
 		(pts
@@ -4770,7 +4770,7 @@
 			(uuid "d4691df5-9685-449d-9587-8074fe9ad533")
 		)
 		(pin "LoraTx" input
-			(at 196.85 43.18 180)
+			(at 196.85 45.72 180)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4790,7 +4790,7 @@
 			(uuid "d446f768-aca9-4f1a-9abf-e3fe885b255a")
 		)
 		(pin "LoraRx" input
-			(at 196.85 45.72 180)
+			(at 196.85 43.18 180)
 			(effects
 				(font
 					(size 1.27 1.27)
