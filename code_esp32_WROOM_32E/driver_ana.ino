@@ -1,51 +1,40 @@
 #include <Arduino.h>
+#include "driver_ana.hpp"
 
 void initADC36() {
   analogReadResolution(12);          // 12 bits → 0 à 4095
   analogSetAttenuation(ADC_11db);    // Plage ~0 à 3.3V
-}
-
-void readADC36() {
-  const int analogPin = 36;  // GPIO36 = ADC1_CHANNEL_0
   
-  int analogValue = analogRead(analogPin);
-  const int commandeA = 0;
-  const int commandeB = 2;
-  const int commandeC = 15;
 
-    pinMode(commandeA, OUTPUT);
-    pinMode(commandeB, OUTPUT);
-    pinMode(commandeC, OUTPUT);
+  pinMode(ANA_COMMANDE_0, OUTPUT);
+  pinMode(ANA_COMMANDE_1, OUTPUT);
+  pinMode(ANA_COMMANDE_2, OUTPUT);
+}
+void readADC36() {
 
-  int A,B,C;
 
-  for(int i = 0; i<8;i++){
-    A = i&1;
-    B = (i>>1)&1;
-    C = (i>>2)&1;
+  for(int i = 0; i < 8; i++) {
 
-    Serial.print("\n");
-    Serial.print(A);
-    Serial.print(B);
-    Serial.print(C);
+    int A = i & 1;
+    int B = (i >> 1) & 1;
+    int C = (i >> 2) & 1;
 
-    Serial.print("\n");
+    digitalWrite(ANA_COMMANDE_0, A);
+    digitalWrite(ANA_COMMANDE_1, B);
+    digitalWrite(ANA_COMMANDE_2, C);
 
-    digitalWrite(commandeA, A);
-    digitalWrite(commandeB, B);
-    digitalWrite(commandeC, C);
-    Serial.print("Pin n° :");
-    Serial.print(i);
-    Serial.print("Valeur analogique : ");
-    Serial.print(analogValue);
 
-    float voltage = analogValue * (3.3 / 4095.0);
-    Serial.print(" | Tension : ");
-    Serial.print(voltage);
-    Serial.println(" V");
-    
     delay(1000);
 
-  }
+    int analogValue = analogRead(ANA1_PIN_READ);
 
+    float voltage = analogValue * (3.3 / 4095.0);
+
+    Serial.print("Canal ");
+    Serial.print(i);
+    Serial.print(" -> ");
+    Serial.print(voltage);
+    Serial.println(" V");
+
+  }
 }
