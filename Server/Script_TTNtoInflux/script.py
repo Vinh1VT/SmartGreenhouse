@@ -11,7 +11,7 @@ import paho.mqtt.client as mqtt
 TTN_BROKER = os.getenv("TTN_BROKER")
 TTN_USER = os.getenv("TTN_USER")
 TTN_PASSWORD = os.getenv("TTN_PASSWORD")
-TTN_TOPIC = "v3/+/devices/+.up"
+TTN_TOPIC = "v3/+/devices/+/up"
 
 #InfluxDB
 INFLUX_URL = os.getenv("INFLUX_URL")
@@ -41,8 +41,51 @@ def on_connect(client, userdata, flags, rc):
 
 
 def on_message(client, userdata, msg):
-    #Faire le code des messages reçus (besoin d'avoir bien tout les capteurs)
-    return
+    try :
+        payload = json.loads(msg.payload.decode("utf-8"))
+
+        device_id = payload.get("end_device_ids",{}).get("device_id","unknown_device")
+        uplink_message = payload.get("uplink_message",{})
+        decoded_payload = uplink_message.get("decoded_payload")
+
+        if not decoded_payload:
+            print(f"No decoded payload, message ignored")
+            return
+
+        fields = []
+
+        anomaly = decoded_payload.get("sensor_anomaly",False)
+        fields.append(f"sensor_anomaly={str(anomaly)}")
+
+        for key,value in decoded_payload.items():
+            if key == "sensor_anomaly":
+                continue
+
+            if isinstance(value,dict):
+                for position, sensor_val in value.items():
+                    fields.append(f"{key}_{position}={sensor_val}")
+            else:
+                fields.append(f"{key}={value}")
+
+
+        if fields:
+            fields_str = ",".join(fields)
+
+            line_protocol_data = f"environnement,device={device_id} {fields_str}"
+            print("Sending message to DB")
+            send_to_influxdb(line_protocol_data)
+
+
+
+    except json.JSONDecodeError:
+        print("Error : JSON is invalid")
+    except Exception as e :
+        print(f"Error : {e}")
+
+
+
+
+
 ###### FONCTIONS HTTP INFLUXDB
 
 def send_to_influxdb(line_protocol_data):
@@ -66,14 +109,14 @@ def send_to_influxdb(line_protocol_data):
         if response.status_code == 204 :
             print("Data pushed")
         else :
-            print(f"Failes to push data {response.status_code} : {response.text}")
+            print(f"Failed to push data {response.status_code} : {response.text}")
 
     except requests.exceptions.RequestException as e :
         print(f"Exception : {e}")
 
 
 if __name__ == "__main__":
-    client = mqtt.Client()
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
     client.username_pw_set(username=TTN_USER, password=TTN_PASSWORD)
     client.on_connect = on_connect
     client.on_message = on_message
