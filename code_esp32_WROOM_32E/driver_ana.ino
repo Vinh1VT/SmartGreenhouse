@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include "driver_ana.hpp"
 
+float ANA1_CAPA[8];
+
 void initADC36() {
   analogReadResolution(12);          // 12 bits → 0 à 4095
   analogSetAttenuation(ADC_11db);    // Plage ~0 à 3.3V
@@ -27,6 +29,7 @@ void readADC36() {
     delay(1000);
 
     int analogValue = analogRead(ANA1_PIN_READ);
+    ANA1_CAPA[i] = analogValue;
 
     float voltage = analogValue * (3.3 / 4095.0);
 
