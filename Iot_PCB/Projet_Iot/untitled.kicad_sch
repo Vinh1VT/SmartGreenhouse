@@ -700,112 +700,112 @@
 		)
 	)
 	(no_connect
-		(at 133.35 90.17)
+		(at 135.89 93.98)
 		(uuid "04f7d69e-8eb2-406a-942e-d368ad902be5")
 	)
 	(no_connect
-		(at 115.57 77.47)
+		(at 111.76 106.68)
 		(uuid "0b2c5a78-45a0-4b1d-ad67-9385d4ce805b")
 	)
 	(no_connect
-		(at 133.35 77.47)
+		(at 135.89 106.68)
 		(uuid "1108f7d4-e6f1-480e-86c7-ff8a2f5d6b76")
 	)
 	(no_connect
-		(at 133.35 110.49)
+		(at 135.89 73.66)
 		(uuid "119daa2a-0c70-4ced-8a49-7c847b39f6c0")
 	)
 	(no_connect
-		(at 133.35 105.41)
+		(at 135.89 78.74)
 		(uuid "20cf072d-791c-4659-bf7e-46f2c00b565d")
 	)
 	(no_connect
-		(at 133.35 87.63)
+		(at 135.89 96.52)
 		(uuid "301550d6-0368-4e5a-8fe9-dbacf2b49764")
 	)
 	(no_connect
-		(at 133.35 92.71)
+		(at 135.89 91.44)
 		(uuid "30c6447e-eec7-43ca-8eb2-0f5738f1b411")
 	)
 	(no_connect
-		(at 115.57 74.93)
+		(at 111.76 109.22)
 		(uuid "350fd597-dfc0-409a-ad22-69a81dd66ae9")
 	)
 	(no_connect
-		(at 133.35 80.01)
+		(at 135.89 104.14)
 		(uuid "607dbff9-acad-4b91-92c4-bbe8cae5ec9f")
 	)
 	(no_connect
-		(at 115.57 87.63)
+		(at 111.76 96.52)
 		(uuid "6719b544-d507-40a4-853f-f475d881e38a")
 	)
 	(no_connect
-		(at 115.57 82.55)
+		(at 111.76 101.6)
 		(uuid "8354c917-6362-48a9-861b-f33cf2f117c8")
 	)
 	(no_connect
-		(at 133.35 97.79)
+		(at 135.89 86.36)
 		(uuid "a1fedfc1-5cda-47a4-82e6-5367bc75f9a9")
 	)
 	(no_connect
-		(at 115.57 107.95)
+		(at 111.76 76.2)
 		(uuid "a83b9497-666b-4fb6-95fd-89c60b898a18")
 	)
 	(no_connect
-		(at 133.35 82.55)
+		(at 135.89 101.6)
 		(uuid "d2b293bd-7cc1-4676-b027-81f267f6b0f0")
 	)
 	(no_connect
-		(at 133.35 95.25)
+		(at 135.89 88.9)
 		(uuid "d55090b8-ebed-446d-8ab2-3bc289bc75eb")
 	)
 	(no_connect
-		(at 115.57 90.17)
+		(at 111.76 93.98)
 		(uuid "dc643ccc-7a00-4e68-a37d-0d385043b3aa")
 	)
 	(no_connect
-		(at 115.57 97.79)
+		(at 111.76 86.36)
 		(uuid "e0d81392-76e2-43d9-97a9-6ac9c1220d68")
 	)
 	(no_connect
-		(at 115.57 85.09)
+		(at 111.76 99.06)
 		(uuid "e24bd890-c1a0-40b0-9c6d-d97e269b1b4a")
 	)
 	(no_connect
-		(at 133.35 107.95)
+		(at 135.89 76.2)
 		(uuid "e80b5bb3-8672-4954-a591-a8718c44ba6b")
 	)
 	(no_connect
-		(at 115.57 105.41)
+		(at 111.76 78.74)
 		(uuid "e98100f8-e46b-4cc6-a0da-2980e4ace66f")
 	)
 	(no_connect
-		(at 115.57 80.01)
+		(at 111.76 104.14)
 		(uuid "e9920e3d-07a7-429e-80e3-53b30cfa0ef5")
 	)
 	(no_connect
-		(at 115.57 102.87)
+		(at 111.76 81.28)
 		(uuid "ebfe78c0-76cd-428a-b462-2a0b0ce23fbe")
 	)
 	(no_connect
-		(at 133.35 74.93)
+		(at 135.89 109.22)
 		(uuid "ec588189-4b83-4f76-9075-2b6917822848")
 	)
 	(no_connect
-		(at 133.35 100.33)
+		(at 135.89 83.82)
 		(uuid "f047327e-c919-4b32-9c95-5f2c80811278")
 	)
 	(no_connect
-		(at 133.35 85.09)
+		(at 135.89 99.06)
 		(uuid "f2b1b4ee-1104-485e-b384-116d5ac93b49")
 	)
 	(no_connect
-		(at 115.57 100.33)
+		(at 111.76 83.82)
 		(uuid "f3551e33-4caf-4041-9218-641a163d1fa3")
 	)
 	(text "GND\n"
 		(exclude_from_sim no)
-		(at 141.224 102.87 0)
+		(at 128.016 81.28 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -815,7 +815,7 @@
 	)
 	(text "A4\n"
 		(exclude_from_sim no)
-		(at 108.458 92.71 0)
+		(at 118.872 91.44 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -825,7 +825,7 @@
 	)
 	(text "A5\n"
 		(exclude_from_sim no)
-		(at 108.458 95.504 0)
+		(at 118.872 88.646 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -835,7 +835,7 @@
 	)
 	(text "GND"
 		(exclude_from_sim no)
-		(at 108.458 107.95 0)
+		(at 118.872 76.2 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -845,7 +845,7 @@
 	)
 	(text "Vin"
 		(exclude_from_sim no)
-		(at 108.966 110.49 0)
+		(at 118.364 73.66 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -855,43 +855,7 @@
 	)
 	(hierarchical_label "SDL"
 		(shape input)
-		(at 115.57 95.25 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "3d657691-9b51-4445-92f1-12ce844a883a")
-	)
-	(hierarchical_label "SDA"
-		(shape input)
-		(at 115.57 92.71 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "438b42ae-3055-4c4f-8d2b-0f8f2f1ae40b")
-	)
-	(hierarchical_label "Vin"
-		(shape input)
-		(at 115.57 110.49 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "96f8eaba-37ca-4c1d-bb97-088c6c2d8058")
-	)
-	(hierarchical_label "GND"
-		(shape input)
-		(at 133.35 102.87 180)
+		(at 111.76 88.9 180)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -899,12 +863,48 @@
 			)
 			(justify right)
 		)
+		(uuid "3d657691-9b51-4445-92f1-12ce844a883a")
+	)
+	(hierarchical_label "SDA"
+		(shape input)
+		(at 111.76 91.44 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "438b42ae-3055-4c4f-8d2b-0f8f2f1ae40b")
+	)
+	(hierarchical_label "Vin"
+		(shape input)
+		(at 111.76 73.66 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "96f8eaba-37ca-4c1d-bb97-088c6c2d8058")
+	)
+	(hierarchical_label "GND"
+		(shape input)
+		(at 135.89 81.28 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
 		(uuid "9c72da57-c8a7-4e6d-898c-791e1f33d7d6")
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x15_Pin")
-		(at 138.43 92.71 0)
-		(mirror y)
+		(at 130.81 91.44 0)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -912,7 +912,7 @@
 		(dnp no)
 		(uuid "863f369b-8c71-496b-adc7-7cb739d29899")
 		(property "Reference" "J22"
-			(at 137.795 69.85 0)
+			(at 131.445 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -920,7 +920,7 @@
 			)
 		)
 		(property "Value" "Conn_01x15_Pin"
-			(at 137.795 72.39 0)
+			(at 131.445 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -928,7 +928,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 138.43 92.71 0)
+			(at 130.81 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -937,7 +937,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 138.43 92.71 0)
+			(at 130.81 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -946,7 +946,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x15, script generated"
-			(at 138.43 92.71 0)
+			(at 130.81 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1010,7 +1010,7 @@
 	)
 	(symbol
 		(lib_id "Connector:Conn_01x15_Pin")
-		(at 110.49 92.71 0)
+		(at 116.84 91.44 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -1019,7 +1019,7 @@
 		(fields_autoplaced yes)
 		(uuid "d62df1b9-856b-418e-81ee-f0e52aec68ae")
 		(property "Reference" "J21"
-			(at 111.125 69.85 0)
+			(at 116.205 114.3 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1027,7 +1027,7 @@
 			)
 		)
 		(property "Value" "Conn_01x15_Pin"
-			(at 111.125 72.39 0)
+			(at 116.205 111.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1035,7 +1035,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 110.49 92.71 0)
+			(at 116.84 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1044,7 +1044,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 110.49 92.71 0)
+			(at 116.84 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1053,7 +1053,7 @@
 			)
 		)
 		(property "Description" "Generic connector, single row, 01x15, script generated"
-			(at 110.49 92.71 0)
+			(at 116.84 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
