@@ -7,6 +7,7 @@
 #include "driver_ana.hpp"
 #include "read_temp_DS18B20.h"
 #include "read_temp_and_hum_dht22.h"
+#include "sensor_Data.h"
 
 void setup(void)
 {
