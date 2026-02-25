@@ -49,6 +49,9 @@ int connect_LoRa(void)
 
 void write_LoRa(char *command)
 {
+    #if DEBUG == 1
+        Serial.println(command);
+    #endif
     write_UART(command);
 }
 

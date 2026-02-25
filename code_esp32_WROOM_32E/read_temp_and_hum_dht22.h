@@ -11,6 +11,6 @@ struct temp_and_hum_t
     float hum;
 };
 
-struct temp_and_hum_t read_temp_and_hum(void);
+struct temp_and_hum_t read_temp_and_hum_dht22(void);
 
 #endif

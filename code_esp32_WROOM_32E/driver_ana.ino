@@ -29,7 +29,7 @@ void readADC36() {
     delay(1000);
 
     int analogValue = analogRead(ANA1_PIN_READ);
-    ANA1_CAPA[i] = analogValue;
+    ANA1_CAPA[i] = analogValue * (3.3 / 4095.0);
 
     float voltage = analogValue * (3.3 / 4095.0);
 

@@ -29,7 +29,9 @@ void setup_UART(void)
 
 void write_UART(char *string)
 {
+    #if DEBUG == 1
     Serial.printf("%s\n", string);
+    #endif
     uart.println(string);
 }
 
@@ -68,8 +70,6 @@ int read_until_motif_found_UART(char *string)
     unsigned int last_time = millis();
     int current = 0;
     int find_current = 0;
-
-    Serial.printf("test\n");
 
     while (millis() - last_time < UART2_timeout_delay && current < UART2_read_buffer_size)
     {
