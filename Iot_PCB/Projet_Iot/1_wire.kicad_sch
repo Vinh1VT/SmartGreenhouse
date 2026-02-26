@@ -387,34 +387,40 @@
 		)
 	)
 	(junction
-		(at 156.21 86.36)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "244cdd5a-6651-44c3-a59c-298028ca3427")
-	)
-	(junction
 		(at 110.49 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "31494c0d-12ff-4dce-bca4-e351650d7720")
 	)
 	(junction
-		(at 201.93 86.36)
+		(at 128.27 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "5aae846f-0f0c-40e7-a22c-14e5b1061e6e")
+		(uuid "3d2d2119-858c-4391-b9c7-70812b68c309")
+	)
+	(junction
+		(at 86.36 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "64d219a9-54cc-431a-aa53-54f2d31a3504")
+	)
+	(junction
+		(at 107.95 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6ad2a93c-a3c6-428f-b43b-b209402754af")
+	)
+	(junction
+		(at 153.67 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6b5d60bb-1c4a-4c3c-be50-49e436fd03c2")
 	)
 	(junction
 		(at 88.9 86.36)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "85423d42-d451-43c4-bfc3-091b848a5588")
-	)
-	(junction
-		(at 222.25 86.36)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d8211081-0e03-4363-99eb-199a2925836f")
 	)
 	(junction
 		(at 130.81 86.36)
@@ -428,25 +434,9 @@
 		(color 0 0 0 0)
 		(uuid "f4767166-3c1b-4e92-9e61-b1bd23025e3f")
 	)
-	(junction
-		(at 180.34 86.36)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "f7287fbc-d9bd-486d-b556-da512a43b3ff")
-	)
 	(wire
 		(pts
-			(xy 156.21 86.36) (xy 180.34 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "01eef043-78d7-497f-9430-a1eb3786d6cb")
-	)
-	(wire
-		(pts
-			(xy 107.95 104.14) (xy 107.95 99.06)
+			(xy 107.95 86.36) (xy 107.95 104.14)
 		)
 		(stroke
 			(width 0)
@@ -456,37 +446,7 @@
 	)
 	(wire
 		(pts
-			(xy 194.31 99.06) (xy 194.31 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "08807fd9-ecc0-42a7-a383-b775f584ba5a")
-	)
-	(wire
-		(pts
-			(xy 226.06 109.22) (xy 226.06 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0acb5cf6-6d27-4a43-b9a3-1a212b3245ef")
-	)
-	(wire
-		(pts
-			(xy 81.28 99.06) (xy 86.36 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0c8aeea7-d7c0-4498-b87f-9f4c9eda0f50")
-	)
-	(wire
-		(pts
-			(xy 153.67 99.06) (xy 153.67 104.14)
+			(xy 153.67 86.36) (xy 153.67 104.14)
 		)
 		(stroke
 			(width 0)
@@ -496,47 +456,7 @@
 	)
 	(wire
 		(pts
-			(xy 172.72 99.06) (xy 172.72 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "117e9b6b-dbec-4743-a385-e0bc3e5e520d")
-	)
-	(wire
-		(pts
-			(xy 177.8 99.06) (xy 177.8 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1447f6ba-2d63-45a2-8bbb-dd807c7e3e75")
-	)
-	(wire
-		(pts
-			(xy 214.63 99.06) (xy 214.63 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "18f34562-99c1-43c0-a71d-77ebd14f2fde")
-	)
-	(wire
-		(pts
-			(xy 180.34 86.36) (xy 180.34 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "21f54d58-3f3d-4ef8-b777-7d63d61cd1ce")
-	)
-	(wire
-		(pts
-			(xy 128.27 104.14) (xy 128.27 99.06)
+			(xy 128.27 86.36) (xy 128.27 104.14)
 		)
 		(stroke
 			(width 0)
@@ -546,33 +466,13 @@
 	)
 	(wire
 		(pts
-			(xy 148.59 99.06) (xy 153.67 99.06)
+			(xy 107.95 86.36) (xy 110.49 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "297a6919-8c7c-4f66-b44d-a7156b4a41ea")
-	)
-	(wire
-		(pts
-			(xy 245.11 86.36) (xy 245.11 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "3c5f8bbe-2c84-4a3c-8c16-ae766a0c4573")
-	)
-	(wire
-		(pts
-			(xy 237.49 99.06) (xy 237.49 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "46c5f3c5-6dfe-4057-b74e-b583d1d24fc3")
+		(uuid "396cf1cb-d7ac-4ef0-bcaa-fd6a73b676bf")
 	)
 	(wire
 		(pts
@@ -586,43 +486,13 @@
 	)
 	(wire
 		(pts
-			(xy 160.02 109.22) (xy 160.02 113.03)
+			(xy 128.27 86.36) (xy 130.81 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4f25d7e0-f16a-4ea9-af86-966f63938bd2")
-	)
-	(wire
-		(pts
-			(xy 222.25 86.36) (xy 245.11 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4fda8aa2-c5d9-4659-9a6f-f755d4bcf8af")
-	)
-	(wire
-		(pts
-			(xy 237.49 99.06) (xy 242.57 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "56aac8b7-12b1-42c8-9e7c-c379e9867e40")
-	)
-	(wire
-		(pts
-			(xy 201.93 86.36) (xy 201.93 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "58b4e82b-5a34-49c3-bfc3-65800ddbd3e0")
+		(uuid "5b814657-6302-402c-b5c7-c6da6b8f4b5c")
 	)
 	(wire
 		(pts
@@ -636,16 +506,6 @@
 	)
 	(wire
 		(pts
-			(xy 102.87 99.06) (xy 107.95 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "76d0ee68-ef65-43e4-8f99-ee1ee75b33d1")
-	)
-	(wire
-		(pts
 			(xy 156.21 86.36) (xy 156.21 104.14)
 		)
 		(stroke
@@ -656,43 +516,23 @@
 	)
 	(wire
 		(pts
-			(xy 219.71 99.06) (xy 219.71 104.14)
+			(xy 86.36 86.36) (xy 88.9 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "78d5da5e-e551-4a44-a700-5b482b8e2b35")
+		(uuid "87a758cf-2c17-460a-82ad-edec021b33e1")
 	)
 	(wire
 		(pts
-			(xy 180.34 86.36) (xy 201.93 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9b27220a-3183-4816-a014-16341dbe155c")
-	)
-	(wire
-		(pts
-			(xy 115.57 86.36) (xy 130.81 86.36)
+			(xy 115.57 86.36) (xy 128.27 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "9b7de8da-0389-4d65-a144-9639e94fa331")
-	)
-	(wire
-		(pts
-			(xy 201.93 86.36) (xy 222.25 86.36)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9e5c0026-ee38-4e94-b849-f9110b4b33a3")
 	)
 	(wire
 		(pts
@@ -703,26 +543,6 @@
 			(type default)
 		)
 		(uuid "a556a94a-1c75-4ee9-a3e7-576ac8c8ad95")
-	)
-	(wire
-		(pts
-			(xy 86.36 104.14) (xy 86.36 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "abe9ed70-b89c-4d8b-9bae-14fe6ae65f15")
-	)
-	(wire
-		(pts
-			(xy 172.72 99.06) (xy 177.8 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b1b21f0a-8005-4cd4-91b6-4ba260da720d")
 	)
 	(wire
 		(pts
@@ -746,26 +566,6 @@
 	)
 	(wire
 		(pts
-			(xy 194.31 99.06) (xy 199.39 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bd16d816-5923-4e2d-8256-0bbf4c247627")
-	)
-	(wire
-		(pts
-			(xy 242.57 99.06) (xy 242.57 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bf5e6d96-6e37-4b9d-a9fd-2fb452807a22")
-	)
-	(wire
-		(pts
 			(xy 81.28 99.06) (xy 81.28 104.14)
 		)
 		(stroke
@@ -776,43 +576,23 @@
 	)
 	(wire
 		(pts
-			(xy 199.39 99.06) (xy 199.39 104.14)
+			(xy 86.36 86.36) (xy 86.36 104.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "c0a73874-667b-4f64-8db3-23a3710af775")
+		(uuid "c3c2f9be-d634-456c-8ebd-51d936795201")
 	)
 	(wire
 		(pts
-			(xy 214.63 99.06) (xy 219.71 99.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c30d05b0-a898-41c1-a735-9e345f2fcb94")
-	)
-	(wire
-		(pts
-			(xy 45.72 86.36) (xy 88.9 86.36)
+			(xy 45.72 86.36) (xy 86.36 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "c49786ff-af2c-4893-8b45-80eb9eff66fe")
-	)
-	(wire
-		(pts
-			(xy 222.25 86.36) (xy 222.25 104.14)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c81caa70-a917-4d09-b251-2f29ac2a7cb8")
 	)
 	(wire
 		(pts
@@ -836,13 +616,13 @@
 	)
 	(wire
 		(pts
-			(xy 128.27 99.06) (xy 123.19 99.06)
+			(xy 153.67 86.36) (xy 156.21 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "d8afc691-9173-4344-87d3-6263a6e60671")
+		(uuid "d547a933-cad4-438a-97df-23de78213c35")
 	)
 	(wire
 		(pts
@@ -856,23 +636,13 @@
 	)
 	(wire
 		(pts
-			(xy 130.81 86.36) (xy 156.21 86.36)
+			(xy 130.81 86.36) (xy 153.67 86.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
 		(uuid "dad31d33-3826-4d71-8417-8615b56f33c4")
-	)
-	(wire
-		(pts
-			(xy 205.74 109.22) (xy 205.74 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e60c33f8-9d29-440f-b651-7f640ad435fb")
 	)
 	(wire
 		(pts
@@ -896,7 +666,7 @@
 	)
 	(wire
 		(pts
-			(xy 88.9 86.36) (xy 110.49 86.36)
+			(xy 88.9 86.36) (xy 107.95 86.36)
 		)
 		(stroke
 			(width 0)
@@ -914,7 +684,7 @@
 		)
 		(uuid "f8b0dafe-42f0-404d-bffd-a67128e00212")
 	)
-	(text "Capteur Température 1"
+	(text "Capteur Température 2/3"
 		(exclude_from_sim no)
 		(at 116.586 105.918 90)
 		(effects
@@ -924,7 +694,7 @@
 		)
 		(uuid "0832e3d3-5607-4289-87f2-2e3e231ecb49")
 	)
-	(text "Capteur Température 2"
+	(text "Capteur Température 4/5"
 		(exclude_from_sim no)
 		(at 135.89 106.426 90)
 		(effects
@@ -934,37 +704,7 @@
 		)
 		(uuid "22b99c37-48ec-480a-bbbe-567fab1b419a")
 	)
-	(text "Capteur Température 4\n"
-		(exclude_from_sim no)
-		(at 185.42 106.426 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "4f4ca7ce-688c-4c3e-b074-bef43c8517b2")
-	)
-	(text "Capteur Température 5"
-		(exclude_from_sim no)
-		(at 207.01 106.426 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "891eb826-a9c3-484c-85ea-840997567afb")
-	)
-	(text "Capteur Température 6"
-		(exclude_from_sim no)
-		(at 227.33 106.426 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "a3bcbeb3-1894-4077-9440-eb941ae1f77e")
-	)
-	(text "Capteur Température 3"
+	(text "Capteur Température 6/7"
 		(exclude_from_sim no)
 		(at 161.29 106.426 90)
 		(effects
@@ -974,17 +714,7 @@
 		)
 		(uuid "b2f0319d-849e-42ec-9a95-345e824f7947")
 	)
-	(text "Capteur Température 7"
-		(exclude_from_sim no)
-		(at 250.19 106.426 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "e4417128-a7b6-46ae-a97a-04541e3b7615")
-	)
-	(text "Capteur Température 0"
+	(text "Capteur Température 0/1\n"
 		(exclude_from_sim no)
 		(at 93.98 106.426 90)
 		(effects
@@ -1004,28 +734,6 @@
 			(justify left bottom)
 		)
 		(uuid "087afc17-5ae4-40a9-8b3f-71505770c1e7")
-	)
-	(label "3v3"
-		(at 217.17 104.14 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1a1b9873-9a36-46f8-bc81-f1bdc3e52bac")
-	)
-	(label "3v3"
-		(at 175.26 104.14 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "1c14162b-1103-4276-a9d9-0eedd297ba60")
 	)
 	(label "3v3"
 		(at 83.82 104.14 90)
@@ -1050,17 +758,6 @@
 		(uuid "30f85120-09c8-4133-b61c-a9bf7a24437a")
 	)
 	(label "GND"
-		(at 214.63 99.06 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "332390c3-eaf3-4fd8-a8ca-aef9a04281d4")
-	)
-	(label "GND"
 		(at 81.28 99.06 90)
 		(fields_autoplaced yes)
 		(effects
@@ -1070,28 +767,6 @@
 			(justify left bottom)
 		)
 		(uuid "45e88186-2376-4d18-93e4-19411b5bddb0")
-	)
-	(label "GND"
-		(at 237.49 99.06 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "793e787d-47ea-462d-86c9-99a3c9182b18")
-	)
-	(label "GND"
-		(at 194.31 99.06 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "8c1d72c4-7f7d-416c-9145-5be4f293ac1a")
 	)
 	(label "3v3"
 		(at 105.41 104.14 90)
@@ -1136,39 +811,6 @@
 			(justify left bottom)
 		)
 		(uuid "bb37d5e3-6bbe-44e5-a2ee-cf10eb4e5efd")
-	)
-	(label "3v3"
-		(at 240.03 104.14 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "c659727d-2761-4cab-b0a8-ae25ba3a859f")
-	)
-	(label "3v3"
-		(at 196.85 104.14 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "ed93044f-2d93-4d1b-ad84-50911fe3fdd5")
-	)
-	(label "GND"
-		(at 172.72 99.06 90)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "eda9fb35-034d-46ac-b01a-3c4cdf91c959")
 	)
 	(label "3v3"
 		(at 151.13 104.14 90)
@@ -1409,203 +1051,6 @@
 			(project "Projet_Iot"
 				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/7e7c0ddd-ea7e-4e8d-968b-ccb80cc8fddc"
 					(reference "J11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "grove:110990030")
-		(at 242.57 114.3 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "1758b335-b867-4729-b8fa-646749c73c2b")
-		(property "Reference" "J35"
-			(at 242.5701 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "110990030"
-			(at 240.0301 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "110990030:SEEED_110990030"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" "Seeed Technology Co., Ltd"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "8.1mm"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Package" "None"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Price" "None"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=eda"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "PARTREV" "A"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=snap"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MP" "110990030"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Description_1" "\n                        \n                            GROVE 2MM 4PIN VERT CONN 10PCS\n                        \n"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" "Seeed Technology"
-			(at 242.57 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "995bf822-bbf0-461c-8640-deb6f336989a")
-		)
-		(pin "1"
-			(uuid "fd73f216-46df-4045-80e6-47e58db9565a")
-		)
-		(pin "4"
-			(uuid "29ca5a59-a09c-42af-9a72-afea9804ea2e")
-		)
-		(pin "3"
-			(uuid "5adc94d8-df81-43e8-9ff8-f8f5899ae772")
-		)
-		(instances
-			(project "Projet_Iot"
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/7e7c0ddd-ea7e-4e8d-968b-ccb80cc8fddc"
-					(reference "J35")
 					(unit 1)
 				)
 			)
@@ -1880,400 +1325,6 @@
 	)
 	(symbol
 		(lib_id "grove:110990030")
-		(at 199.39 114.3 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "5fa042fb-481f-4a76-bd34-a6a71cc48838")
-		(property "Reference" "J33"
-			(at 199.3901 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "110990030"
-			(at 196.8501 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "110990030:SEEED_110990030"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" "Seeed Technology Co., Ltd"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "8.1mm"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Package" "None"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Price" "None"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=eda"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "PARTREV" "A"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=snap"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MP" "110990030"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Description_1" "\n                        \n                            GROVE 2MM 4PIN VERT CONN 10PCS\n                        \n"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" "Seeed Technology"
-			(at 199.39 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "4410e159-1fbd-4841-97e2-deeb86e93e90")
-		)
-		(pin "1"
-			(uuid "461d11ac-40bf-44c8-a423-3e91a5d46fa5")
-		)
-		(pin "4"
-			(uuid "e1b0c60c-4a4c-4e97-9f3b-e9a10a9f7171")
-		)
-		(pin "3"
-			(uuid "9adb0bf4-3e13-48ac-998f-7efafb1fe4c9")
-		)
-		(instances
-			(project "Projet_Iot"
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/7e7c0ddd-ea7e-4e8d-968b-ccb80cc8fddc"
-					(reference "J33")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "grove:110990030")
-		(at 219.71 114.3 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "711387ac-de58-41f1-89a9-39ca295f8344")
-		(property "Reference" "J34"
-			(at 219.7101 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "110990030"
-			(at 217.1701 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "110990030:SEEED_110990030"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" "Seeed Technology Co., Ltd"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "8.1mm"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Package" "None"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Price" "None"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=eda"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "PARTREV" "A"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=snap"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MP" "110990030"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Description_1" "\n                        \n                            GROVE 2MM 4PIN VERT CONN 10PCS\n                        \n"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" "Seeed Technology"
-			(at 219.71 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "06a66bb9-9a98-4377-9d39-98673690b73a")
-		)
-		(pin "1"
-			(uuid "6a0ad6b8-4e1f-45a3-9db0-c8f29acfef80")
-		)
-		(pin "4"
-			(uuid "e8c51541-72e7-432a-b946-80cc80159a59")
-		)
-		(pin "3"
-			(uuid "4d98bc9b-e59f-443b-93eb-aa47a472d5d9")
-		)
-		(instances
-			(project "Projet_Iot"
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/7e7c0ddd-ea7e-4e8d-968b-ccb80cc8fddc"
-					(reference "J34")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "grove:110990030")
 		(at 128.27 114.3 270)
 		(unit 1)
 		(exclude_from_sim no)
@@ -2464,203 +1515,6 @@
 			(project "Projet_Iot"
 				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/7e7c0ddd-ea7e-4e8d-968b-ccb80cc8fddc"
 					(reference "J13")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "grove:110990030")
-		(at 177.8 114.3 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "d43faffb-1c64-4d52-9dfc-4dd22d2a8fd5")
-		(property "Reference" "J32"
-			(at 177.8001 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "110990030"
-			(at 175.2601 120.65 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "110990030:SEEED_110990030"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" ""
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MF" "Seeed Technology Co., Ltd"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MAXIMUM_PACKAGE_HEIGHT" "8.1mm"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Package" "None"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Price" "None"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Check_prices" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=eda"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "STANDARD" "Manufacturer Recommendations"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "PARTREV" "A"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "SnapEDA_Link" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=snap"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MP" "110990030"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Description_1" "\n                        \n                            GROVE 2MM 4PIN VERT CONN 10PCS\n                        \n"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "Availability" "In Stock"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(property "MANUFACTURER" "Seeed Technology"
-			(at 177.8 114.3 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify bottom)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "a33de95c-b519-4141-8956-6162aab9b2f8")
-		)
-		(pin "1"
-			(uuid "c4372fe2-e368-493f-baf2-053bc19d24b3")
-		)
-		(pin "4"
-			(uuid "8ae58941-7f03-4ce7-b556-f9e93ba8f06f")
-		)
-		(pin "3"
-			(uuid "232d5472-f1a0-4f70-a214-95894ef8ac68")
-		)
-		(instances
-			(project "Projet_Iot"
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/7e7c0ddd-ea7e-4e8d-968b-ccb80cc8fddc"
-					(reference "J32")
 					(unit 1)
 				)
 			)

@@ -554,6 +554,311 @@
 				)
 			)
 		)
+		(symbol "switch_load:FDC6326L"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "U"
+				(at -4.7545 9.7379 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Value" "FDC6326L"
+				(at -3.7881 -16.9828 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left bottom)
+				)
+			)
+			(property "Footprint" "FDC6326L:SOT95P280X110-6N"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "MF" "ON Semiconductor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Description_1" "\n                        \n                            Power Switch/Driver 1:1 P-Channel 1.8A SuperSOT™-6\n                        \n"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "PACKAGE" "SSOT-23-6"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MPN" "FDC6326L"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Price" "None"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Package" "SOT-6 ON Semiconductor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "OC_FARNELL" "1706325"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "SnapEDA_Link" "https://www.snapeda.com/parts/FDC6326L/Onsemi/view-part/?ref=snap"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "MP" "FDC6326L"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "SUPPLIER" "FAIRCHILD SEMICONDUCTOR"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "OC_NEWARK" "58K1423"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Availability" "In Stock"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(property "Check_prices" "https://www.snapeda.com/parts/FDC6326L/Onsemi/view-part/?ref=eda"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify bottom)
+					(hide yes)
+				)
+			)
+			(symbol "FDC6326L_0_0"
+				(rectangle
+					(start -15.24 -12.7)
+					(end 15.24 7.62)
+					(stroke
+						(width 0.4064)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin input line
+					(at -20.32 -2.54 0)
+					(length 5.08)
+					(name "R2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 20.32 2.54 180)
+					(length 5.08)
+					(name "VOUT,C1_2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 20.32 0 180)
+					(length 5.08)
+					(name "VOUT,C1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -20.32 2.54 0)
+					(length 5.08)
+					(name "VIN,R1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -20.32 -7.62 0)
+					(length 5.08)
+					(name "ON/OFF"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -20.32 -5.08 0)
+					(length 5.08)
+					(name "R1,C1"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.016 1.016)
+							)
+						)
+					)
+				)
+			)
+		)
 		(symbol "uPesy Boards:uPesy_ESP32_Wroom_Low_Power_DevKit"
 			(pin_names
 				(offset 1.016)
@@ -1208,6 +1513,12 @@
 			)
 		)
 	)
+	(junction
+		(at 176.53 33.02)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7ee0287c-0a72-47b3-8b34-57df44c6cadc")
+	)
 	(no_connect
 		(at 127 30.48)
 		(uuid "04be217c-afa4-4027-93ba-6153161a08b6")
@@ -1245,12 +1556,36 @@
 		(uuid "3969ed43-8e3e-4ea9-b19c-5f054cc0b1b5")
 	)
 	(no_connect
+		(at 66.04 67.31)
+		(uuid "44905ad7-da27-40c5-9d44-e0b094df50da")
+	)
+	(no_connect
+		(at 106.68 62.23)
+		(uuid "5eba03a7-6164-4236-906e-210bcaaf696c")
+	)
+	(no_connect
+		(at 66.04 69.85)
+		(uuid "6169ca40-3b76-455d-98df-d0d86d79feb4")
+	)
+	(no_connect
 		(at 156.21 22.86)
 		(uuid "8370c6be-87d7-41e3-a7aa-508513009511")
 	)
 	(no_connect
 		(at 156.21 50.8)
 		(uuid "bcb0647f-e920-4f45-b1ef-1de361186ad9")
+	)
+	(no_connect
+		(at 106.68 64.77)
+		(uuid "c2f2f74f-e5e1-4d24-a310-a1b61ea9b2b4")
+	)
+	(no_connect
+		(at 106.68 69.85)
+		(uuid "df7d4f37-353b-4ca2-bf2d-b7d6dbe7c596")
+	)
+	(no_connect
+		(at 106.68 59.69)
+		(uuid "ff2ae6e1-1665-44a6-85a5-b30ad2d0deba")
 	)
 	(wire
 		(pts
@@ -1301,6 +1636,16 @@
 			(type default)
 		)
 		(uuid "21c0c482-c910-4e1b-b9a0-de55af060ab5")
+	)
+	(wire
+		(pts
+			(xy 176.53 33.02) (xy 184.15 33.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23a54e66-e1a7-43a5-820e-b399e87e0710")
 	)
 	(wire
 		(pts
@@ -1404,7 +1749,7 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 33.02) (xy 166.37 33.02)
+			(xy 156.21 33.02) (xy 176.53 33.02)
 		)
 		(stroke
 			(width 0)
@@ -1681,6 +2026,16 @@
 			)
 		)
 		(uuid "39c2de28-f2c7-456d-a3a4-bd2f63398499")
+	)
+	(text "Pull_up I2C\n"
+		(exclude_from_sim no)
+		(at 178.562 22.098 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "635b0461-081b-4c88-b583-e72c2ea6e0d8")
 	)
 	(text "Grove bonus pour ceux qui viendront après"
 		(exclude_from_sim no)
@@ -2294,7 +2649,7 @@
 		(uuid "a31d30b0-20df-44a4-ba4c-599be94f0a30")
 	)
 	(label "SDA"
-		(at 166.37 33.02 0)
+		(at 184.15 33.02 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -2534,6 +2889,17 @@
 			(justify right bottom)
 		)
 		(uuid "dba8b793-7213-432b-8cc9-e2104ec449c0")
+	)
+	(label "3v3"
+		(at 176.53 25.4 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e1dec8ae-0be6-43d5-ad9d-b3e498a759d4")
 	)
 	(label "Grove3-3"
 		(at 124.46 53.34 180)
@@ -4212,6 +4578,287 @@
 			(project "Projet_Iot"
 				(path "/1ed8458c-022b-42bb-9785-a8267003d72a"
 					(reference "J23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "switch_load:FDC6326L")
+		(at 86.36 67.31 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a297046d-89e9-47f7-a906-6f9bc9253e0c")
+		(property "Reference" "U11"
+			(at 86.36 49.53 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "FDC6326L"
+			(at 86.36 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "FDC6326L:SOT95P280X110-6N"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" "ON Semiconductor"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Description_1" "\n                        \n                            Power Switch/Driver 1:1 P-Channel 1.8A SuperSOT™-6\n                        \n"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "PACKAGE" "SSOT-23-6"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MPN" "FDC6326L"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Price" "None"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Package" "SOT-6 ON Semiconductor"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "OC_FARNELL" "1706325"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" "https://www.snapeda.com/parts/FDC6326L/Onsemi/view-part/?ref=snap"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MP" "FDC6326L"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "SUPPLIER" "FAIRCHILD SEMICONDUCTOR"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "OC_NEWARK" "58K1423"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Availability" "In Stock"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" "https://www.snapeda.com/parts/FDC6326L/Onsemi/view-part/?ref=eda"
+			(at 86.36 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "9a57d1af-a57a-4fee-bd02-88b0e722f4c3")
+		)
+		(pin "1"
+			(uuid "20d43859-6e00-4d82-983a-44b8a6618672")
+		)
+		(pin "6"
+			(uuid "8177e80e-6a50-45ff-a22f-a4a84feebb44")
+		)
+		(pin "5"
+			(uuid "cc226132-7d0a-4174-96b6-12b5b0e27bef")
+		)
+		(pin "3"
+			(uuid "fee9864d-5e32-4f26-bc53-d267dcce4d8d")
+		)
+		(pin "4"
+			(uuid "1cc20e8c-75eb-4384-9073-a87ba93c518b")
+		)
+		(instances
+			(project ""
+				(path "/1ed8458c-022b-42bb-9785-a8267003d72a"
+					(reference "U11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 176.53 29.21 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a334c49d-5d02-4327-a8df-19f341a44318")
+		(property "Reference" "R16"
+			(at 179.07 27.9399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "R"
+			(at 179.07 30.4799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 174.752 29.21 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 176.53 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 176.53 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "719ed26a-dc45-4799-805c-7d89780c57a0")
+		)
+		(pin "1"
+			(uuid "d8abf745-1b7f-43fb-8627-2405da6c2ea2")
+		)
+		(instances
+			(project ""
+				(path "/1ed8458c-022b-42bb-9785-a8267003d72a"
+					(reference "R16")
 					(unit 1)
 				)
 			)
