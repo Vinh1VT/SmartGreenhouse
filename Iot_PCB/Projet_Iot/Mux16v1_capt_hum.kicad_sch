@@ -1145,7 +1145,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "110990030:SEEED_110990030"
+		(property "Footprint" "Grove:SEEED_110990030"
 			(at 86.36 187.96 0)
 			(effects
 				(font
@@ -1346,7 +1346,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "110990030:SEEED_110990030"
+		(property "Footprint" "Grove:SEEED_110990030"
 			(at 62.23 189.23 0)
 			(effects
 				(font
@@ -1547,7 +1547,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "110990030:SEEED_110990030"
+		(property "Footprint" "Grove:SEEED_110990030"
 			(at 17.78 189.23 0)
 			(effects
 				(font
@@ -1862,7 +1862,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "110990030:SEEED_110990030"
+		(property "Footprint" "Grove:SEEED_110990030"
 			(at 39.37 189.23 0)
 			(effects
 				(font
