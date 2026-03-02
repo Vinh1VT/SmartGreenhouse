@@ -44,6 +44,7 @@ struct SensorData{
 };
 
 
-
+uint8_t buildPayload(const SensorData& data, uint8_t* buffer); //Genere le message depuis sensordata
+void arrayToHex(uint8_t* buffer, uint8_t length,char* hexString); //HexString à envoyer a AT+MSGHEX
 
 #endif
