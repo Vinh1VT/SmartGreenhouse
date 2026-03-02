@@ -57,13 +57,18 @@ void write_LoRa(char *command)
 
 int send_msg_LoRa(char *msg)
 {
-    char command[LoRa_MAX_MSG_LENGTH] = "AT+MSG=";
-    empty_array_command_from(command, LoRa_MAX_MSG_LENGTH, 7);
+    char command[LoRa_MAX_MSG_LENGTH] = "AT+MSGHEX=\"";
+    empty_array_command_from(command, LoRa_MAX_MSG_LENGTH, 11);
 
-    for (int i = 0; i < (LoRa_MAX_MSG_LENGTH - 8) && msg[i] != '\0'; i++)
+    int i = 0;
+    for (i = 0; i < (LoRa_MAX_MSG_LENGTH - 13) && msg[i] != '\0'; i++)
     {
-        command[i + 7] = msg[i];
+        command[i + 11] = msg[i];
     }
+
+    command[i+11] = '"';
+    command[i+12] = '\0';
+
 
     write_LoRa(command);
 
