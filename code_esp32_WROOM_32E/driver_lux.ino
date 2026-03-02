@@ -1,5 +1,6 @@
 #include "Wire.h"
 #include "driver_lux.hpp"
+#include "sensor_Data.h"
 
 float LUX_VALUE[3];  // 0 = étanche, 1 = BH1745 NP1, 2 = BH1745 NP2
 
@@ -28,8 +29,10 @@ void writeReg(uint8_t address, uint8_t reg, uint8_t value)
 // -----------------------------------------------------------------------------
 void initBH1745(uint8_t address)
 {
-    writeReg(address, 0x40, 0x00); // MODE_CONTROL1 : 160ms
-    writeReg(address, 0x41, 0x10); // MODE_CONTROL2 : RGBC enable
+    writeReg(address, 0x41, 0x02); // MODE_CONTROL1 : 160ms
+    writeReg(address, 0x42, 0x10); // MODE_CONTROL2 : RGBC enable
+    writeReg(address, 0x44, 0x02);
+
     delay(200);                    // attendre fin intégration
 }
 
@@ -38,19 +41,23 @@ void initBH1745(uint8_t address)
 // -----------------------------------------------------------------------------
 bool readReg_BH1745(uint8_t addr, uint8_t reg, uint8_t* data, uint8_t len)
 {
+    // Write register address
     Wire.beginTransmission(addr);
     Wire.write(reg);
-    if (Wire.endTransmission(false) != 0)  // repeated start
+
+    // Send STOP instead of repeated start
+    if (Wire.endTransmission(true) != 0)
         return false;
 
-    uint8_t received = Wire.requestFrom(addr, len);
-    if (received != len) return false;
+    delayMicroseconds(50);   // small guard time (important on ESP32)
+
+    // Request data
+    uint8_t received = Wire.requestFrom((int)addr, (int)len);
+    if (received != len)
+        return false;
 
     for (uint8_t i = 0; i < len; i++) {
-        if (Wire.available())
-            data[i] = Wire.read();
-        else
-            return false;
+        data[i] = Wire.read();
     }
 
     return true;
@@ -125,6 +132,6 @@ void readfull_lux_etanche()
     Serial.println(" lx");
     delay(1000);
     // Capteurs BH1745
-    readBH1745(ADDR_LUX_NP1, 1);
-    readBH1745(ADDR_LUX_NP2, 2);
+    readBH1745(ADDR_LUX_NP1, 0); 
+    // readBH1745(ADDR_LUX_NP2, 2);
 }
