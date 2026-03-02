@@ -2088,6 +2088,16 @@
 		)
 		(uuid "b91a619d-7f97-4f00-8eb6-1ab2047b6cd6")
 	)
+	(text "Lora"
+		(exclude_from_sim no)
+		(at 203.962 39.37 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "bfe069ef-3656-4e85-90d3-889a690130d4")
+	)
 	(text "Capteur de lumière 1"
 		(exclude_from_sim no)
 		(at 227.584 19.05 0)
@@ -3790,6 +3800,203 @@
 			(project "Projet_Iot"
 				(path "/1ed8458c-022b-42bb-9785-a8267003d72a"
 					(reference "J7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "grove:110990030")
+		(at 207.01 45.72 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2831d85f-7f82-461c-86e6-8a892980dd29")
+		(property "Reference" "J24"
+			(at 213.36 45.7199 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "110990030"
+			(at 213.36 48.2599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "110990030:SEEED_110990030"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" ""
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MF" "Seeed Technology Co., Ltd"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MAXIMUM_PACKAGE_HEIGHT" "8.1mm"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Package" "None"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Price" "None"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Check_prices" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=eda"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "STANDARD" "Manufacturer Recommendations"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "PARTREV" "A"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "SnapEDA_Link" "https://www.snapeda.com/parts/110990030/Seeed+Studio/view-part/?ref=snap"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MP" "110990030"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Description_1" "\n                        \n                            GROVE 2MM 4PIN VERT CONN 10PCS\n                        \n"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "Availability" "In Stock"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(property "MANUFACTURER" "Seeed Technology"
+			(at 207.01 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify bottom)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b4763c67-5fbf-4c2f-aba3-0ed66e00cd52")
+		)
+		(pin "1"
+			(uuid "33d5ec34-1d18-478c-96a4-c1b3d7184849")
+		)
+		(pin "4"
+			(uuid "8df745df-be69-4fc0-a46a-aab2f63aee10")
+		)
+		(pin "3"
+			(uuid "1ec23b68-d53d-4982-a45e-f84ae3a17820")
+		)
+		(instances
+			(project "Projet_Iot"
+				(path "/1ed8458c-022b-42bb-9785-a8267003d72a"
+					(reference "J24")
 					(unit 1)
 				)
 			)
@@ -5518,86 +5725,6 @@
 				(path "/1ed8458c-022b-42bb-9785-a8267003d72a"
 					(reference "J8")
 					(unit 1)
-				)
-			)
-		)
-	)
-	(sheet
-		(at 196.85 40.64)
-		(size 12.7 12.7)
-		(fields_autoplaced yes)
-		(stroke
-			(width 0.1524)
-			(type solid)
-			(color 0 0 0 1)
-		)
-		(fill
-			(color 80 186 219 1.0000)
-		)
-		(uuid "175edc67-2ac5-4e84-9ecc-ee721a4c665b")
-		(property "Sheetname" "Lora"
-			(at 196.85 39.9284 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left bottom)
-			)
-		)
-		(property "Sheetfile" "../Lora/Lora/Lora.kicad_sch"
-			(at 196.85 53.9246 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left top)
-				(hide yes)
-			)
-		)
-		(pin "LoraGnd" input
-			(at 196.85 50.8 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "d4691df5-9685-449d-9587-8074fe9ad533")
-		)
-		(pin "LoraTx" input
-			(at 196.85 45.72 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "9c42471f-e4ac-4c3f-9e6b-7279150bb71a")
-		)
-		(pin "LoraVcc" input
-			(at 196.85 48.26 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "d446f768-aca9-4f1a-9abf-e3fe885b255a")
-		)
-		(pin "LoraRx" input
-			(at 196.85 43.18 180)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-			(uuid "fc54eab4-42d4-4726-a966-bae4b3c2364a")
-		)
-		(instances
-			(project "Projet_Iot"
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a"
-					(page "3")
 				)
 			)
 		)

@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Lora_printe")(type "KiCad")(uri "C:/Users/ultim/Desktop/cours_et_ressources/EI4_2025-2026/Projet_Iot/SmartGreenhouse/Iot_PCB/Lora/Lora/Lora_printe.pretty")(options "")(descr ""))
+)
