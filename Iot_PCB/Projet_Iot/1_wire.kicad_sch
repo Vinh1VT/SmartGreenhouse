@@ -1,12 +1,14 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "19f98bba-7a56-43cc-b89b-3b0d53db6e8e")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Device:R"
-			(pin_numbers hide)
+			(pin_numbers
+				(hide yes)
+			)
 			(pin_names
 				(offset 0)
 			)
@@ -125,6 +127,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "grove:110990030"
 			(pin_names
@@ -384,7 +387,48 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(text "Capteur Température 2/3"
+		(exclude_from_sim no)
+		(at 116.586 105.918 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0832e3d3-5607-4289-87f2-2e3e231ecb49")
+	)
+	(text "Capteur Température 4/5"
+		(exclude_from_sim no)
+		(at 135.89 106.426 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "22b99c37-48ec-480a-bbbe-567fab1b419a")
+	)
+	(text "Capteur Température 6/7"
+		(exclude_from_sim no)
+		(at 161.29 106.426 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "b2f0319d-849e-42ec-9a95-345e824f7947")
+	)
+	(text "Capteur Température 0/1\n"
+		(exclude_from_sim no)
+		(at 93.98 106.426 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "e6c9be19-01e3-4b54-b1a1-f0b035fa7d6d")
 	)
 	(junction
 		(at 110.49 86.36)
@@ -684,49 +728,8 @@
 		)
 		(uuid "f8b0dafe-42f0-404d-bffd-a67128e00212")
 	)
-	(text "Capteur Température 2/3"
-		(exclude_from_sim no)
-		(at 116.586 105.918 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "0832e3d3-5607-4289-87f2-2e3e231ecb49")
-	)
-	(text "Capteur Température 4/5"
-		(exclude_from_sim no)
-		(at 135.89 106.426 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "22b99c37-48ec-480a-bbbe-567fab1b419a")
-	)
-	(text "Capteur Température 6/7"
-		(exclude_from_sim no)
-		(at 161.29 106.426 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "b2f0319d-849e-42ec-9a95-345e824f7947")
-	)
-	(text "Capteur Température 0/1\n"
-		(exclude_from_sim no)
-		(at 93.98 106.426 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "e6c9be19-01e3-4b54-b1a1-f0b035fa7d6d")
-	)
 	(label "3v3"
 		(at 125.73 104.14 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -737,7 +740,6 @@
 	)
 	(label "3v3"
 		(at 83.82 104.14 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -748,7 +750,6 @@
 	)
 	(label "GND"
 		(at 148.59 99.06 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -759,7 +760,6 @@
 	)
 	(label "GND"
 		(at 81.28 99.06 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -770,7 +770,6 @@
 	)
 	(label "3v3"
 		(at 105.41 104.14 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -781,7 +780,6 @@
 	)
 	(label "3v3"
 		(at 115.57 73.66 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -792,7 +790,6 @@
 	)
 	(label "GND"
 		(at 102.87 99.06 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -803,7 +800,6 @@
 	)
 	(label "GND"
 		(at 123.19 99.06 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -814,7 +810,6 @@
 	)
 	(label "3v3"
 		(at 151.13 104.14 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -826,7 +821,6 @@
 	(hierarchical_label "1_Wire"
 		(shape input)
 		(at 45.72 86.36 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -838,7 +832,6 @@
 	(hierarchical_label "3v3"
 		(shape input)
 		(at 49.53 59.69 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -850,7 +843,6 @@
 	(hierarchical_label "GND"
 		(shape input)
 		(at 49.53 63.5 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1281,7 +1273,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal"
 			(at 113.792 80.01 90)
 			(effects
 				(font

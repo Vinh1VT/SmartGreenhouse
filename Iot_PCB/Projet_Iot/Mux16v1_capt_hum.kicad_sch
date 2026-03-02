@@ -1,7 +1,7 @@
 (kicad_sch
-	(version 20231120)
+	(version 20250114)
 	(generator "eeschema")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(uuid "1b70bf08-feb7-458f-a872-e8fe3a9f7704")
 	(paper "A4")
 	(lib_symbols
@@ -83,160 +83,16 @@
 			)
 			(symbol "74LS151_1_0"
 				(pin input line
-					(at -12.7 7.62 0)
+					(at -12.7 15.24 0)
 					(length 5.08)
-					(name "I3"
+					(name "I0"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -10.16 0)
-					(length 5.08)
-					(name "S1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -7.62 0)
-					(length 5.08)
-					(name "S0"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -2.54 0)
-					(length 5.08)
-					(name "I7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 0 0)
-					(length 5.08)
-					(name "I6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 2.54 0)
-					(length 5.08)
-					(name "I5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 5.08 0)
-					(length 5.08)
-					(name "I4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 22.86 270)
-					(length 5.08)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 10.16 0)
-					(length 5.08)
-					(name "I2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -263,16 +119,214 @@
 					)
 				)
 				(pin input line
-					(at -12.7 15.24 0)
+					(at -12.7 10.16 0)
 					(length 5.08)
-					(name "I0"
+					(name "I2"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "4"
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 7.62 0)
+					(length 5.08)
+					(name "I3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 5.08 0)
+					(length 5.08)
+					(name "I4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 2.54 0)
+					(length 5.08)
+					(name "I5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "I6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -2.54 0)
+					(length 5.08)
+					(name "I7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -7.62 0)
+					(length 5.08)
+					(name "S0"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -10.16 0)
+					(length 5.08)
+					(name "S1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -12.7 0)
+					(length 5.08)
+					(name "S2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 -17.78 0)
+					(length 5.08)
+					(name "~{E}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 22.86 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -25.4 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -316,60 +370,6 @@
 						)
 					)
 				)
-				(pin input line
-					(at -12.7 -17.78 0)
-					(length 5.08)
-					(name "~{E}"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 0 -25.4 90)
-					(length 5.08)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -12.7 0)
-					(length 5.08)
-					(name "S2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 			)
 			(symbol "74LS151_1_1"
 				(rectangle
@@ -384,6 +384,7 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
 		(symbol "grove:110990030"
 			(pin_names
@@ -643,7 +644,48 @@
 					)
 				)
 			)
+			(embedded_fonts no)
 		)
+	)
+	(text "Capteur d'humidité 4/5"
+		(exclude_from_sim no)
+		(at 72.39 181.356 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1ddbf471-5379-4096-bfb7-e559069a9349")
+	)
+	(text "Capteur d'humidité 2/3"
+		(exclude_from_sim no)
+		(at 49.53 181.356 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "2d961a77-fc34-44ac-b22a-e3a6c5dfbd8e")
+	)
+	(text "Capteur d'humidité 6/7"
+		(exclude_from_sim no)
+		(at 95.25 181.356 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "59cc28d8-241a-4734-b6c7-9dfeca9377e2")
+	)
+	(text "Capteur d'humidité 0/1"
+		(exclude_from_sim no)
+		(at 25.4 181.356 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "dfb6c517-6541-4641-a83c-584a247c8c73")
 	)
 	(junction
 		(at 78.74 91.44)
@@ -769,49 +811,8 @@
 		)
 		(uuid "ee4a9220-43a7-4dd0-93e6-0a838b281c68")
 	)
-	(text "Capteur d'humidité 4/5"
-		(exclude_from_sim no)
-		(at 72.39 181.356 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "1ddbf471-5379-4096-bfb7-e559069a9349")
-	)
-	(text "Capteur d'humidité 2/3"
-		(exclude_from_sim no)
-		(at 49.53 181.356 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "2d961a77-fc34-44ac-b22a-e3a6c5dfbd8e")
-	)
-	(text "Capteur d'humidité 6/7"
-		(exclude_from_sim no)
-		(at 95.25 181.356 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "59cc28d8-241a-4734-b6c7-9dfeca9377e2")
-	)
-	(text "Capteur d'humidité 0/1"
-		(exclude_from_sim no)
-		(at 25.4 181.356 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "dfb6c517-6541-4641-a83c-584a247c8c73")
-	)
 	(label "GND"
 		(at 34.29 179.07 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -822,7 +823,6 @@
 	)
 	(label "Hum7"
 		(at 88.9 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -833,7 +833,6 @@
 	)
 	(label "Hum0"
 		(at 38.1 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -844,7 +843,6 @@
 	)
 	(label "Hum4"
 		(at 48.26 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -855,7 +853,6 @@
 	)
 	(label "Hum1"
 		(at 17.78 140.97 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -866,7 +863,6 @@
 	)
 	(label "Hum5"
 		(at 50.8 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -877,7 +873,6 @@
 	)
 	(label "Hum6"
 		(at 86.36 138.43 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -888,7 +883,6 @@
 	)
 	(label "Hum4"
 		(at 62.23 139.7 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -899,7 +893,6 @@
 	)
 	(label "Hum5"
 		(at 64.77 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -910,7 +903,6 @@
 	)
 	(label "Hum7"
 		(at 55.88 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -921,7 +913,6 @@
 	)
 	(label "3v3"
 		(at 83.82 177.8 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -932,7 +923,6 @@
 	)
 	(label "Hum6"
 		(at 53.34 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -943,7 +933,6 @@
 	)
 	(label "3v3"
 		(at 59.69 179.07 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -954,7 +943,6 @@
 	)
 	(label "Hum0"
 		(at 20.32 140.97 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -965,7 +953,6 @@
 	)
 	(label "3v3"
 		(at 36.83 179.07 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -976,7 +963,6 @@
 	)
 	(label "GND"
 		(at 57.15 179.07 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -987,7 +973,6 @@
 	)
 	(label "Hum2"
 		(at 43.18 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -998,7 +983,6 @@
 	)
 	(label "Hum2"
 		(at 39.37 139.7 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1009,7 +993,6 @@
 	)
 	(label "GND"
 		(at 12.7 179.07 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1020,7 +1003,6 @@
 	)
 	(label "Hum1"
 		(at 40.64 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1031,7 +1013,6 @@
 	)
 	(label "Hum3"
 		(at 45.72 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1042,7 +1023,6 @@
 	)
 	(label "3v3"
 		(at 15.24 179.07 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1053,7 +1033,6 @@
 	)
 	(label "Hum3"
 		(at 41.91 139.7 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1064,7 +1043,6 @@
 	)
 	(label "GND"
 		(at 81.28 177.8 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1076,7 +1054,6 @@
 	(hierarchical_label "3v3"
 		(shape input)
 		(at 30.48 91.44 180)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1088,7 +1065,6 @@
 	(hierarchical_label "S2"
 		(shape input)
 		(at 66.04 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1100,7 +1076,6 @@
 	(hierarchical_label "S0"
 		(shape input)
 		(at 60.96 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1112,7 +1087,6 @@
 	(hierarchical_label "GND"
 		(shape input)
 		(at 81.28 91.44 0)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1124,7 +1098,6 @@
 	(hierarchical_label "S1"
 		(shape input)
 		(at 63.5 104.14 270)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1136,7 +1109,6 @@
 	(hierarchical_label "OUT"
 		(shape input)
 		(at 38.1 78.74 90)
-		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1155,7 +1127,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "296c7667-10a0-43ac-b016-86deee41b22e")
-		(property "Reference" "J43"
+		(property "Reference" "J42"
 			(at 86.3601 194.31 0)
 			(effects
 				(font
@@ -1356,7 +1328,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2e2adcf9-a27d-448b-8b48-9a4ee4e5a3a1")
-		(property "Reference" "J41"
+		(property "Reference" "J40"
 			(at 62.2301 195.58 0)
 			(effects
 				(font
@@ -1557,7 +1529,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "359a1baf-7b53-475b-b460-909a18605c99")
-		(property "Reference" "J37"
+		(property "Reference" "J36"
 			(at 17.7801 195.58 0)
 			(effects
 				(font
@@ -1758,7 +1730,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dfc7809f-b883-4610-b869-627626fab771")
-		(property "Reference" "U10"
+		(property "Reference" "U7"
 			(at 78.74 85.9438 90)
 			(effects
 				(font
@@ -1774,7 +1746,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_DIP:DIP-16_W7.62mm"
 			(at 53.34 91.44 0)
 			(effects
 				(font
@@ -1872,7 +1844,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f832f6a0-c230-4c5b-8c87-7aea6b93c8da")
-		(property "Reference" "J39"
+		(property "Reference" "J38"
 			(at 39.3701 195.58 0)
 			(effects
 				(font
