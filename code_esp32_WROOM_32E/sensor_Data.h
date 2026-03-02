@@ -3,6 +3,17 @@
 
 #include <Arduino.h>
 
+#define HUM_EST_10 0
+#define HUM_EST_30 1
+#define HUM_SUD_10 2
+#define HUM_SUD_30 3
+#define HUM_OUEST_10 4
+#define HUM_OUEST_30 5
+
+
+
+
+
 struct SensorData{
   // --- Bloc T: Températures (int16_t) ---
   // Défaut : 32766 (0x7FFE) -> Absent

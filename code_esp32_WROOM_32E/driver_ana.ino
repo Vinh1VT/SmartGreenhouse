@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include "driver_ana.hpp"
+#include "sensor_Data.h"
+
 
 float ANA1_CAPA[8];
 
@@ -26,7 +28,7 @@ void readADC36() {
     digitalWrite(ANA_COMMANDE_2, C);
 
 
-    delay(1000);
+    delay(100);
 
     int analogValue = analogRead(ANA1_PIN_READ);
     ANA1_CAPA[i] = analogValue * (3.3 / 4095.0);

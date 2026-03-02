@@ -8,7 +8,6 @@ float LUX_VALUE[3];  // 0 = étanche, 1 = BH1745 NP1, 2 = BH1745 NP2
 // -----------------------------------------------------------------------------
 void setup_lux_etanche()
 {
-    Serial.begin(9600);
     Wire.begin(21, 22);    // SDA=21, SCL=22 pour ESP32
     Wire.setClock(100000); // 100 kHz pour stabilité
 }
