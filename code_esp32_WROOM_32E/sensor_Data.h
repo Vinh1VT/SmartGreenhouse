@@ -22,6 +22,8 @@ struct SensorData{
   int16_t temp_est     = 0x7FFE;
   int16_t temp_sud     = 0x7FFE;
   int16_t temp_ouest   = 0x7FFE;
+  int16_t temp_puit_out= 0x7FFE;
+  int16_t temp_puit_in = 0x7FFE;
 
   // --- Bloc H: Humidités (uint8_t) ---
   // Défaut : 254 (0xFE) -> Absent
