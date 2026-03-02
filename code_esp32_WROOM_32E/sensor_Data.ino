@@ -69,3 +69,11 @@ uint8_t buildPayload(const SensorData& data, uint8_t* buffer) {
   // Retourne la taille exacte de la trame (ici 33 octets)
   return i; 
 }
+
+
+void arrayToHex(uint8_t* buffer, uint8_t length,char* hexString){
+  for(int i =0; i<length;i++){
+    sprintf(hexString + (i * 2), "%02X", buffer[i]);
+  }
+}
+
