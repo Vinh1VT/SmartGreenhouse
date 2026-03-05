@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <OneWire.h>
 
+#include "sensor_Data.h"
 #include "read_temp_DS18B20.h"
 
 OneWire ds(PIN_ONE_WIRE_DS18B20);
@@ -40,7 +41,7 @@ void print_addr(void)
 }
 #endif
 
-void read_temperature_ds18b20(void)
+static int get_temperature_ds18b20(void)
 {
     byte data_read[9] = {0};
     for (int i = 0; i < NB_SENSORS_DS18B20; i++)
@@ -61,4 +62,14 @@ void read_temperature_ds18b20(void)
     
         data_ds18b20[i] = convert_binary_to_double(data_read[1], data_read[0]);
     }
+}
+
+void read_temperature_ds18b20(SensorData& data)
+{
+    get_temperature_ds18b20();
+    data.temp_est = (int16_t) data_ds18b20[0];
+    data.temp_ouest = (int16_t) data_ds18b20[1];
+    data.temp_sud = (int16_t) data_ds18b20[2];
+    data.temp_puit_out = (int16_t) data_ds18b20[3];
+    data.temp_puit_out = (int16_t) data_ds18b20[4];
 }

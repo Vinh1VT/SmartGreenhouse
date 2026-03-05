@@ -22,6 +22,12 @@ uint8_t buildPayload(const SensorData& data, uint8_t* buffer) {
   buffer[i++] = (data.temp_ouest >> 8) & 0xFF;
   buffer[i++] = data.temp_ouest & 0xFF;
 
+  buffer[i++] = (data.temp_puit_out >> 8) & 0xFF;
+  buffer[i++] = data.temp_puit_out & 0xFF;
+
+  buffer[i++] = (data.temp_puit_in >> 8) & 0xFF;
+  buffer[i++] = data.temp_puit_in & 0xFF;
+
   // ------------------------------------------------
   // [H] BLOC HUMIDITÉS
   // ------------------------------------------------
@@ -71,7 +77,7 @@ uint8_t buildPayload(const SensorData& data, uint8_t* buffer) {
 }
 
 
-void arrayToHex(uint8_t* buffer, uint8_t length,char* hexString){
+void arrayToHex(uint8_t* buffer, uint8_t length, char* hexString){
   for(int i =0; i<length;i++){
     sprintf(hexString + (i * 2), "%02X", buffer[i]);
   }

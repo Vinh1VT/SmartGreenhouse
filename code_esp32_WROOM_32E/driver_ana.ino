@@ -3,9 +3,12 @@
 #include "sensor_Data.h"
 
 
+#include "sensor_Data.h"
+
 float ANA1_CAPA[8];
 
-void initADC36() {
+void initADC36(void)
+{
   analogReadResolution(12);          // 12 bits → 0 à 4095
   analogSetAttenuation(ADC_11db);    // Plage ~0 à 3.3V
   
@@ -14,7 +17,9 @@ void initADC36() {
   pinMode(ANA_COMMANDE_1, OUTPUT);
   pinMode(ANA_COMMANDE_2, OUTPUT);
 }
-void readADC36() {
+
+static void getADC36(void)
+{
 
 
   for(int i = 0; i < 8; i++) {
@@ -47,4 +52,20 @@ void readADC36() {
     digitalWrite(ANA_COMMANDE_0, 0);
     digitalWrite(ANA_COMMANDE_1, 0);
     digitalWrite(ANA_COMMANDE_2, 0);
+}
+
+static uint8_t convert_VOLT_to_hum(float t)
+{
+  return (uint8_t) ((((1./3.3) * -t) + 1.) * 100.);
+}
+
+void readADC36(SensorData& data)
+{
+  getADC36();
+  data.hum_est_10 = convert_VOLT_to_hum(ANA1_CAPA[0]);
+  data.hum_est_30 = convert_VOLT_to_hum(ANA1_CAPA[1]);
+  data.hum_sud_10 = convert_VOLT_to_hum(ANA1_CAPA[2]);
+  data.hum_sud_30 = convert_VOLT_to_hum(ANA1_CAPA[3]);
+  data.hum_ouest_10 = convert_VOLT_to_hum(ANA1_CAPA[4]);
+  data.hum_ouest_30 = convert_VOLT_to_hum(ANA1_CAPA[5]);
 }
