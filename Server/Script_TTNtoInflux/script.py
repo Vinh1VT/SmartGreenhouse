@@ -7,30 +7,33 @@ from datetime import datetime
 import paho.mqtt.client as mqtt
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
 # ==========================================
 # VARIABLES D'ENVIRONNEMENT
 # ==========================================
 
-# TTN
 TTN_BROKER = os.getenv("TTN_BROKER")
 TTN_USER = os.getenv("TTN_USER")
 TTN_PASSWORD = os.getenv("TTN_PASSWORD")
 TTN_TOPIC = "v3/+/devices/+/up"
 
-# InfluxDB
 INFLUX_URL = os.getenv("INFLUX_URL")
 INFLUX_ORG = os.getenv("INFLUX_ORG")
 INFLUX_BUCKET = os.getenv("INFLUX_BUCKET")
 INFLUX_TOKEN = os.getenv("INFLUX_TOKEN")
-
-# Certificat SSL
 SSL_CERT_PATH = os.getenv("SSL_CERT_PATH")
 
 if not all([TTN_USER, TTN_PASSWORD, TTN_BROKER, INFLUX_URL, INFLUX_ORG, INFLUX_BUCKET, INFLUX_TOKEN, SSL_CERT_PATH]):
     print("Erreur : Variables d'environnement manquantes. Vérifiez votre fichier .env")
     exit(1)
+
+# ==========================================
+# CACHE EN MÉMOIRE
+# ==========================================
+# Ce Set va stocker les identifiants uniques "device_nomDuCapteur"
+capteurs_connus = set()
 
 
 # ==========================================
@@ -58,7 +61,7 @@ def on_message(client, userdata, msg):
             print(f"[{device_id}] Aucun payload décodé, message ignoré")
             return
 
-        # 1. RÉCUPÉRATION DE L'HEURE EXACTE TTN
+        # 1. RÉCUPÉRATION DE L'HEURE
         ttn_time_str = uplink_message.get("received_at")
         if ttn_time_str:
             clean_time = ttn_time_str.split('.')[0].replace('Z', '')
@@ -67,59 +70,47 @@ def on_message(client, userdata, msg):
         else:
             base_timestamp = int(time.time())
 
-        # 2. TAGS DE BASE (Communs à tous les capteurs)
-        anomaly = decoded_payload.pop("sensor_anomaly", False)
-        base_tags = f"device={device_id},anomalie={'true' if anomaly else 'false'}"
-
         lines_to_send = []
 
-        # 3. EXTRACTION ET RANGEMENT DES CAPTEURS
+        # 2. FONCTION D'AIDE POUR L'AJOUT UNIQUE
+        def ajouter_capteur_si_nouveau(nom_capteur, timestamp):
+            identifiant_unique = f"{device_id}_{nom_capteur}"
+            if identifiant_unique not in capteurs_connus:
+                # C'est un nouveau capteur ! On l'ajoute au cache et on l'envoie à la DB
+                capteurs_connus.add(identifiant_unique)
+                lines_to_send.append(f'capteurs,device={device_id} nom="{nom_capteur}" {timestamp}')
+
+        # 3. GESTION DE L'ANOMALIE
+        anomaly = decoded_payload.pop("sensor_anomaly", False)
+        ajouter_capteur_si_nouveau("sensor_anomaly", base_timestamp)
+        lines_to_send.append(
+            f'mesures_puits,device={device_id},nom=sensor_anomaly valeur={"true" if anomaly else "false"} {base_timestamp}')
+
+        # 4. EXTRACTION DES CAPTEURS ET MESURES
         fan_states = decoded_payload.pop("ventilateur_etats", None)
 
-        for key, value in decoded_payload.items():
-            specific_tags = ""
-            field_name = "valeur" # Sécurité par défaut
-            
-            # --- TEMPÉRATURE ---
-            if key.startswith("temperature_"):
-                position = key.replace("temperature_", "")
-                specific_tags = f",type_capteur=temperature,position={position}"
-                field_name = "temperature"
+        for nom_capteur, valeur in decoded_payload.items():
+            # Ajout dans la table capteurs UNIQUEMENT si c'est la première fois
+            ajouter_capteur_si_nouveau(nom_capteur, base_timestamp)
 
-            # --- HUMIDITÉ ---
-            elif key.startswith("humidite_"):
-                parts = key.split("_")
-                position = parts[1]
-                profondeur = f",profondeur={parts[2]}" if len(parts) > 2 else ""
-                specific_tags = f",type_capteur=humidite,position={position}{profondeur}"
-                field_name = "humidite"
+            # Ajout dans la table mesures_puits (À CHAQUE FOIS)
+            lines_to_send.append(f'mesures_puits,device={device_id},nom={nom_capteur} valeur={valeur} {base_timestamp}')
 
-            # --- LUMINANCE ---
-            elif key.startswith("luminance_"):
-                position = key.replace("luminance_", "")
-                specific_tags = f",type_capteur=luminance,position={position}"
-                field_name = "luminance"
-
-            # --- GAZ ---
-            elif key in ["co2", "o2"]:
-                specific_tags = f",type_capteur=gaz,type_gaz={key}"
-                field_name = "concentration"
-
-            # Assemblage de la ligne InfluxDB
-            lines_to_send.append(f"environnement,{base_tags}{specific_tags} {field_name}={value} {base_timestamp}")
-
-        # 4. TRAITEMENT DU VENTILATEUR (Historisé)
+        # 5. TRAITEMENT DU VENTILATEUR (Historisé)
         if fan_states and isinstance(fan_states, list) and len(fan_states) > 0:
             cycle_total_secondes = 30 * 60
             nb_tranches = len(fan_states)
             duree_tranche = cycle_total_secondes // nb_tranches
+            nom_ventilo = "ventilateur_etats"
+
+            # Enregistrement du ventilateur dans la table capteurs (une seule fois)
+            ajouter_capteur_si_nouveau(nom_ventilo, base_timestamp)
 
             for i, state in enumerate(fan_states):
                 ts_tranche = base_timestamp - ((nb_tranches - 1 - i) * duree_tranche)
-                specific_tags = ",type_capteur=ventilateur,composant=moteur"
-                lines_to_send.append(f"environnement,{base_tags}{specific_tags} etat={state} {ts_tranche}")
+                lines_to_send.append(f'mesures_puits,device={device_id},nom={nom_ventilo} valeur={state} {ts_tranche}')
 
-        # 5. ENVOI EN BLOC VERS INFLUXDB
+        # 6. ENVOI EN BLOC VERS INFLUXDB
         if lines_to_send:
             line_protocol_data = "\n".join(lines_to_send)
             print(f"[{device_id}] Envoi de {len(lines_to_send)} points à InfluxDB...")
@@ -149,8 +140,8 @@ def send_to_influxdb(line_protocol_data):
     }
 
     try:
-        # Note : INFLUX_URL doit pointer vers l'endpoint d'écriture, ex: "https://serveur/api/v2/write"
-        response = requests.post(INFLUX_URL, params=params, headers=headers, data=line_protocol_data, verify=SSL_CERT_PATH, timeout=5)
+        response = requests.post(INFLUX_URL, params=params, headers=headers, data=line_protocol_data,
+                                 verify=SSL_CERT_PATH, timeout=5)
 
         if response.status_code == 204:
             print("-> Données insérées avec succès")
@@ -167,8 +158,7 @@ def send_to_influxdb(line_protocol_data):
 
 if __name__ == "__main__":
     print("Démarrage du pont MQTT vers InfluxDB...")
-    
-    # Configuration du client MQTT
+
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
     client.username_pw_set(username=TTN_USER, password=TTN_PASSWORD)
     client.on_connect = on_connect
