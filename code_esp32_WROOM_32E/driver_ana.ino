@@ -2,8 +2,9 @@
 #include "driver_ana.hpp"
 #include "sensor_Data.h"
 
-
-#include "sensor_Data.h"
+// Forward declaration to avoid Arduino's auto-generated prototype
+// being created before the `SensorData` type is known.
+struct SensorData;
 
 float ANA1_CAPA[8];
 
@@ -62,7 +63,7 @@ static uint8_t convert_VOLT_to_hum(float t)
   return (uint8_t) ((((1./3.3) * -t) + 1.) * 100.);
 }
 
-void readADC36(SensorData& data)
+void readADC36(struct SensorData& data)
 {
   getADC36();
   data.hum_oya_1 = convert_VOLT_to_hum(ANA1_CAPA[0]);
