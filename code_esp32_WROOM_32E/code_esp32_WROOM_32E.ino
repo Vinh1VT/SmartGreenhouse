@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <cstdio>
 
 #define DEBUG 1
 
@@ -9,6 +10,11 @@
 #include "read_temp_and_hum_dht22.h"
 #include "sensor_Data.h"
 
+#define MULT_S_TO_MIN 60
+
+#define PAYLOAD_BUFF_LEN 256
+#define PAYLOAD_HEXBUFF_LEN PAYLOAD_BUFF_LEN * 2
+
 void setup(void)
 {
     void switch_load_init();
@@ -17,46 +23,52 @@ void setup(void)
     initADC36();
 }
 
-extern double data_ds18b20[NB_SENSORS_DS18B20];
-extern float ANA1_CAPA[8];
-
 void loop(void)
-#if DEBUG != 1
 {
-    start_deep_sleep(int time);
-}
-#else
-{
-    delay(1000);
-    Serial.printf("Start :\n");
-
-    Serial.printf("Start reading DS18B20 :\n");
-    Serial.printf("Read address :\n");
-    print_addr();
-    Serial.printf("Read temp :\n");
-    read_temperature_ds18b20();
-    for (int i = 0; i < NB_SENSORS_DS18B20; i++)
+    #if DEBUG == 1
+        Serial.printf("\n---------------\n- LOOP START : -\n---------------\n");
+    #endif
+    
+    /* Connecte au reseau LoRa */
+    if (connect_LoRa())
     {
-        Serial.printf("%f ", data_ds18b20[i]);
+        /* connection échoué à voir ce que l'on fait */
+        start_deep_sleep(30);
     }
-    Serial.printf("\n\n");
 
-    Serial.printf("Start reading DHT22 :\n");
-    struct temp_and_hum_t read_dht22 = read_temp_and_hum_dht22();
-    Serial.printf("temp : %f | hum : %f\n\n", read_dht22.temp, read_dht22.hum);
+    #if DEBUG == 1
+        print_addr(); /* recupere les adresse one wire des capteurs DS18B20 */
+    #endif
+    
+    /* Recupere les données */
+    struct SensorData data;
 
-    Serial.printf("Start reading capacity voltage (for now):\n");
-    readADC36();
-    Serial.printf("Test reading from the shared array :\n");
-    for (int i = 0; i < 8; i++)
-    {
-        Serial.printf("%f ", ANA1_CAPA[i]);
-    }
-    Serial.printf("\n\n");
+    readADC36(data);
+    read_temperature_ds18b20(data);
 
-    esp_sleep_enable_timer_wakeup(10 * 1000000);
-    esp_deep_sleep_start();
+    /* prepare the payload */
+    uint8_t payload_buff[PAYLOAD_BUFF_LEN];
+    int length = buildPayload(data, payload_buff);
 
-    //while(1);
+    #if DEBUG == 1
+        printf("payload :\n[");
+        for (int i = 0; i < length; i++)
+        {
+            printf("%d, ", payload_buff[i]);
+        }
+        printf("]\n");
+    #endif
+    
+    char payload_hexbuff[PAYLOAD_HEXBUFF_LEN];
+    arrayToHex(payload_buff, length, payload_hexbuff);
+    
+    /* send the message */
+    send_msg_LoRa(payload_hexbuff);
+
+    #if DEBUG == 1
+        Serial.printf("\n------------\n- LOOP STOP -\n------------\n");
+    #endif
+
+    /* Lance le deep sleep */
+    start_deep_sleep(30);
 }
-#endif
