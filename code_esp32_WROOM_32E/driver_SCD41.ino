@@ -1,4 +1,4 @@
-#include "driver_scd41.hpp"
+#include "driver_SCD41.hpp"
 #include "sensor_Data.h"
 
 // Instantiate SCD41
