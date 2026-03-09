@@ -31,7 +31,7 @@ void setup_LoRa(void)
     read_until_motif_found_UART("DR");
 }
 
-int connect_LoRa(void)
+static int connect_LoRa_sub(void)
 {
     #if DEBUG == 1
         Serial.printf("Connecting to LoRa :\n");
@@ -45,6 +45,17 @@ int connect_LoRa(void)
     #endif
 
     return (status) ? 1 : 0;
+}
+
+int connect_LoRa(void)
+{
+    int connection_status = 1;
+    for (int i = 0; i < MAX_CONNECTION_ATEMPT && connection_status; i++)
+    {
+        connection_status = connect_LoRa();
+    }
+    
+    return connection_status;
 }
 
 void write_LoRa(char *command)

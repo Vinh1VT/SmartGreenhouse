@@ -12,6 +12,8 @@
 
 #define LoRa_MAX_MSG_LENGTH 528
 
+#define MAX_CONNECTION_ATEMPT 10
+
 /*
 Setup the LoRa configuration
 */
