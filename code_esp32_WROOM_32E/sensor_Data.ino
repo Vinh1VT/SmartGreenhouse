@@ -13,32 +13,29 @@ uint8_t buildPayload(const SensorData& data, uint8_t* buffer) {
   buffer[i++] = (data.temp_ambiant >> 8) & 0xFF; // Octet de poids fort
   buffer[i++] = data.temp_ambiant & 0xFF;        // Octet de poids faible
   
-  buffer[i++] = (data.temp_est >> 8) & 0xFF;
-  buffer[i++] = data.temp_est & 0xFF;
-  
-  buffer[i++] = (data.temp_sud >> 8) & 0xFF;
-  buffer[i++] = data.temp_sud & 0xFF;
-  
-  buffer[i++] = (data.temp_ouest >> 8) & 0xFF;
-  buffer[i++] = data.temp_ouest & 0xFF;
-
   buffer[i++] = (data.temp_puit_out >> 8) & 0xFF;
   buffer[i++] = data.temp_puit_out & 0xFF;
-
+  
   buffer[i++] = (data.temp_puit_in >> 8) & 0xFF;
   buffer[i++] = data.temp_puit_in & 0xFF;
+  
+  buffer[i++] = (data.temp_terre_1 >> 8) & 0xFF;
+  buffer[i++] = data.temp_terre_1 & 0xFF;
+
+  buffer[i++] = (data.temp_terre_2 >> 8) & 0xFF;
+  buffer[i++] = data.temp_terre_2 & 0xFF;
 
   // ------------------------------------------------
   // [H] BLOC HUMIDITÉS
   // ------------------------------------------------
   buffer[i++] = 'H';
   buffer[i++] = data.hum_ambiant;
-  buffer[i++] = data.hum_est_10;
-  buffer[i++] = data.hum_est_30;
-  buffer[i++] = data.hum_sud_10;
-  buffer[i++] = data.hum_sud_30;
-  buffer[i++] = data.hum_ouest_10;
-  buffer[i++] = data.hum_ouest_30;
+  buffer[i++] = data.hum_oya_1;
+  buffer[i++] = data.hum_oya_2;
+  buffer[i++] = data.hum_oya_3;
+  buffer[i++] = data.hum_oya_4;
+  buffer[i++] = data.hum_bille_1;
+  buffer[i++] = data.hum_bille_2;
 
   // ------------------------------------------------
   // [L] BLOC LUMINANCES
@@ -46,15 +43,6 @@ uint8_t buildPayload(const SensorData& data, uint8_t* buffer) {
   buffer[i++] = 'L';
   buffer[i++] = (data.lum_ambiant >> 8) & 0xFF;
   buffer[i++] = data.lum_ambiant & 0xFF;
-  
-  buffer[i++] = (data.lum_est >> 8) & 0xFF;
-  buffer[i++] = data.lum_est & 0xFF;
-  
-  buffer[i++] = (data.lum_sud >> 8) & 0xFF;
-  buffer[i++] = data.lum_sud & 0xFF;
-  
-  buffer[i++] = (data.lum_ouest >> 8) & 0xFF;
-  buffer[i++] = data.lum_ouest & 0xFF;
 
   // ------------------------------------------------
   // [G] BLOC GAZ
