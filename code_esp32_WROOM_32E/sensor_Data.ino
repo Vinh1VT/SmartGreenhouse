@@ -54,13 +54,7 @@ uint8_t buildPayload(const SensorData& data, uint8_t* buffer) {
   buffer[i++] = (data.o2 >> 8) & 0xFF;
   buffer[i++] = data.o2 & 0xFF;
 
-  // ------------------------------------------------
-  // [V] BLOC VENTILATEUR
-  // ------------------------------------------------
-  buffer[i++] = 'V';
-  buffer[i++] = data.ventilateur;
-
-  // Retourne la taille exacte de la trame (ici 33 octets)
+  // Retourne la taille exacte de la trame 
   return i; 
 }
 

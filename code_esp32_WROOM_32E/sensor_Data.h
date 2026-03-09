@@ -47,10 +47,6 @@ struct SensorData{
   uint16_t co2         = 0xFFFE;
   uint16_t o2          = 0xFFFE;
 
-  // --- Bloc V: Ventilateur (uint8_t) ---
-  // Défaut : 254 (0xFE) -> Absent (si on veut omettre le bloc)
-  // 255 (0xFF) -> Erreur Capteur 
-  uint8_t ventilateur  = 0xFE; 
 };
 
 
