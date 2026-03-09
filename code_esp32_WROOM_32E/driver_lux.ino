@@ -119,19 +119,22 @@ uint8_t readReg_lux_etanche(uint8_t reg, const void* pBuf, size_t size, int addr
 // -----------------------------------------------------------------------------
 // Lecture complète de tous les capteurs et stockage dans LUX_VALUE
 // -----------------------------------------------------------------------------
-void readfull_lux_etanche()
+void readfull_lux_etanche(SensorData& data)
 {
     // Capteur étanche (SEN0562)
     uint8_t buf[2];
     readReg_lux_etanche(0x10, buf, 2, ADDR_LUX_ETANCHE);
-    uint16_t data = ((uint16_t)buf[0] << 8) | buf[1];
-    float Lux = ((float)data) / 1.2;
+    uint16_t data_buffer = ((uint16_t)buf[0] << 8) | buf[1];
+    float Lux = ((float)data_buffer) / 1.2;
     LUX_VALUE[0] = Lux;
     Serial.print("LUX étanche: ");
     Serial.print(Lux);
     Serial.println(" lx");
+
+    data.lum_ambiant = Lux;
+
     delay(1000);
     // Capteurs BH1745
-    readBH1745(ADDR_LUX_NP1, 0); 
+    // readBH1745(ADDR_LUX_NP1, 0); 
     // readBH1745(ADDR_LUX_NP2, 2);
 }
