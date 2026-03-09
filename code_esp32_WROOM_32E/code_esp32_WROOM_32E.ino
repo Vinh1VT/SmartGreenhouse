@@ -90,7 +90,5 @@ void loop(void)
     #endif
 
     /* Lance le deep sleep */
-    esp_sleep_enable_timer_wakeup(30ULL * 1000000ULL);
-    esp_deep_sleep_start();
-    //start_deep_sleep(30);
+    start_deep_sleep(30 * MULT_S_TO_MIN);
 }
