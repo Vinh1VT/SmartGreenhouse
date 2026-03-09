@@ -1127,7 +1127,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "296c7667-10a0-43ac-b016-86deee41b22e")
-		(property "Reference" "J42"
+		(property "Reference" "J43"
 			(at 86.3601 194.31 0)
 			(effects
 				(font
@@ -1311,10 +1311,6 @@
 					(reference "J43")
 					(unit 1)
 				)
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/67554e8a-c93b-4acb-b741-7309df9c9de1"
-					(reference "J42")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -1328,7 +1324,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "2e2adcf9-a27d-448b-8b48-9a4ee4e5a3a1")
-		(property "Reference" "J40"
+		(property "Reference" "J41"
 			(at 62.2301 195.58 0)
 			(effects
 				(font
@@ -1512,10 +1508,6 @@
 					(reference "J41")
 					(unit 1)
 				)
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/67554e8a-c93b-4acb-b741-7309df9c9de1"
-					(reference "J40")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -1529,7 +1521,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "359a1baf-7b53-475b-b460-909a18605c99")
-		(property "Reference" "J36"
+		(property "Reference" "J37"
 			(at 17.7801 195.58 0)
 			(effects
 				(font
@@ -1713,10 +1705,6 @@
 					(reference "J37")
 					(unit 1)
 				)
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/67554e8a-c93b-4acb-b741-7309df9c9de1"
-					(reference "J36")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -1730,7 +1718,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "dfc7809f-b883-4610-b869-627626fab771")
-		(property "Reference" "U7"
+		(property "Reference" "U10"
 			(at 78.74 85.9438 90)
 			(effects
 				(font
@@ -1827,10 +1815,6 @@
 					(reference "U10")
 					(unit 1)
 				)
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/67554e8a-c93b-4acb-b741-7309df9c9de1"
-					(reference "U7")
-					(unit 1)
-				)
 			)
 		)
 	)
@@ -1844,7 +1828,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f832f6a0-c230-4c5b-8c87-7aea6b93c8da")
-		(property "Reference" "J38"
+		(property "Reference" "J39"
 			(at 39.3701 195.58 0)
 			(effects
 				(font
@@ -2026,10 +2010,6 @@
 			(project "Projet_Iot"
 				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/583ab950-f309-49b8-80a6-9ad0d562eacf"
 					(reference "J39")
-					(unit 1)
-				)
-				(path "/1ed8458c-022b-42bb-9785-a8267003d72a/67554e8a-c93b-4acb-b741-7309df9c9de1"
-					(reference "J38")
 					(unit 1)
 				)
 			)

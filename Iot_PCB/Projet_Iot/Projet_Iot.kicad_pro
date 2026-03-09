@@ -38,8 +38,8 @@
         "other_text_upright": false,
         "pads": {
           "drill": 0.8,
-          "height": 1.308,
-          "width": 1.308
+          "height": 1.6,
+          "width": 1.6
         },
         "silk_line_width": 0.1,
         "silk_text_italic": false,
@@ -221,6 +221,10 @@
         {
           "diameter": 0.0,
           "drill": 0.0
+        },
+        {
+          "diameter": 1.6,
+          "drill": 0.8
         }
       ],
       "zones_allow_external_fillets": false
@@ -601,6 +605,14 @@
       "version": 1
     },
     "net_format_name": "",
+    "ngspice": {
+      "fix_include_paths": true,
+      "meta": {
+        "version": 0
+      },
+      "model_mode": 4,
+      "workbook_filename": ""
+    },
     "page_layout_descr_file": "C:\\Users\\ultim\\Documents\\KiCad\\barrièreInfrarouge\\Lora\\Lora\\empty.kicad_wks",
     "plot_directory": "",
     "space_save_all_events": true,
@@ -619,16 +631,12 @@
       "Root"
     ],
     [
-      "67554e8a-c93b-4acb-b741-7309df9c9de1",
-      "Mux8v1_capt_hum1"
-    ],
-    [
       "bff925b8-57d3-40e5-9492-c435bcd5175c",
       "Carte_IA"
     ],
     [
-      "7e7c0ddd-ea7e-4e8d-968b-ccb80cc8fddc",
-      "1_wire"
+      "2b4c5af5-d7eb-48b6-a2f4-746ae287c583",
+      "ventillateur_commande"
     ],
     [
       "583ab950-f309-49b8-80a6-9ad0d562eacf",

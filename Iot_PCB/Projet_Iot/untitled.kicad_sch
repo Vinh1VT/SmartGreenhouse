@@ -813,10 +813,6 @@
 		(uuid "d55090b8-ebed-446d-8ab2-3bc289bc75eb")
 	)
 	(no_connect
-		(at 111.76 93.98)
-		(uuid "dc643ccc-7a00-4e68-a37d-0d385043b3aa")
-	)
-	(no_connect
 		(at 111.76 86.36)
 		(uuid "e0d81392-76e2-43d9-97a9-6ac9c1220d68")
 	)
@@ -855,6 +851,17 @@
 	(no_connect
 		(at 111.76 83.82)
 		(uuid "f3551e33-4caf-4041-9218-641a163d1fa3")
+	)
+	(hierarchical_label "interrupt_ia"
+		(shape input)
+		(at 111.76 93.98 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "023f0a31-66b9-47b4-aae0-93010766c513")
 	)
 	(hierarchical_label "SDL"
 		(shape input)
