@@ -38,7 +38,7 @@ int connect_LoRa(void)
     #endif
     
     write_UART("AT+JOIN");
-    int status = read_until_motif_found_UART("Done");
+    int status = read_until_motif_found_UART("Network joined");
 
     #if DEBUG == 1
         Serial.printf("\nEnd attempt.\n");
