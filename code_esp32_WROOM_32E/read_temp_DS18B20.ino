@@ -41,9 +41,12 @@ void print_addr(void)
 }
 #endif
 
-static int get_temperature_ds18b20(void)
+static void get_temperature_ds18b20(void)
 {
     byte data_read[9] = {0};
+    #if DEBUG == 1
+    Serial.printf("Read Temperature : \n[");
+    #endif
     for (int i = 0; i < NB_SENSORS_DS18B20; i++)
     {
         ds.reset();
@@ -61,7 +64,13 @@ static int get_temperature_ds18b20(void)
         }
     
         data_ds18b20[i] = convert_binary_to_double(data_read[1], data_read[0]);
+        #if DEBUG == 1
+        Serial.printf("%f, ", data_ds18b20[i]);
+        #endif
     }
+    #if DEBUG == 1
+    Serial.printf("]\n");
+    #endif
 }
 
 void read_temperature_ds18b20(SensorData& data)

@@ -52,7 +52,7 @@ int connect_LoRa(void)
     int connection_status = 1;
     for (int i = 0; i < MAX_CONNECTION_ATEMPT && connection_status; i++)
     {
-        connection_status = connect_LoRa();
+        connection_status = connect_LoRa_sub();
     }
     
     return connection_status;

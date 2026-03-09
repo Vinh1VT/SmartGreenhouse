@@ -9,16 +9,32 @@
 #include "read_temp_DS18B20.h"
 #include "read_temp_and_hum_dht22.h"
 #include "sensor_Data.h"
+//#include "deep_sleep.hpp"
 
 #define MULT_S_TO_MIN 60
 
 #define PAYLOAD_BUFF_LEN 256
 #define PAYLOAD_HEXBUFF_LEN PAYLOAD_BUFF_LEN * 2
 
+void print_wakeup_reason(void) {
+  esp_sleep_wakeup_cause_t wakeup_reason;
+
+  wakeup_reason = esp_sleep_get_wakeup_cause();
+
+  switch (wakeup_reason) {
+    case ESP_SLEEP_WAKEUP_EXT0:     Serial.println("Wakeup caused by external signal using RTC_IO"); break;
+    case ESP_SLEEP_WAKEUP_EXT1:     Serial.println("Wakeup caused by external signal using RTC_CNTL"); break;
+    case ESP_SLEEP_WAKEUP_TIMER:    Serial.println("Wakeup caused by timer"); break;
+    case ESP_SLEEP_WAKEUP_TOUCHPAD: Serial.println("Wakeup caused by touchpad"); break;
+    case ESP_SLEEP_WAKEUP_ULP:      Serial.println("Wakeup caused by ULP program"); break;
+    default:                        Serial.printf("Wakeup was not caused by deep sleep: %d\n", wakeup_reason); break;
+  }
+}
+
 void setup(void)
 {
-    void switch_load_init();
-    delay(100); /* laisse le temps aux périphériques de s'alimenter (jsp si c'est necessaire)*/
+    //void switch_load_init();
+    delay(500); /* laisse le temps aux périphériques de s'alimenter (jsp si c'est necessaire)*/
     setup_LoRa();
     initADC36();
 }
@@ -28,6 +44,8 @@ void loop(void)
     #if DEBUG == 1
         Serial.printf("\n---------------\n- LOOP START : -\n---------------\n");
     #endif
+
+    print_wakeup_reason();
     
     /* Connecte au reseau LoRa */
     if (connect_LoRa())
@@ -45,13 +63,13 @@ void loop(void)
 
     readADC36(data);
     read_temperature_ds18b20(data);
-
+    
     /* prepare the payload */
     uint8_t payload_buff[PAYLOAD_BUFF_LEN];
     int length = buildPayload(data, payload_buff);
 
     #if DEBUG == 1
-        printf("payload :\n[");
+        printf("\npayload :\n[");
         for (int i = 0; i < length; i++)
         {
             printf("%d, ", payload_buff[i]);
@@ -64,11 +82,15 @@ void loop(void)
     
     /* send the message */
     send_msg_LoRa(payload_hexbuff);
+    delay(1000);
 
     #if DEBUG == 1
         Serial.printf("\n------------\n- LOOP STOP -\n------------\n");
+        Serial.flush();
     #endif
 
     /* Lance le deep sleep */
-    start_deep_sleep(30);
+    esp_sleep_enable_timer_wakeup(30ULL * 1000000ULL);
+    esp_deep_sleep_start();
+    //start_deep_sleep(30);
 }

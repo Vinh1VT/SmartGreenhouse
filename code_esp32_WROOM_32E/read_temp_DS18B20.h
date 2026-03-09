@@ -8,7 +8,7 @@
 #endif
 
 #ifndef PIN_ONE_WIRE_DS18B20
-    #define PIN_ONE_WIRE_DS18B20 4
+    #define PIN_ONE_WIRE_DS18B20 5
 #endif
 
 /**/
