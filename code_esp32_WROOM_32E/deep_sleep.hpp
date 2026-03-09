@@ -3,6 +3,7 @@
 
 #include "driver_load_switch.hpp"
 
+/*time en seconde*/
 void start_deep_sleep(int time);
 
 #endif

@@ -11,6 +11,8 @@
 
 void setup(void)
 {
+    void switch_load_init();
+    delay(100); /* laisse le temps aux périphériques de s'alimenter (jsp si c'est necessaire)*/
     setup_LoRa();
     initADC36();
 }
@@ -21,7 +23,7 @@ extern float ANA1_CAPA[8];
 void loop(void)
 #if DEBUG != 1
 {
-    
+    start_deep_sleep(int time);
 }
 #else
 {
