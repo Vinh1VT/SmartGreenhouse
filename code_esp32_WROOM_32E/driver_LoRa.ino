@@ -31,20 +31,31 @@ void setup_LoRa(void)
     read_until_motif_found_UART("DR");
 }
 
-int connect_LoRa(void)
+static int connect_LoRa_sub(void)
 {
     #if DEBUG == 1
         Serial.printf("Connecting to LoRa :\n");
     #endif
     
     write_UART("AT+JOIN");
-    int status = read_until_motif_found_UART("Done");
+    int status = read_until_motif_found_UART("Network joined");
 
     #if DEBUG == 1
         Serial.printf("\nEnd attempt.\n");
     #endif
 
     return (status) ? 1 : 0;
+}
+
+int connect_LoRa(void)
+{
+    int connection_status = 1;
+    for (int i = 0; i < MAX_CONNECTION_ATEMPT && connection_status; i++)
+    {
+        connection_status = connect_LoRa_sub();
+    }
+    
+    return connection_status;
 }
 
 void write_LoRa(char *command)

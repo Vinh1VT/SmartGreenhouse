@@ -70,5 +70,6 @@ output :
 */
 int read_until_motif_found_UART(char *string);
 
+void end_com(void);
 
 #endif

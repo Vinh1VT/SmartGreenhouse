@@ -1,44 +1,52 @@
 import os
 import requests
 import json
-import paho.mqtt.client as mqtt
-from datetime import datetime
+import time
 import calendar
+from datetime import datetime
+import paho.mqtt.client as mqtt
 
 from dotenv import load_dotenv
+
 load_dotenv()
 
-# Ouvertures des variables d'environnement
+# ==========================================
+# VARIABLES D'ENVIRONNEMENT
+# ==========================================
 
-# TTN
 TTN_BROKER = os.getenv("TTN_BROKER")
 TTN_USER = os.getenv("TTN_USER")
 TTN_PASSWORD = os.getenv("TTN_PASSWORD")
 TTN_TOPIC = "v3/+/devices/+/up"
 
-# InfluxDB
 INFLUX_URL = os.getenv("INFLUX_URL")
 INFLUX_ORG = os.getenv("INFLUX_ORG")
 INFLUX_BUCKET = os.getenv("INFLUX_BUCKET")
 INFLUX_TOKEN = os.getenv("INFLUX_TOKEN")
-
-# Certificat ssl
 SSL_CERT_PATH = os.getenv("SSL_CERT_PATH")
 
 if not all([TTN_USER, TTN_PASSWORD, TTN_BROKER, INFLUX_URL, INFLUX_ORG, INFLUX_BUCKET, INFLUX_TOKEN, SSL_CERT_PATH]):
-    print("Variables d'environnement non initialisées")
+    print("Erreur : Variables d'environnement manquantes. Vérifiez votre fichier .env")
     exit(1)
 
+# ==========================================
+# CACHE EN MÉMOIRE
+# ==========================================
+# Ce Set va stocker les identifiants uniques "device_nomDuCapteur"
+capteurs_connus = set()
 
-##### FONCTION MQTT
+
+# ==========================================
+# FONCTIONS MQTT
+# ==========================================
 
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
-        print("Connected to broker")
+        print("Connecté au broker TTN avec succès")
         client.subscribe(TTN_TOPIC)
-        print("Subscribed to topic")
+        print(f"Souscrit au topic : {TTN_TOPIC}")
     else:
-        print("Connection failed")
+        print(f"Échec de la connexion (Code: {rc})")
 
 
 def on_message(client, userdata, msg):
@@ -50,67 +58,73 @@ def on_message(client, userdata, msg):
         decoded_payload = uplink_message.get("decoded_payload")
 
         if not decoded_payload:
-            print(f"[{device_id}] No decoded payload, message ignored")
+            print(f"[{device_id}] Aucun payload décodé, message ignoré")
             return
 
-        # 1. RÉCUPÉRATION DE L'HEURE EXACTE TTN (Corrigée)
+        # 1. RÉCUPÉRATION DE L'HEURE
         ttn_time_str = uplink_message.get("received_at")
         if ttn_time_str:
-            # Nettoie les millisecondes ET le 'Z' final pour éviter un crash
             clean_time = ttn_time_str.split('.')[0].replace('Z', '')
             dt = datetime.strptime(clean_time, "%Y-%m-%dT%H:%M:%S")
             base_timestamp = calendar.timegm(dt.timetuple())
         else:
-            import time
             base_timestamp = int(time.time())
-
-        # 2. SÉPARATION DES DONNÉES CLASSIQUES ET DU VENTILATEUR
-        fields_classiques = []
-        fan_states = decoded_payload.pop("ventilateur_etats", None)
-
-        anomaly = decoded_payload.get("sensor_anomaly", False)
-        fields_classiques.append(f"sensor_anomaly={'true' if anomaly else 'false'}")
-
-        for key, value in decoded_payload.items():
-            if key == "sensor_anomaly":
-                continue
-
-            if isinstance(value, dict):
-                for position, sensor_val in value.items():
-                    fields_classiques.append(f"{key}_{position}={sensor_val}")
-            else:
-                fields_classiques.append(f"{key}={value}")
 
         lines_to_send = []
 
-        # 3. CONSTRUCTION LIGNE CLASSIQUE (Capteurs au temps T)
-        if fields_classiques:
-            fields_str = ",".join(fields_classiques)
-            lines_to_send.append(f"environnement,device={device_id} {fields_str} {base_timestamp}")
+        # 2. FONCTION D'AIDE POUR L'AJOUT UNIQUE
+        def ajouter_capteur_si_nouveau(nom_capteur, timestamp):
+            identifiant_unique = f"{device_id}_{nom_capteur}"
+            if identifiant_unique not in capteurs_connus:
+                # C'est un nouveau capteur ! On l'ajoute au cache et on l'envoie à la DB
+                capteurs_connus.add(identifiant_unique)
+                lines_to_send.append(f'capteurs,device={device_id} nom="{nom_capteur}" {timestamp}')
 
-        # 4. CONSTRUCTION DES LIGNES VENTILATEUR (Sécurisée)
+        # 3. GESTION DE L'ANOMALIE
+        anomaly = decoded_payload.pop("sensor_anomaly", False)
+        ajouter_capteur_si_nouveau("sensor_anomaly", base_timestamp)
+        lines_to_send.append(
+            f'mesures_puits,device={device_id},nom=sensor_anomaly valeur={"true" if anomaly else "false"} {base_timestamp}')
+
+        # 4. EXTRACTION DES CAPTEURS ET MESURES
+        fan_states = decoded_payload.pop("ventilateur_etats", None)
+
+        for nom_capteur, valeur in decoded_payload.items():
+            # Ajout dans la table capteurs UNIQUEMENT si c'est la première fois
+            ajouter_capteur_si_nouveau(nom_capteur, base_timestamp)
+
+            # Ajout dans la table mesures_puits (À CHAQUE FOIS)
+            lines_to_send.append(f'mesures_puits,device={device_id},nom={nom_capteur} valeur={valeur} {base_timestamp}')
+
+        # 5. TRAITEMENT DU VENTILATEUR (Historisé)
         if fan_states and isinstance(fan_states, list) and len(fan_states) > 0:
             cycle_total_secondes = 30 * 60
             nb_tranches = len(fan_states)
             duree_tranche = cycle_total_secondes // nb_tranches
+            nom_ventilo = "ventilateur_etats"
+
+            # Enregistrement du ventilateur dans la table capteurs (une seule fois)
+            ajouter_capteur_si_nouveau(nom_ventilo, base_timestamp)
 
             for i, state in enumerate(fan_states):
                 ts_tranche = base_timestamp - ((nb_tranches - 1 - i) * duree_tranche)
-                lines_to_send.append(f"environnement,device={device_id} etat_ventilateur={state} {ts_tranche}")
+                lines_to_send.append(f'mesures_puits,device={device_id},nom={nom_ventilo} valeur={state} {ts_tranche}')
 
-        # 5. ENVOI EN BLOC VERS INFLUXDB
+        # 6. ENVOI EN BLOC VERS INFLUXDB
         if lines_to_send:
             line_protocol_data = "\n".join(lines_to_send)
-            print(f"[{device_id}] Pushing data to DB (Base time: {base_timestamp})...")
+            print(f"[{device_id}] Envoi de {len(lines_to_send)} points à InfluxDB...")
             send_to_influxdb(line_protocol_data)
 
     except json.JSONDecodeError:
-        print("Error : JSON is invalid")
+        print("Erreur : Le JSON reçu est invalide")
     except Exception as e:
-        print(f"Error : {e}")
+        print(f"Erreur inattendue : {e}")
 
 
-###### FONCTIONS HTTP INFLUXDB
+# ==========================================
+# FONCTIONS HTTP INFLUXDB
+# ==========================================
 
 def send_to_influxdb(line_protocol_data):
     headers = {
@@ -126,28 +140,35 @@ def send_to_influxdb(line_protocol_data):
     }
 
     try:
-        # Simplifié en requests.post()
-        response = requests.post(INFLUX_URL, params=params, headers=headers, data=line_protocol_data, verify=SSL_CERT_PATH, timeout=5)
+        response = requests.post(INFLUX_URL, params=params, headers=headers, data=line_protocol_data,
+                                 verify=SSL_CERT_PATH, timeout=5)
 
         if response.status_code == 204:
-            print("Data pushed")
+            print("-> Données insérées avec succès")
         else:
-            print(f"Failed to push data {response.status_code} : {response.text}")
+            print(f"-> Échec de l'insertion ({response.status_code}) : {response.text}")
 
     except requests.exceptions.RequestException as e:
-        print(f"Exception : {e}")
+        print(f"-> Exception réseau InfluxDB : {e}")
 
+
+# ==========================================
+# POINT D'ENTRÉE
+# ==========================================
 
 if __name__ == "__main__":
+    print("Démarrage du pont MQTT vers InfluxDB...")
+
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
     client.username_pw_set(username=TTN_USER, password=TTN_PASSWORD)
     client.on_connect = on_connect
     client.on_message = on_message
 
-    client.connect(TTN_BROKER, port=1883, keepalive=60)
-
     try:
+        client.connect(TTN_BROKER, port=1883, keepalive=60)
         client.loop_forever()
     except KeyboardInterrupt:
-        print("\nStopping")
+        print("\nArrêt manuel du script.")
         client.disconnect()
+    except Exception as e:
+        print(f"Erreur fatale au lancement : {e}")

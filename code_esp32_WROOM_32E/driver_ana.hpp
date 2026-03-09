@@ -1,10 +1,10 @@
 #ifndef DRIVER_ANA_HPP
 #define DRIVER_ANA_HPP 
 
-
+#include "sensor_Data.h"
 
 void initADC36();
-void readADC36();
+void readADC36(SensorData& data);
 
 #define ANA1_PIN_READ 36
 #define ANA_COMMANDE_0 32

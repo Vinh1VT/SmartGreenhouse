@@ -41,16 +41,19 @@ void print_addr(void)
 }
 #endif
 
-static int get_temperature_ds18b20(void)
+static void get_temperature_ds18b20(void)
 {
     byte data_read[9] = {0};
+    #if DEBUG == 1
+    Serial.printf("Read Temperature : \n[");
+    #endif
     for (int i = 0; i < NB_SENSORS_DS18B20; i++)
     {
         ds.reset();
         ds.select(addr[i]);
         ds.write(0x44);
 
-        delay(250);
+        delay(1000);
 
         ds.reset();
         ds.select(addr[i]);
@@ -61,15 +64,20 @@ static int get_temperature_ds18b20(void)
         }
     
         data_ds18b20[i] = convert_binary_to_double(data_read[1], data_read[0]);
+        #if DEBUG == 1
+        Serial.printf("%f, ", data_ds18b20[i]);
+        #endif
     }
+    #if DEBUG == 1
+    Serial.printf("]\n");
+    #endif
 }
 
 void read_temperature_ds18b20(SensorData& data)
 {
     get_temperature_ds18b20();
-    data.temp_est = (int16_t) data_ds18b20[0];
-    data.temp_ouest = (int16_t) data_ds18b20[1];
-    data.temp_sud = (int16_t) data_ds18b20[2];
-    data.temp_puit_out = (int16_t) data_ds18b20[3];
-    data.temp_puit_out = (int16_t) data_ds18b20[4];
+    data.temp_terre_1 = (int16_t) data_ds18b20[0] * 10;
+    data.temp_terre_2 = (int16_t) data_ds18b20[1] * 10;
+    data.temp_puit_in = (int16_t) data_ds18b20[2] * 10;
+    data.temp_puit_out = (int16_t) data_ds18b20[3] * 10;
 }

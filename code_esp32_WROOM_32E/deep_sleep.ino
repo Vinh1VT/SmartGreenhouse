@@ -1,14 +1,13 @@
 #include <Arduino.h>
-#include "driver_ana.hpp"
-#include "sensor_Data.h"
+#include "driver_load_switch.hpp"
+#include "deep_sleep.hpp"
 
+#define MULT_US_TO_S 1000000
 
-float ANA1_CAPA[8];
-
-
-void start_deep_sleep(int time){ //Temps en seconde
-    
+void start_deep_sleep(int time) //Temps en seconde
+{    
     switch_load(0);
-    esp_sleep_enable_timer_wakeup(time*1000000);
+    delay(1000);
+    esp_sleep_enable_timer_wakeup(time * MULT_US_TO_S);
     esp_deep_sleep_start();
 }

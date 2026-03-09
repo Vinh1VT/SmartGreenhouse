@@ -5,6 +5,7 @@
 
 void switch_load_init(){
   pinMode(PATE_LOAD, OUTPUT);
+  switch_load(1);
 }
 void switch_load(int etat){
     switch(etat){
