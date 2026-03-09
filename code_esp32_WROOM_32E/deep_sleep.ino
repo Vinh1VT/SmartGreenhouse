@@ -7,6 +7,7 @@
 void start_deep_sleep(int time) //Temps en seconde
 {    
     switch_load(0);
+    delay(1000);
     esp_sleep_enable_timer_wakeup(time * MULT_US_TO_S);
     esp_deep_sleep_start();
 }

@@ -108,3 +108,8 @@ int read_until_motif_found_UART(char *string)
 
     return (current == UART2_read_buffer_size) ? 1 : 2;
 }
+
+void end_com(void)
+{
+    uart.end();
+}

@@ -9,7 +9,7 @@
 #include "read_temp_DS18B20.h"
 #include "read_temp_and_hum_dht22.h"
 #include "sensor_Data.h"
-//#include "deep_sleep.hpp"
+#include "deep_sleep.hpp"
 
 #define MULT_S_TO_MIN 60
 
@@ -33,7 +33,7 @@ void print_wakeup_reason(void) {
 
 void setup(void)
 {
-    //void switch_load_init();
+    switch_load_init();
     delay(500); /* laisse le temps aux périphériques de s'alimenter (jsp si c'est necessaire)*/
     setup_LoRa();
     initADC36();
@@ -51,7 +51,7 @@ void loop(void)
     if (connect_LoRa())
     {
         /* connection échoué à voir ce que l'on fait */
-        start_deep_sleep(30);
+        start_deep_sleep(1 * 60);
     }
 
     #if DEBUG == 1
@@ -82,6 +82,7 @@ void loop(void)
     
     /* send the message */
     send_msg_LoRa(payload_hexbuff);
+    end_com();
     delay(1000);
 
     #if DEBUG == 1
@@ -90,5 +91,5 @@ void loop(void)
     #endif
 
     /* Lance le deep sleep */
-    start_deep_sleep(30 * MULT_S_TO_MIN);
+    start_deep_sleep(15);
 }
