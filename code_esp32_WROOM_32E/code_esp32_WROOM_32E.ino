@@ -10,6 +10,8 @@
 #include "read_temp_and_hum_dht22.h"
 #include "sensor_Data.h"
 #include "deep_sleep.hpp"
+#include "driver_SCD41.hpp"
+#include "driver_lux.hpp"
 
 #define MULT_S_TO_MIN 60
 
@@ -37,6 +39,8 @@ void setup(void)
     delay(500); /* laisse le temps aux périphériques de s'alimenter (jsp si c'est necessaire)*/
     setup_LoRa();
     initADC36();
+    setup_scd41();
+    setup_lux_etanche();
 }
 
 void loop(void)
@@ -63,6 +67,8 @@ void loop(void)
 
     readADC36(data);
     read_temperature_ds18b20(data);
+    read_scd41(data);
+    readfull_lux_etanche(data);
     
     /* prepare the payload */
     uint8_t payload_buff[PAYLOAD_BUFF_LEN];
