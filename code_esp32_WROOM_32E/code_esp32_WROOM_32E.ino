@@ -14,6 +14,7 @@
 #include "driver_lux.hpp"
 
 #define MULT_S_TO_MIN 60
+#define SLEEP_TIME 30 * MULT_S_TO_MIN
 
 #define PAYLOAD_BUFF_LEN 256
 #define PAYLOAD_HEXBUFF_LEN PAYLOAD_BUFF_LEN * 2
@@ -58,7 +59,7 @@ void loop(void)
     if (connect_LoRa())
     {
         /* connection échoué à voir ce que l'on fait */
-        start_deep_sleep(30 * MULT_S_TO_MIN);
+        start_deep_sleep(SLEEP_TIME);
     }
 
     #if DEBUG == 1
@@ -102,5 +103,5 @@ void loop(void)
     #endif
 
     /* Lance le deep sleep */
-    start_deep_sleep(30 * MULT_S_TO_MIN);
+    start_deep_sleep(SLEEP_TIME);
 }
