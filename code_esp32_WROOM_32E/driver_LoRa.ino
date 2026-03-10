@@ -54,6 +54,7 @@ int connect_LoRa(void)
     {
         connection_status = connect_LoRa_sub();
     }
+    read_until_motif_found_UART("Done");
     
     return connection_status;
 }
