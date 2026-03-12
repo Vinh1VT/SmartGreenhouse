@@ -1,6 +1,6 @@
 (fp_lib_table
   (version 7)
-  (lib (name "Lora_printe")(type "KiCad")(uri "${KIPRJMOD}/../Lora/Lora/Lora_printe.pretty")(options "")(descr ""))
+  (lib (name "Lora_printe")(type "KiCad")(uri "${KIPRJMOD}/../Lora/Lora/Lora_printe.pretty")(options "")(descr "")(disabled))
   (lib (name "Grove")(type "KiCad")(uri "${KIPRJMOD}/../Grove")(options "")(descr ""))
   (lib (name "FDC6326L")(type "KiCad")(uri "${KIPRJMOD}/../FDC6326L")(options "")(descr ""))
 )

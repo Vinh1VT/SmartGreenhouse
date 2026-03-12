@@ -1,0 +1,23 @@
+%TF.GenerationSoftware,KiCad,Pcbnew,9.0.7*%
+%TF.CreationDate,2026-03-12T09:45:59+01:00*%
+%TF.ProjectId,controle_ventillateur,636f6e74-726f-46c6-955f-76656e74696c,rev?*%
+%TF.SameCoordinates,Original*%
+%TF.FileFunction,Profile,NP*%
+%FSLAX46Y46*%
+G04 Gerber Fmt 4.6, Leading zero omitted, Abs format (unit mm)*
+G04 Created by KiCad (PCBNEW 9.0.7) date 2026-03-12 09:45:59*
+%MOMM*%
+%LPD*%
+G01*
+G04 APERTURE LIST*
+%TA.AperFunction,Profile*%
+%ADD10C,0.050000*%
+%TD*%
+G04 APERTURE END LIST*
+D10*
+X166878000Y-104394000D02*
+X204470000Y-104394000D01*
+X204470000Y-138938000D01*
+X166878000Y-138938000D01*
+X166878000Y-104394000D01*
+M02*

@@ -2024,12 +2024,16 @@
 		(uuid "44905ad7-da27-40c5-9d44-e0b094df50da")
 	)
 	(no_connect
-		(at 124.46 27.94)
-		(uuid "4afd3cd7-d2c2-42d0-8b54-f1cc4293cb31")
+		(at 124.46 25.4)
+		(uuid "54715c14-fd1f-43dc-b6d1-648ad0855b2e")
 	)
 	(no_connect
 		(at 156.21 22.86)
 		(uuid "8370c6be-87d7-41e3-a7aa-508513009511")
+	)
+	(no_connect
+		(at 161.29 38.1)
+		(uuid "8c0c484b-40c6-4571-9c63-ab327d394da0")
 	)
 	(no_connect
 		(at 124.46 43.18)
@@ -2593,16 +2597,6 @@
 		)
 		(uuid "120e1f6e-7bf5-4257-a454-942382062b91")
 	)
-	(label "ADC1"
-		(at 124.46 25.4 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "12a55b56-4024-4c00-9513-165c28c295b9")
-	)
 	(label "Grove1-2"
 		(at 87.63 80.01 180)
 		(effects
@@ -2633,7 +2627,7 @@
 		)
 		(uuid "222ee591-eab4-4d6d-b224-5d7e02fd4127")
 	)
-	(label "ADC1"
+	(label "ADC2"
 		(at 97.79 57.15 0)
 		(effects
 			(font
@@ -2873,7 +2867,7 @@
 		)
 		(uuid "85b725d7-a8a4-4a42-94ae-e3d5b9291cab")
 	)
-	(label "3v3"
+	(label "3v3_ESP"
 		(at 78.74 21.59 180)
 		(effects
 			(font
@@ -2902,16 +2896,6 @@
 			(justify right bottom)
 		)
 		(uuid "9075b81a-91ae-4621-acc5-b48c50a97db6")
-	)
-	(label "DHT22_IN"
-		(at 161.29 38.1 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "95db43c2-dd0a-4ad2-91cf-5988b66d173b")
 	)
 	(label "interrupt_ia"
 		(at 158.75 35.56 0)
@@ -3072,6 +3056,16 @@
 			(justify right bottom)
 		)
 		(uuid "c487bb66-b428-40b1-95e8-30a9a14a6727")
+	)
+	(label "ADC2"
+		(at 124.46 27.94 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ccc4e2ce-a624-4b65-8626-416ae0525dc6")
 	)
 	(label "Enable_LS"
 		(at 170.18 105.41 180)
