@@ -1,33 +1,43 @@
 #include "driver_SCD41.hpp"
 #include "sensor_Data.h"
 
+#define NB_MAX_TENT_SCD41 10
+
 // Instantiate SCD41
 DFRobot_SCD4X SCD41(&Wire, SCD4X_I2C_ADDR);
 
 /**
  * @brief Setup SCD41 sensor (call once in setup)
  */
-void setup_scd41()
+int setup_scd41()
 {
     Wire.begin(21, 22);       // Use same I2C pins as other sensors
     Wire.setClock(100000);    // 100 kHz standard I2C
 
     // Initialize sensor
-    while(!SCD41.begin()) {
+    int status = 0;
+    for (int i = 0; i < NB_MAX_TENT_SCD41 && !status; i++)
+    {
+        status = SCD41.begin();
         Serial.println("SCD41 init failed, check wiring");
         delay(2000);
     }
-    Serial.println("SCD41 ready");
+    if (status)
+    {
+        Serial.println("SCD41 ready");
 
-    // Stop any previous measurement
-    SCD41.enablePeriodMeasure(SCD4X_STOP_PERIODIC_MEASURE);
+        // Stop any previous measurement
+        SCD41.enablePeriodMeasure(SCD4X_STOP_PERIODIC_MEASURE);
 
-    // Optional: adjust temperature compensation and altitude
-    SCD41.setTempComp(0.0);
-    SCD41.setSensorAltitude(0);
+        // Optional: adjust temperature compensation and altitude
+        SCD41.setTempComp(0.0);
+        SCD41.setSensorAltitude(0);
 
-    // Start low-power periodic measurement (~30s update interval)
-    SCD41.enablePeriodMeasure(SCD4X_START_LOW_POWER_MEASURE);
+        // Start low-power periodic measurement (~30s update interval)
+        SCD41.enablePeriodMeasure(SCD4X_START_LOW_POWER_MEASURE);
+    }
+
+    return status;
 }
 
 /**

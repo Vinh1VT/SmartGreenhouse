@@ -8,7 +8,7 @@
 // Create the SCD41 object
 extern DFRobot_SCD4X SCD41;
 
-void setup_scd41();
+int setup_scd41();
 void read_scd41(struct SensorData &data);
 
 #endif

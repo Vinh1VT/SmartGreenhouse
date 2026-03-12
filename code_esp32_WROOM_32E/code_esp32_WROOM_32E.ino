@@ -14,6 +14,7 @@
 #include "driver_lux.hpp"
 
 #define MULT_S_TO_MIN 60
+#define SLEEP_TIME 30 * MULT_S_TO_MIN
 
 #define PAYLOAD_BUFF_LEN 256
 #define PAYLOAD_HEXBUFF_LEN PAYLOAD_BUFF_LEN * 2
@@ -33,20 +34,23 @@ void print_wakeup_reason(void) {
   }
 }
 
+int scd41_status = 0;
+
 void setup(void)
 {
     switch_load_init();
     delay(500); /* laisse le temps aux périphériques de s'alimenter (jsp si c'est necessaire)*/
     setup_LoRa();
     initADC36();
-    setup_scd41();
-    setup_lux_etanche();
+    scdsetup_scd41 = setup_scd41();
+    initBH1745(ADDR_LUX_NP1);
+    //setup_lux_etanche();
 }
 
 void loop(void)
 {
     #if DEBUG == 1
-        Serial.printf("\n---------------\n- LOOP START : -\n---------------\n");
+        Serial.printf("\n----------------\n- LOOP START : -\n----------------\n");
     #endif
 
     print_wakeup_reason();
@@ -55,7 +59,7 @@ void loop(void)
     if (connect_LoRa())
     {
         /* connection échoué à voir ce que l'on fait */
-        start_deep_sleep(1 * 60);
+        start_deep_sleep(SLEEP_TIME);
     }
 
     #if DEBUG == 1
@@ -67,7 +71,10 @@ void loop(void)
 
     readADC36(data);
     read_temperature_ds18b20(data);
-    read_scd41(data);
+    if (scd41_status)
+    {
+        read_scd41(data);
+    }
     readfull_lux_etanche(data);
     
     /* prepare the payload */
@@ -89,13 +96,12 @@ void loop(void)
     /* send the message */
     send_msg_LoRa(payload_hexbuff);
     end_com();
-    delay(1000);
 
     #if DEBUG == 1
-        Serial.printf("\n------------\n- LOOP STOP -\n------------\n");
+        Serial.printf("\n-------------\n- LOOP STOP -\n-------------\n");
         Serial.flush();
     #endif
 
     /* Lance le deep sleep */
-    start_deep_sleep(15);
+    start_deep_sleep(SLEEP_TIME);
 }
