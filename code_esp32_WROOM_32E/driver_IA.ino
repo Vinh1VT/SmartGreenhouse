@@ -1,5 +1,6 @@
 #include "driver_IA.hpp"
 #include "sensor_Data.h"
+#include "driver_UART.h"
 
 
 void writeReg(uint8_t address, uint8_t reg, uint8_t value);
@@ -24,21 +25,25 @@ bool com_IA_I2C(SensorData& data){
     writeReg(ADRESSE_CARTE,0,0xCA);
     delay(1000);
 
-    int data_buff[8]:
+    uint8_t data_buff[LONGUEUR_REPONSE];
     // Request data
     uint8_t received = Wire.requestFrom(ADRESSE_CARTE, LONGUEUR_REPONSE);
-    if (received != len)
+    if (received != LONGUEUR_REPONSE){
         return false;
+    }
 
     for (uint8_t i = 0; i < LONGUEUR_REPONSE; i++) {
         data_buff[i] = Wire.read();
     }
-    int message = 0;
-    for(int i = 0; i<ADRESSE_CARTE;i++){
-        message += 1<<i;
-    }
-    Serial.print("\nRéponse modèle : ")
-    Serial.println(message);
+    
+    uint8_t message = data_buff[0];
+
+
+    
+    Serial.printf("L'ia retourne : ");
+    Serial.print(message, HEX);
+
+
     return true;
 
 }
