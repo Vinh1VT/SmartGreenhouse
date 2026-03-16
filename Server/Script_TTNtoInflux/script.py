@@ -14,18 +14,16 @@ load_dotenv()
 # VARIABLES D'ENVIRONNEMENT
 # ==========================================
 
-TTN_BROKER = os.getenv("TTN_BROKER")
-TTN_USER = os.getenv("TTN_USER")
-TTN_PASSWORD = os.getenv("TTN_PASSWORD")
+TTN_BROKER = os.getenv("TTN_BROKER", "eu1.cloud.thethings.network")
+TTN_USER = os.getenv("TTN_USER")      # Correspond à TTN_APP_ID
+TTN_PASSWORD = os.getenv("TTN_PASSWORD")  # Correspond à TTN_API_KEY
 TTN_TOPIC = "v3/+/devices/+/up"
 
-INFLUX_URL = os.getenv("INFLUX_URL")
-INFLUX_ORG = os.getenv("INFLUX_ORG")
-INFLUX_BUCKET = os.getenv("INFLUX_BUCKET")
+INFLUX_WRITE_URL = os.getenv("INFLUX_WRITE_URL")
+INFLUX_DATABASE = os.getenv("INFLUX_DATABASE")
 INFLUX_TOKEN = os.getenv("INFLUX_TOKEN")
-SSL_CERT_PATH = os.getenv("SSL_CERT_PATH")
 
-if not all([TTN_USER, TTN_PASSWORD, TTN_BROKER, INFLUX_URL, INFLUX_ORG, INFLUX_BUCKET, INFLUX_TOKEN, SSL_CERT_PATH]):
+if not all([TTN_USER, TTN_PASSWORD, TTN_BROKER, INFLUX_WRITE_URL, INFLUX_DATABASE, INFLUX_TOKEN]):
     print("Erreur : Variables d'environnement manquantes. Vérifiez votre fichier .env")
     exit(1)
 
@@ -34,7 +32,6 @@ if not all([TTN_USER, TTN_PASSWORD, TTN_BROKER, INFLUX_URL, INFLUX_ORG, INFLUX_B
 # ==========================================
 # Ce Set va stocker les identifiants uniques "device_nomDuCapteur"
 capteurs_connus = set()
-
 
 # ==========================================
 # FONCTIONS MQTT
@@ -47,7 +44,6 @@ def on_connect(client, userdata, flags, rc):
         print(f"Souscrit au topic : {TTN_TOPIC}")
     else:
         print(f"Échec de la connexion (Code: {rc})")
-
 
 def on_message(client, userdata, msg):
     try:
@@ -121,36 +117,38 @@ def on_message(client, userdata, msg):
     except Exception as e:
         print(f"Erreur inattendue : {e}")
 
-
 # ==========================================
 # FONCTIONS HTTP INFLUXDB
 # ==========================================
 
 def send_to_influxdb(line_protocol_data):
     headers = {
-        "Authorization": f"Bearer {INFLUX_TOKEN}",
+        "Authorization": f"Token {INFLUX_TOKEN}",
         "Content-Type": "text/plain; charset=utf-8",
         "Accept": "application/json"
     }
 
     params = {
-        "org": INFLUX_ORG,
-        "bucket": INFLUX_BUCKET,
-        "precision": "s"
+        "db": INFLUX_DATABASE,
+        "precision": "second"
     }
 
     try:
-        response = requests.post(INFLUX_URL, params=params, headers=headers, data=line_protocol_data,
-                                 verify=SSL_CERT_PATH, timeout=5)
+        response = requests.post(
+            INFLUX_WRITE_URL,
+            params=params,
+            headers=headers,
+            data=line_protocol_data,
+            timeout=5
+        )
 
-        if response.status_code == 204:
+        if response.status_code in [200, 204]:
             print("-> Données insérées avec succès")
         else:
             print(f"-> Échec de l'insertion ({response.status_code}) : {response.text}")
 
     except requests.exceptions.RequestException as e:
         print(f"-> Exception réseau InfluxDB : {e}")
-
 
 # ==========================================
 # POINT D'ENTRÉE
