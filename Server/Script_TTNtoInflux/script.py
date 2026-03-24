@@ -46,7 +46,7 @@ capteurs_connus = set()
 # FONCTIONS MQTT ET TTN
 # ==========================================
 
-def on_connect(client, userdata, flags, rc):
+def on_connect(client, rc):
     if rc == 0:
         print("Connecté au broker TTN avec succès")
         client.subscribe(TTN_TOPIC)
@@ -72,7 +72,7 @@ def envoyer_downlink_ttn(client, device_id, vitesse_pourcentage):
     client.publish(topic_downlink, json.dumps(downlink_msg))
     print(f"[{device_id}] 📥 DOWNLINK ENVOYÉ : Vitesse réglée sur {vitesse_int}%")
 
-def on_message(client, userdata, msg):
+def on_message(client, msg):
     try:
         payload = json.loads(msg.payload.decode("utf-8"))
 
@@ -150,7 +150,6 @@ def on_message(client, userdata, msg):
         consignes = lire_consigne_influxdb()
 
         if consignes:
-            vitesse_cible = 0
             seuil_temp = consignes.get("seuil_temp", 999)
 
             # RÈGLE 1 : OVERRIDE DE TEMPÉRATURE (Sécurité)
