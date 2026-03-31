@@ -101,16 +101,18 @@ uint8_t readReg_lux_etanche(uint8_t reg, const void* pBuf, size_t size, int addr
     uint8_t* _pBuf = (uint8_t*)pBuf;
 
     Wire.beginTransmission(address);
-    Wire.write(reg);
+    Wire.write(&reg, 1);
     if (Wire.endTransmission() != 0) {
+        Serial.println("transmition error");
         return 0;
     }
 
     delay(20);
 
     Wire.requestFrom(address, (uint8_t)size);
-    for (uint16_t i = 0; i < size && Wire.available(); i++) {
+    for (uint16_t i = 0; i < size /* && Wire.available()*/; i++) {
         _pBuf[i] = Wire.read();
+        
     }
 
     return size;
@@ -122,20 +124,22 @@ uint8_t readReg_lux_etanche(uint8_t reg, const void* pBuf, size_t size, int addr
 void readfull_lux_etanche(SensorData& data)
 {
     // Capteur étanche (SEN0562)
-    // uint8_t buf[2];
-    // readReg_lux_etanche(0x10, buf, 2, ADDR_LUX_ETANCHE);
-    // uint16_t data_buffer = ((uint16_t)buf[0] << 8) | buf[1];
-    // float Lux = ((float)data_buffer) / 1.2;
-    // LUX_VALUE[0] = Lux;
-    // Serial.print("LUX étanche: ");
-    // Serial.print(Lux);
-    // Serial.println(" lx");
+    uint8_t buf[2];
+    readReg_lux_etanche(0x10, buf, 2, ADDR_LUX_ETANCHE);
+    uint16_t data_buffer = ((uint16_t)buf[0] << 8) | buf[1];
+    float Lux = ((float)data_buffer) / 1.2;
+    LUX_VALUE[0] = Lux;
+    Serial.print("LUX étanche: ");
+    Serial.print(Lux);
+    Serial.println(" lx");
 
-    // delay(1000);
+    delay(1000);
     // Capteurs BH1745
-    readBH1745(ADDR_LUX_NP1, 0); 
+    // readBH17
+    // 
+    // 45(ADDR_LUX_NP1, 0); 
     // readBH1745(ADDR_LUX_NP2, 2);
 
 
-    data.lum_ambiant = LUX_VALUE[1];
+    data.lum_ambiant = LUX_VALUE[0];
 }

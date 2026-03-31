@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <cstdio>
+#include <stdio.h>
 
 #define DEBUG 1
 
@@ -19,22 +20,62 @@
 #define PAYLOAD_BUFF_LEN 256
 #define PAYLOAD_HEXBUFF_LEN PAYLOAD_BUFF_LEN * 2
 
-void print_wakeup_reason(void) {
+int print_wakeup_reason(void) {
   esp_sleep_wakeup_cause_t wakeup_reason;
 
   wakeup_reason = esp_sleep_get_wakeup_cause();
 
   switch (wakeup_reason) {
-    case ESP_SLEEP_WAKEUP_EXT0:     Serial.println("Wakeup caused by external signal using RTC_IO"); break;
-    case ESP_SLEEP_WAKEUP_EXT1:     Serial.println("Wakeup caused by external signal using RTC_CNTL"); break;
-    case ESP_SLEEP_WAKEUP_TIMER:    Serial.println("Wakeup caused by timer"); break;
-    case ESP_SLEEP_WAKEUP_TOUCHPAD: Serial.println("Wakeup caused by touchpad"); break;
-    case ESP_SLEEP_WAKEUP_ULP:      Serial.println("Wakeup caused by ULP program"); break;
-    default:                        Serial.printf("Wakeup was not caused by deep sleep: %d\n", wakeup_reason); break;
+    case ESP_SLEEP_WAKEUP_TIMER:    return 1; break;
+    default:                        return 0; break;
   }
 }
 
+
+int convert_from_hex(char c)
+{
+    switch(c)
+    {
+        case '0' :
+            return 0;
+        case '1' :
+            return 1;
+        case '2' :
+            return 2;
+        case '3' :
+            return 3;
+        case '4' :
+            return 4;
+        case '5' :
+            return 5;
+        case '6' :
+            return 6;
+        case '7' :
+            return 7;
+        case '8' :
+            return 8;
+        case '9' :
+            return 9;
+        case 'A' :
+            return 10;
+        case 'B' :
+            return 11;
+        case 'C' :
+            return 12;
+        case 'D' :
+            return 13;
+        case 'E' :
+            return 14;
+        case 'F' :
+            return 15;
+        default :
+            return 0;
+    }
+}
+
 int scd41_status = 0;
+
+struct SensorData data;
 
 void setup(void)
 {
@@ -42,10 +83,21 @@ void setup(void)
     delay(500); /* laisse le temps aux périphériques de s'alimenter (jsp si c'est necessaire)*/
     setup_LoRa();
     initADC36();
-    scdsetup_scd41 = setup_scd41();
-    initBH1745(ADDR_LUX_NP1);
-    //setup_lux_etanche();
+    scd41_status = setup_scd41();
+    
+    // initBH1745(ADDR_LUX_NP1);
+
+    int wakeup_reason = print_wakeup_reason();
+    if (!wakeup_reason)
+    {
+        pinMode(4, OUTPUT);
+        digitalWrite(4, 1);
+        delay(1000);
+        digitalWrite(4, 0);
+    }
 }
+
+extern char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
 
 void loop(void)
 {
@@ -53,7 +105,7 @@ void loop(void)
         Serial.printf("\n----------------\n- LOOP START : -\n----------------\n");
     #endif
 
-    print_wakeup_reason();
+    // print_wakeup_reason();
     
     /* Connecte au reseau LoRa */
     if (connect_LoRa())
@@ -67,7 +119,7 @@ void loop(void)
     #endif
     
     /* Recupere les données */
-    struct SensorData data;
+    
 
     readADC36(data);
     read_temperature_ds18b20(data);
@@ -75,6 +127,7 @@ void loop(void)
     {
         read_scd41(data);
     }
+    
     readfull_lux_etanche(data);
     
     /* prepare the payload */
@@ -95,13 +148,29 @@ void loop(void)
     
     /* send the message */
     send_msg_LoRa(payload_hexbuff);
-    end_com();
+
+    if (buffer_downlink[0] != '\0' && buffer_downlink[1] != '\0')
+    {
+        setFanSpeedPercent(convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
+
+        #if DEBUG == 1
+        Serial.printf("translated : %d\n", convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
+        #endif
+    }
+    
+    // end_com();
 
     #if DEBUG == 1
         Serial.printf("\n-------------\n- LOOP STOP -\n-------------\n");
         Serial.flush();
     #endif
 
+    // while(1);
+
     /* Lance le deep sleep */
+<<<<<<< HEAD
     start_deep_sleep(SLEEP_TIME);
+=======
+    start_deep_sleep(30);
+>>>>>>> 12388c9 (j'ai pas le temps, c'est le code plus ou moins final)
 }

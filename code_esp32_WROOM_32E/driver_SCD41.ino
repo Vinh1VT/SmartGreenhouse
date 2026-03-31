@@ -51,9 +51,9 @@ void read_scd41(struct SensorData &data)
     DFRobot_SCD4X::sSensorMeasurement_t meas;
         SCD41.readMeasurement(&meas);
 
-        data.hum_ambiant = meas.humidity;
+        data.hum_ambiant = (uint8_t) meas.humidity;
         data.co2 = meas.CO2ppm;
-        data.temp_ambiant = meas.temp;
+        data.temp_ambiant = (uint16_t) (meas.temp * 10);
 
         Serial.printf("SCD41: CO2=%u ppm, T=%.2f C, RH=%.2f %%\n",
                       meas.CO2ppm, meas.temp, meas.humidity);
