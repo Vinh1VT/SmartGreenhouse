@@ -30,7 +30,7 @@ INFLUX_TOKEN = os.getenv("INFLUX_TOKEN")
 # FONCTIONS INFLUXDB
 # ==========================================
 def send_to_influxdb(line_protocol_data):
-    """Envoie les données de télémétrie du capteur vers InfluxDB."""
+    """Envoie les données du capteur vers InfluxDB."""
     headers = {
         "Authorization": f"Token {INFLUX_TOKEN}",
         "Content-Type": "text/plain; charset=utf-8",
@@ -99,10 +99,10 @@ def envoyer_downlink_ttn(client, device_id, vitesse_pourcentage):
 def on_connect(client, userdata, flags, rc):
     """Callback déclenché lors de la connexion au broker MQTT."""
     if rc == 0:
-        print("✅ [MQTT] Connecté au broker TTN !")
+        print(" [MQTT] Connecté au broker TTN !")
         client.subscribe(TTN_TOPIC)
     else:
-        print(f"❌ [MQTT] Échec de la connexion (Code: {rc})")
+        print(f" [MQTT] Échec de la connexion (Code: {rc})")
 
 
 def on_message(client, userdata, msg):
@@ -138,33 +138,33 @@ def on_message(client, userdata, msg):
             # OVERRIDE : Si la température dépasse le seuil max défini dans Grafana
             if temp_actuelle >= seuil_temp:
                 vitesse_cible = consignes.get("seuil_vitesse", 100)
-                print(f"⚠️ [ALERTE] Temp {temp_actuelle}°C >= {seuil_temp}°C : Override activé ! ({vitesse_cible}%)")
+                print(f" [ALERTE] Temp {temp_actuelle}°C >= {seuil_temp}°C : Override activé ! ({vitesse_cible}%)")
 
             # NORMAL : Suivi de la courbe dessinée dans Grafana selon l'heure
             else:
                 maintenant = datetime.now()
                 minute_arrondie = "30" if maintenant.minute >= 30 else "00"
 
-                # Ex: il est 14h38 -> on cherche la clé "v_14_30" dans InfluxDB
+            
                 tranche_actuelle = f"v_{maintenant.hour:02d}_{minute_arrondie}"
 
-                vitesse_cible = consignes.get(tranche_actuelle, 20) # 20% par défaut si tranche introuvable
-                print(f"🕒 [NORMAL] Tranche {tranche_actuelle} -> Cible : {vitesse_cible}%")
+                vitesse_cible = consignes.get(tranche_actuelle, 50) # 50% par défaut si tranche introuvable
+                print(f" [NORMAL] Tranche {tranche_actuelle} -> Cible : {vitesse_cible}%")
 
             # Envoi de l'ordre au ventilateur
             envoyer_downlink_ttn(client, device_id, vitesse_cible)
         else:
-            print(f"⚠️ [{device_id}] Aucune consigne trouvée dans InfluxDB (attente d'envoi via Grafana).")
+            print(f" [{device_id}] Aucune consigne trouvée dans InfluxDB (attente d'envoi via Grafana).")
 
     except Exception as e:
-        print(f"❌ [MQTT] Erreur inattendue dans la réception TTN : {e}")
+        print(f" [MQTT] Erreur inattendue dans la réception TTN : {e}")
 
 
 # ==========================================
 # POINT D'ENTRÉE
 # ==========================================
 if __name__ == "__main__":
-    print("🚀 Démarrage de la passerelle TTN <> InfluxDB...")
+    print("Démarrage de la passerelle TTN <> InfluxDB...")
 
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
     client.username_pw_set(username=TTN_USER, password=TTN_PASSWORD)
@@ -176,6 +176,6 @@ if __name__ == "__main__":
         # loop_forever() bloque le script et écoute les messages MQTT indéfiniment
         client.loop_forever()
     except KeyboardInterrupt:
-        print("🛑 Arrêt manuel du script.")
+        print(" Arrêt manuel du script.")
     except Exception as e:
-        print(f"❌ [MQTT] Erreur critique au lancement : {e}")
+        print(f"Erreur critique au lancement : {e}")
