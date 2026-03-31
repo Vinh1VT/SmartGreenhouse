@@ -8,7 +8,6 @@
 #include "driver_LoRa.h"
 #include "driver_ana.hpp"
 #include "read_temp_DS18B20.h"
-#include "read_temp_and_hum_dht22.h"
 #include "sensor_Data.h"
 #include "deep_sleep.hpp"
 #include "driver_SCD41.hpp"
@@ -168,9 +167,5 @@ void loop(void)
     // while(1);
 
     /* Lance le deep sleep */
-<<<<<<< HEAD
-    start_deep_sleep(SLEEP_TIME);
-=======
     start_deep_sleep(30);
->>>>>>> 12388c9 (j'ai pas le temps, c'est le code plus ou moins final)
 }

@@ -67,6 +67,8 @@ void write_LoRa(char *command)
     write_UART(command);
 }
 
+char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
+
 int send_msg_LoRa(char *msg)
 {
     char command[LoRa_MAX_MSG_LENGTH] = "AT+MSGHEX=\"";
@@ -84,7 +86,13 @@ int send_msg_LoRa(char *msg)
 
     write_LoRa(command);
 
-    int status = read_until_motif_found_UART("Done");
+    int status = read_until_motif_found_UART("RX: \"");
+
+    int indice_buff = 0;
+    for (; (buffer_downlink[indice_buff] = read_byte_UART()) != '\"'; indice_buff++);
+    buffer_downlink[indice_buff] = '\0';
+
+    status = read_until_motif_found_UART("Done");
 
     return (status) ? 1 : 0;
 }
