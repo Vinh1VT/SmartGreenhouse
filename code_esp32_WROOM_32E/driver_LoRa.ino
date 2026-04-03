@@ -89,7 +89,7 @@ int send_msg_LoRa(char *msg)
     int status = read_until_motif_found_UART("RX: \"");
 
     int indice_buff = 0;
-    for (; (buffer_downlink[indice_buff] = read_byte_UART()) != '\"'; indice_buff++);
+    for (; (buffer_downlink[indice_buff] = read_byte_UART()) != '\"' && indice_buff < DOWNLINK_BUFFER_SIZE; indice_buff++);
     buffer_downlink[indice_buff] = '\0';
 
     status = read_until_motif_found_UART("Done");

@@ -101,19 +101,23 @@ uint8_t readReg_lux_etanche(uint8_t reg, const void* pBuf, size_t size, int addr
     uint8_t* _pBuf = (uint8_t*)pBuf;
 
     Wire.beginTransmission(address);
-    Wire.write(&reg, 1);
+    Wire.write(reg);
     if (Wire.endTransmission() != 0) {
         Serial.println("transmition error");
         return 0;
     }
 
-    delay(20);
+    delay(200);
 
     Wire.requestFrom(address, (uint8_t)size);
     for (uint16_t i = 0; i < size /* && Wire.available()*/; i++) {
         _pBuf[i] = Wire.read();
         
     }
+    Wire.beginTransmission(address);
+    Wire.write(0x07);
+    Wire.endTransmission();
+    delay(200);
 
     return size;
 }
@@ -133,7 +137,7 @@ void readfull_lux_etanche(SensorData& data)
     Serial.print(Lux);
     Serial.println(" lx");
 
-    delay(1000);
+    // delay(1000);
     // Capteurs BH1745
     // readBH17
     // 
