@@ -94,6 +94,15 @@ void setup(void)
         delay(1000);
         digitalWrite(4, 0);
     }
+
+    pinMode(35, INPUT);
+    float reading = analogRead(35);
+    float voltage = 1.435 * (reading / 4095.0) * 3.3;
+    float percentage = (voltage - 3.3) / (4.2 - 3.3) * 100;
+
+    // Serial.printf("batterie : %f\n", voltage);
+
+    data.o2 = (int) (percentage);
 }
 
 extern char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
