@@ -50,9 +50,20 @@ uint8_t buildPayload(const SensorData& data, uint8_t* buffer) {
   buffer[i++] = 'G';
   buffer[i++] = (data.co2 >> 8) & 0xFF;
   buffer[i++] = data.co2 & 0xFF;
-  
-  buffer[i++] = (data.o2 >> 8) & 0xFF;
-  buffer[i++] = data.o2 & 0xFF;
+
+  buffer[i++] = 'B';
+  buffer[i++] = (data.left_battery >> 8) & 0xFF;
+  buffer[i++] = data.left_battery & 0xFF;
+
+  buffer[i++] = 'I';
+  buffer[i++] = (data.ia_1 >> 8) & 0xFF;
+  buffer[i++] = data.ia_1 & 0xFF;
+  buffer[i++] = (data.ia_2 >> 8) & 0xFF;
+  buffer[i++] = data.ia_2 & 0xFF;
+  buffer[i++] = (data.ia_3 >> 8) & 0xFF;
+  buffer[i++] = data.ia_3 & 0xFF;
+  buffer[i++] = (data.ia_anomalie >> 8) & 0xFF;
+  buffer[i++] = data.ia_anomalie & 0xFF;
 
   // Retourne la taille exacte de la trame 
   return i; 

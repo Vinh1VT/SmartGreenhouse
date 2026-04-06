@@ -12,11 +12,12 @@
 #include "deep_sleep.hpp"
 #include "driver_SCD41.hpp"
 #include "driver_lux.hpp"
+#include "driver_IA.hpp"
 
 #define MULT_S_TO_MIN 60
 #define SLEEP_TIME 30 * MULT_S_TO_MIN
 
-#define PAYLOAD_BUFF_LEN 256
+#define PAYLOAD_BUFF_LEN 512
 #define PAYLOAD_HEXBUFF_LEN PAYLOAD_BUFF_LEN * 2
 
 int print_wakeup_reason(void) {
@@ -30,6 +31,15 @@ int print_wakeup_reason(void) {
   }
 }
 
+void get_battery_level(struct SensorData &sent_data)
+{
+    pinMode(35, INPUT);
+    float reading = analogRead(35);
+    float voltage = 1.435 * (reading / 4095.0) * 3.3;
+    float percentage = (voltage - 3.3) / (4.2 - 3.3) * 100;
+
+    sent_data.left_battery = (int) (percentage * 10);
+}
 
 int convert_from_hex(char c)
 {
@@ -95,14 +105,7 @@ void setup(void)
         digitalWrite(4, 0);
     }
 
-    pinMode(35, INPUT);
-    float reading = analogRead(35);
-    float voltage = 1.435 * (reading / 4095.0) * 3.3;
-    float percentage = (voltage - 3.3) / (4.2 - 3.3) * 100;
-
-    // Serial.printf("batterie : %f\n", voltage);
-
-    data.o2 = (int) (percentage);
+    get_battery_level(data);
 }
 
 extern char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
@@ -114,6 +117,8 @@ void loop(void)
     #endif
 
     // print_wakeup_reason();
+
+    get_data_IA(data);
     
     /* Connecte au reseau LoRa */
     if (connect_LoRa())

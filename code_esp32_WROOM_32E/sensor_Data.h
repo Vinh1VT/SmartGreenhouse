@@ -45,8 +45,15 @@ struct SensorData{
   // Défaut : 65534 (0xFFFE) -> Absent
   // 65535 (0xFFFF) -> ERREUR CAPTEUR
   uint16_t co2         = 0xFFFE;
-  uint16_t o2          = 0xFFFE;
 
+  // --- Bloc B : Batterie (uint16_t) ---
+  uint16_t left_battery= 0xFFFE;
+
+  // --- Bloc I : IA (uint16_t) ---
+  uint16_t ia_1        = 0xFFFE;
+  uint16_t ia_2        = 0xFFFE;
+  uint16_t ia_3        = 0xFFFE;
+  uint16_t ia_anomalie = 0xFFFE;
 };
 
 

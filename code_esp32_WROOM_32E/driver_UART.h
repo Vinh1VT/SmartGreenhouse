@@ -36,7 +36,7 @@
 /*
 Initialise the UART pins
 */
-void setup_UART(void);
+void setup_UART(int rx_pin, int tx_pin);
 
 /*
 Write string in the UART connexion

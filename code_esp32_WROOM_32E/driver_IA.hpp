@@ -3,13 +3,11 @@
 
 #include "sensor_Data.h"
 
-#define PATE_INTERRUPT_IA 19
-#define INTERRUPT_LEVEL 0
-#define ADRESSE_CARTE 0x08
-#define LONGUEUR_REPONSE 1 //en octet
+#define PATE_IA_RX 10 //je ne sais pas quoi mettre pour l'instant
+#define PATE_IA_TX 11 //je ne sais pas quoi mettre pour l'instant
 
-void init_carte_IA();
-bool com_IA_I2C(SensorData& data);
+#define QUERY_NUMBER 4
 
+void get_data_IA(struct SensorData &data);
 
 #endif

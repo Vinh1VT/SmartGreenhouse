@@ -12,7 +12,7 @@ static void empty_array_command_from(char *array, int len, int start)
 
 void setup_LoRa(void)
 {
-    setup_UART();
+    setup_UART(UART2_Rx, UART2_Tx);
 
     write_UART(AT_DR1);
     read_until_motif_found_UART("DR");

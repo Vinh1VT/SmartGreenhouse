@@ -18,9 +18,9 @@ static unsigned int str_len(char *string)
     return len;
 }
 
-void setup_UART(void)
+void setup_UART(int rx_pin, int tx_pin)
 {
-    uart.begin(UART2_baudrate, UART2_config, UART2_Rx, UART2_Tx);
+    uart.begin(UART2_baudrate, UART2_config, rx_pin, tx_pin);
 
     #if DEBUG == 1
         Serial.begin(Serial_baudrate);
