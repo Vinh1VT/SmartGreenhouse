@@ -181,5 +181,5 @@ void loop(void)
     // while(1);
 
     /* Lance le deep sleep */
-    start_deep_sleep(30);
+    start_deep_sleep(SLEEP_TIME);
 }

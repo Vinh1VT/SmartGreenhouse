@@ -3,8 +3,8 @@
 
 #include "sensor_Data.h"
 
-#define PATE_IA_RX 10 //je ne sais pas quoi mettre pour l'instant
-#define PATE_IA_TX 11 //je ne sais pas quoi mettre pour l'instant
+#define PATE_IA_RX 12 //je ne sais pas quoi mettre pour l'instant
+#define PATE_IA_TX 14 //je ne sais pas quoi mettre pour l'instant
 
 #define QUERY_NUMBER 4
 
