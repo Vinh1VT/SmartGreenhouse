@@ -67,9 +67,9 @@ void write_LoRa(char *command)
     write_UART(command);
 }
 
-char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
+//char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
 
-int send_msg_LoRa(char *msg)
+int send_msg_LoRa(char *msg, char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1])
 {
     char command[LoRa_MAX_MSG_LENGTH] = "AT+MSGHEX=\"";
     empty_array_command_from(command, LoRa_MAX_MSG_LENGTH, 11);
@@ -88,9 +88,24 @@ int send_msg_LoRa(char *msg)
 
     int status = read_until_motif_found_UART("RX: \"");
 
-    int indice_buff = 0;
-    for (; (buffer_downlink[indice_buff] = read_byte_UART()) != '\"' && indice_buff < DOWNLINK_BUFFER_SIZE; indice_buff++);
-    buffer_downlink[indice_buff] = '\0';
+    int indice_buff = 1;
+
+    #if DEBUG == 1
+        Serial.println("\n recup rx");
+    #endif
+    
+    //buffer_downlink[0] = read_byte_UART();
+    //for (; indice_buff < DOWNLINK_BUFFER_SIZE || buffer_downlink[indice_buff - 1] != '\"'; indice_buff++)
+    //{
+    //    buffer_downlink[indice_buff] = read_byte_UART();
+    //}
+    //for (; (buffer_downlink[indice_buff] = read_byte_UART()) != '\"' && indice_buff < DOWNLINK_BUFFER_SIZE; indice_buff++);
+    //buffer_downlink[indice_buff] = '\0';
+
+    #if DEBUG == 1
+        Serial.println("\n fin recup rx");
+        //Serial.println(indice_buff);
+    #endif
 
     status = read_until_motif_found_UART("Done");
 

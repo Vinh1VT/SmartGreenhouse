@@ -108,8 +108,6 @@ void setup(void)
     get_battery_level(data);
 }
 
-extern char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
-
 void loop(void)
 {
     #if DEBUG == 1
@@ -159,17 +157,22 @@ void loop(void)
     char payload_hexbuff[PAYLOAD_HEXBUFF_LEN];
     arrayToHex(payload_buff, length, payload_hexbuff);
     
+    char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
     /* send the message */
-    send_msg_LoRa(payload_hexbuff);
+    send_msg_LoRa(payload_hexbuff, buffer_downlink);
 
-    if (buffer_downlink[0] != '\0' && buffer_downlink[1] != '\0')
-    {
-        setFanSpeedPercent(convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
+    //#if DEBUG == 1
+    //    Serial.printf("\n recup rx : %d %d", buffer_downlink[0], buffer_downlink[1]);
+    //#endif
 
-        #if DEBUG == 1
-        Serial.printf("translated : %d\n", convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
-        #endif
-    }
+    //if (buffer_downlink[0] != '\0' && buffer_downlink[1] != '\0')
+    //{
+    //    setFanSpeedPercent(convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
+    //
+    //    #if DEBUG == 1
+    //    Serial.printf("translated : %d\n", convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
+    //    #endif
+    //}
     
     // end_com();
 

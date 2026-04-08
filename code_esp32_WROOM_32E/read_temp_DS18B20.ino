@@ -76,8 +76,8 @@ static void get_temperature_ds18b20(void)
 void read_temperature_ds18b20(SensorData& data)
 {
     get_temperature_ds18b20();
-    data.temp_terre_1 = (int16_t) (data_ds18b20[0] * 10);
+    data.temp_terre_1 = (int16_t) (data_ds18b20[3] * 10);
     data.temp_terre_2 = (int16_t) (data_ds18b20[1] * 10);
-    data.temp_puit_in = (int16_t) (data_ds18b20[2] * 10);
-    data.temp_puit_out = (int16_t) (data_ds18b20[3] * 10);
+    data.temp_puit_in = (int16_t) (data_ds18b20[0] * 10);
+    data.temp_puit_out = (int16_t) (data_ds18b20[2] * 10);
 }
