@@ -165,14 +165,14 @@ void loop(void)
     //    Serial.printf("\n recup rx : %d %d", buffer_downlink[0], buffer_downlink[1]);
     //#endif
 
-    //if (buffer_downlink[0] != '\0' && buffer_downlink[1] != '\0')
-    //{
-    //    setFanSpeedPercent(convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
-    //
-    //    #if DEBUG == 1
-    //    Serial.printf("translated : %d\n", convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
-    //    #endif
-    //}
+    if (buffer_downlink[0] != '\0' && buffer_downlink[1] != '\0')
+    {
+       setFanSpeedPercent(convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
+    
+       #if DEBUG == 1
+       Serial.printf("translated : %d\n", convert_from_hex(buffer_downlink[0]) * 16 + convert_from_hex(buffer_downlink[1]));
+       #endif
+    }
     
     // end_com();
 

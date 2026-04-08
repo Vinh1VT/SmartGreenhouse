@@ -50,5 +50,5 @@ input :
 output :
     int : 0 if it worked, 1 else
 */
-int send_msg_LoRa(char *msg, char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1]);
+int send_msg_LoRa(char *msg, char *buffer_downlink);
 #endif

@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <cstdio>
 #include "driver_UART.h"
 #include "driver_LoRa.h"
 
@@ -69,7 +70,7 @@ void write_LoRa(char *command)
 
 //char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
 
-int send_msg_LoRa(char *msg, char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1])
+int send_msg_LoRa(char *msg, char *buffer_downlink)
 {
     char command[LoRa_MAX_MSG_LENGTH] = "AT+MSGHEX=\"";
     empty_array_command_from(command, LoRa_MAX_MSG_LENGTH, 11);
@@ -88,24 +89,21 @@ int send_msg_LoRa(char *msg, char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1])
 
     int status = read_until_motif_found_UART("RX: \"");
 
-    int indice_buff = 1;
-
-    #if DEBUG == 1
-        Serial.println("\n recup rx");
-    #endif
-    
-    //buffer_downlink[0] = read_byte_UART();
-    //for (; indice_buff < DOWNLINK_BUFFER_SIZE || buffer_downlink[indice_buff - 1] != '\"'; indice_buff++)
-    //{
-    //    buffer_downlink[indice_buff] = read_byte_UART();
-    //}
-    //for (; (buffer_downlink[indice_buff] = read_byte_UART()) != '\"' && indice_buff < DOWNLINK_BUFFER_SIZE; indice_buff++);
-    //buffer_downlink[indice_buff] = '\0';
-
-    #if DEBUG == 1
-        Serial.println("\n fin recup rx");
-        //Serial.println(indice_buff);
-    #endif
+    if (!status)
+    {
+        int indice_buff = 1;
+        
+        buffer_downlink[0] = read_byte_UART();
+        for (; indice_buff < DOWNLINK_BUFFER_SIZE || buffer_downlink[indice_buff - 1] != '\"'; indice_buff++)
+        {
+        buffer_downlink[indice_buff] = read_byte_UART();
+        #if DEBUG == 1
+                Serial.printf("\n Read byte : %d", buffer_downlink[indice_buff]);
+        #endif
+        }
+        // for (; (buffer_downlink[indice_buff] = read_byte_UART()) != '\"' && indice_buff < DOWNLINK_BUFFER_SIZE; indice_buff++);
+        buffer_downlink[indice_buff] = '\0';
+    }
 
     status = read_until_motif_found_UART("Done");
 
