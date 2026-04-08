@@ -157,7 +157,7 @@ void loop(void)
     char payload_hexbuff[PAYLOAD_HEXBUFF_LEN];
     arrayToHex(payload_buff, length, payload_hexbuff);
     
-    char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1];
+    char buffer_downlink[DOWNLINK_BUFFER_SIZE + 1] = {0};
     /* send the message */
     send_msg_LoRa(payload_hexbuff, buffer_downlink);
 
