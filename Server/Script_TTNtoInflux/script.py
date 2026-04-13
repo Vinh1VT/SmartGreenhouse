@@ -20,6 +20,7 @@ TTN_USER = os.getenv("TTN_USER")
 TTN_PASSWORD = os.getenv("TTN_PASSWORD")
 TTN_TOPIC = "v3/+/devices/+/up"
 
+# URL mise à jour pour l'API SQL v3
 INFLUX_WRITE_URL = os.getenv("INFLUX_WRITE_URL")
 INFLUX_QUERY_URL = os.getenv("INFLUX_QUERY_URL")
 INFLUX_DATABASE = os.getenv("INFLUX_DATABASE", "Serre-puit")
@@ -46,7 +47,7 @@ def send_to_influxdb(line_protocol_data):
 
 
 def get_latest_consignes():
-    """Récupère les dernières consignes sauvegardées par Grafana dans InfluxDB."""
+    """Récupère les dernières consignes (Format SQL v3 ou classique)."""
     headers = {
         "Authorization": f"Token {INFLUX_TOKEN}",
         "Accept": "application/json"
@@ -60,17 +61,23 @@ def get_latest_consignes():
         if response.status_code == 200:
             data = response.json()
 
-            # Format spécifique à ton API InfluxDB (liste contenant un dictionnaire plat)
+            # CAS 1 : Format API v3 (Liste de dictionnaires)
             if isinstance(data, list) and len(data) > 0:
-                return data[0] # On retourne directement le dictionnaire !
-            else:
-                print(f"⚠️ [INFLUX QUERY] Aucune donnée trouvée ou liste vide.")
-                return None
-        else:
-            print(f"❌ [INFLUX QUERY] Erreur HTTP ({response.status_code}) : {response.text}")
-    except Exception as e:
-        print(f"❌ [INFLUX QUERY] Exception réseau : {e}")
+                return data[0]
 
+            # CAS 2 : Format Classique (Results/Series)
+            elif isinstance(data, dict) and "results" in data:
+                if len(data["results"]) > 0 and "series" in data["results"][0]:
+                    series = data["results"][0]["series"][0]
+                    cols = series.get("columns", [])
+                    vals = series.get("values", [[]])[0]
+                    return dict(zip(cols, vals))
+
+            print(f" [INFLUX QUERY] Aucune donnée trouvée ou format inconnu.")
+        else:
+            print(f" [INFLUX QUERY] Erreur HTTP ({response.status_code}) : {response.text}")
+    except Exception as e:
+        print(f" [INFLUX QUERY] Exception réseau : {e}")
     return None
 
 
@@ -78,7 +85,7 @@ def get_latest_consignes():
 # FONCTIONS TTN (MQTT & DOWNLINK)
 # ==========================================
 def envoyer_downlink_ttn(client, device_id, vitesse_pourcentage):
-    """Envoie la consigne de vitesse (en %) vers The Things Network via MQTT."""
+    """Envoie la consigne de vitesse (en %) vers TTN via MQTT."""
     topic_downlink = f"v3/{TTN_USER}/devices/{device_id}/down/push"
     vitesse_int = int(vitesse_pourcentage)
 
@@ -93,20 +100,20 @@ def envoyer_downlink_ttn(client, device_id, vitesse_pourcentage):
         }]
     }
     client.publish(topic_downlink, json.dumps(downlink_msg))
-    print(f"📥 [TTN] DOWNLINK ENVOYÉ au {device_id} : Vitesse {vitesse_int}%")
+    print(f" [TTN] DOWNLINK ENVOYÉ au {device_id} : Vitesse {vitesse_int}%")
 
 
 def on_connect(client, userdata, flags, rc):
-    """Callback déclenché lors de la connexion au broker MQTT."""
+    """Callback de connexion au broker MQTT."""
     if rc == 0:
         print(" [MQTT] Connecté au broker TTN !")
         client.subscribe(TTN_TOPIC)
     else:
-        print(f" [MQTT] Échec de la connexion (Code: {rc})")
+        print(f"[MQTT] Échec de connexion (Code: {rc})")
 
 
 def on_message(client, userdata, msg):
-    """Callback déclenché à chaque message reçu depuis TTN."""
+    """Traitement des messages entrants (Uplink)."""
     try:
         payload = json.loads(msg.payload.decode("utf-8"))
         device_id = payload.get("end_device_ids", {}).get("device_id", "unknown_device")
@@ -116,7 +123,7 @@ def on_message(client, userdata, msg):
         if not decoded_payload:
             return
 
-        # 1. SAUVEGARDE DES DONNÉES CAPTEUR DANS INFLUXDB
+        # 1. SAUVEGARDE DANS INFLUXDB
         base_timestamp = int(time.time())
         champs_influx = []
         for nom_capteur, valeur in decoded_payload.items():
@@ -128,43 +135,36 @@ def on_message(client, userdata, msg):
             champs_str = ",".join(champs_influx)
             send_to_influxdb(f'environnement,device={device_id} {champs_str} {base_timestamp}')
 
-        # 2. LOGIQUE DU VENTILATEUR (DOWNLINK)
+        # 2. LOGIQUE DU VENTILATEUR (Lecture DB -> Calcul -> Downlink)
         consignes = get_latest_consignes()
         temp_actuelle = decoded_payload.get(NOM_CAPTEUR_TEMPERATURE, 0)
 
         if consignes:
             seuil_temp = consignes.get("seuil_temp", 999)
 
-            # OVERRIDE : Si la température dépasse le seuil max défini dans Grafana
             if temp_actuelle >= seuil_temp:
                 vitesse_cible = consignes.get("seuil_vitesse", 100)
-                print(f" [ALERTE] Temp {temp_actuelle}°C >= {seuil_temp}°C : Override activé ! ({vitesse_cible}%)")
-
-            # NORMAL : Suivi de la courbe dessinée dans Grafana selon l'heure
+                print(f" [ALERTE] {temp_actuelle}°C >= {seuil_temp}°C : Mode Override ({vitesse_cible}%)")
             else:
                 maintenant = datetime.now()
-                minute_arrondie = "30" if maintenant.minute >= 30 else "00"
+                minute_arr = "30" if maintenant.minute >= 30 else "00"
+                tranche = f"v_{maintenant.hour:02d}_{minute_arr}"
+                vitesse_cible = consignes.get(tranche, 50)
+                print(f" [NORMAL] Tranche {tranche} : Vitesse {vitesse_cible}%")
 
-            
-                tranche_actuelle = f"v_{maintenant.hour:02d}_{minute_arrondie}"
-
-                vitesse_cible = consignes.get(tranche_actuelle, 50) # 50% par défaut si tranche introuvable
-                print(f" [NORMAL] Tranche {tranche_actuelle} -> Cible : {vitesse_cible}%")
-
-            # Envoi de l'ordre au ventilateur
             envoyer_downlink_ttn(client, device_id, vitesse_cible)
         else:
-            print(f" [{device_id}] Aucune consigne trouvée dans InfluxDB (attente d'envoi via Grafana).")
+            print(f"[{device_id}] Impossible de calculer la consigne (Données DB absentes).")
 
     except Exception as e:
-        print(f" [MQTT] Erreur inattendue dans la réception TTN : {e}")
+        print(f" [MQTT] Erreur lors de la réception : {e}")
 
 
 # ==========================================
 # POINT D'ENTRÉE
 # ==========================================
 if __name__ == "__main__":
-    print("Démarrage de la passerelle TTN <> InfluxDB...")
+    print("🚀 Démarrage de la passerelle TTN <> InfluxDB...")
 
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1)
     client.username_pw_set(username=TTN_USER, password=TTN_PASSWORD)
@@ -173,9 +173,8 @@ if __name__ == "__main__":
 
     try:
         client.connect(TTN_BROKER, port=1883, keepalive=60)
-        # loop_forever() bloque le script et écoute les messages MQTT indéfiniment
         client.loop_forever()
     except KeyboardInterrupt:
-        print(" Arrêt manuel du script.")
+        print("\n Arrêt manuel.")
     except Exception as e:
-        print(f"Erreur critique au lancement : {e}")
+        print(f" Erreur critique : {e}")
