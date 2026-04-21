@@ -22,7 +22,7 @@ Les dossiers de ce dépôt contiennent les élément suivants :
 *  **`Iot_PCB/`** : Projets KiCad (schémas et routages) pour la carte mère et les contrôleurs de ventilateurs
 *  **`code_esp32_WROOM_32E/`** : Firmware principal (ESP32) gérant la lecture des capteurs, la logique de commande et la connectivité LoRa
 *  **`nano_AI/`** : Modèles d'intelligence artificielle et code d'inférence (Edge Impulse) tournant sur l'Arduino Nano
-*  **`Server/`** : Scripts backend (Python) servant de passerelle entre le réseau LoRaWAN et la base de données distante
+*  **`Server/`** : Dashboard Grafana, Script Python de liaison TTN<->InfluxDB et Parser TTN
 
 ## Auteurs : 
 - Vinh VO TUAN
