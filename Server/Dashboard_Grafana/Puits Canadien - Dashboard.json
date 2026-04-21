@@ -1,0 +1,679 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cfhadglk24agwe"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "noValue": "10",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "celsius"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 15,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "inlineEditing": true,
+        "panZoom": false,
+        "root": {
+          "background": {
+            "color": {
+              "fixed": "transparent"
+            },
+            "image": {
+              "fixed": "https://iili.io/qKOyipS.png",
+              "mode": "fixed"
+            },
+            "size": "original"
+          },
+          "border": {
+            "color": {
+              "fixed": "dark-green"
+            }
+          },
+          "constraint": {
+            "horizontal": "left",
+            "vertical": "top"
+          },
+          "elements": [
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "text": {
+                  "field": "environnement.temperature_puit_sortie",
+                  "mode": "field"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Temp_Sortie",
+              "placement": {
+                "height": 35,
+                "left": 733,
+                "rotation": 0,
+                "top": 38,
+                "width": 77
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "yellow"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "BotPuits",
+              "placement": {
+                "height": 14,
+                "left": 518,
+                "rotation": 0,
+                "top": 152,
+                "width": 79
+              },
+              "type": "ellipse"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "yellow"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "MidPuits",
+              "placement": {
+                "height": 28,
+                "left": 518,
+                "top": 131,
+                "width": 79
+              },
+              "type": "rectangle"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "yellow"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "TopPuits",
+              "placement": {
+                "height": 14,
+                "left": 518,
+                "top": 123,
+                "width": 79
+              },
+              "type": "ellipse"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "text": {
+                  "field": "environnement.temperature_ambiant",
+                  "fixed": "",
+                  "mode": "field"
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Temp_Ambiante",
+              "placement": {
+                "height": 35,
+                "left": 618,
+                "rotation": 0,
+                "top": 3,
+                "width": 77
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "rpm": {
+                  "fixed": 10
+                }
+              },
+              "connections": [],
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "links": [],
+              "name": "Ventilateur",
+              "placement": {
+                "height": 68,
+                "left": 756,
+                "top": 77,
+                "width": 54
+              },
+              "type": "windTurbine"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "text": {
+                  "field": "environnement.temperature_terre_1",
+                  "mode": "field"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "temperature_profond",
+              "placement": {
+                "height": 35,
+                "left": 630,
+                "rotation": 0,
+                "top": 267,
+                "width": 77
+              },
+              "type": "metric-value"
+            },
+            {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "config": {
+                "text": {
+                  "field": "environnement.temperature_puit_entree",
+                  "mode": "field"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "name": "Temp_Entree",
+              "placement": {
+                "height": 35,
+                "left": 519,
+                "rotation": 0,
+                "top": 38,
+                "width": 77
+              },
+              "type": "metric-value"
+            }
+          ],
+          "name": "Element 1774363741026",
+          "placement": {
+            "height": 100,
+            "left": 0,
+            "rotation": 0,
+            "top": 0,
+            "width": 100
+          }
+        },
+        "showAdvancedTypes": true,
+        "tooltip": {
+          "disableForOneClick": false,
+          "mode": "single"
+        },
+        "zoomToContent": false
+      },
+      "pluginVersion": "12.4.2",
+      "targets": [
+        {
+          "dataset": "iox",
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cfhadglk24agwe"
+          },
+          "editorMode": "code",
+          "format": "time_series",
+          "query": "SELECT * FROM \"environnement\" WHERE $timeFilter ORDER BY \"time\" DESC LIMIT 1\n",
+          "rawQuery": true,
+          "rawSql": "SELECT * FROM \"environnement\" ORDER BY \"time\" DESC LIMIT 1",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "sql": {
+            "columns": [
+              {
+                "parameters": [],
+                "type": "function"
+              }
+            ],
+            "groupBy": [
+              {
+                "property": {
+                  "type": "string"
+                },
+                "type": "groupBy"
+              }
+            ]
+          }
+        }
+      ],
+      "title": "Puits Canadien (Vue d'ensemble)",
+      "type": "canvas"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 7,
+        "x": 15,
+        "y": 0
+      },
+      "id": 5,
+      "options": {
+        "folderUID": "bfi3lo7rejchsa",
+        "includeVars": false,
+        "keepTime": false,
+        "maxItems": 10,
+        "query": "",
+        "showFolderNames": false,
+        "showHeadings": false,
+        "showRecentlyViewed": false,
+        "showSearch": true,
+        "showStarred": false,
+        "tags": []
+      },
+      "pluginVersion": "12.4.2",
+      "title": "Données capteurs",
+      "type": "dashlist"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cfhadglk24agwe"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "max": 100,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 2,
+        "x": 22,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "vertical",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cfhadglk24agwe"
+          },
+          "query": "SELECT \n  \"batterie_pourcentage\"\nFROM \"environnement\" \nWHERE $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Batterie",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cfhadglk24agwe"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "dateTimeAsLocalNoDateIfToday"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 7,
+        "x": 15,
+        "y": 8
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "/^Time$/",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cfhadglk24agwe"
+          },
+          "query": "SELECT temperature_ambiant FROM \"environnement\" WHERE $timeFilter ORDER BY time DESC LIMIT 1",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Heures données reçue",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "cfhadglk24agwe"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 15,
+        "x": 0,
+        "y": 11
+      },
+      "id": 4,
+      "options": {
+        "baidu": {
+          "callback": "bmapReady",
+          "key": ""
+        },
+        "editor": {
+          "format": "auto"
+        },
+        "editorMode": "visual",
+        "gaode": {
+          "key": "",
+          "plugin": "AMap.Scale,AMap.ToolBar"
+        },
+        "getOption": "const series = context.panel.data.series.map((s) => {\n  const sData = s.fields.find((f) => f.type === 'number').values.buffer || s.fields.find((f) => f.type === 'number').values;\n  const sTime = s.fields.find((f) => f.type === 'time').values.buffer || s.fields.find((f) => f.type === 'time').values;\n  \n  return {\n    name: s.refId,\n    type: 'line',\n    showSymbol: false,\n    areaStyle: {\n      opacity: 0.1,\n    },\n    lineStyle: {\n      width: 1,\n    },\n    data: sData.map((d, i) => [sTime[i], d.toFixed(2)]),\n  };\n});\n\nsetTimeout(() => context.panel.chart.dispatchAction({\n  type: 'takeGlobalCursor',\n  key: 'dataZoomSelect',\n  dataZoomSelectActive: true,\n}), 500);\n\ncontext.panel.chart.on('datazoom', function (params) {\n  const startValue = params.batch[0]?.startValue;\n  const endValue = params.batch[0]?.endValue;\n  locationService.partial({ from: startValue, to: endValue });\n});\n\nreturn {\n  backgroundColor: 'transparent',\n  tooltip: {\n    trigger: 'axis',\n  },\n  legend: {\n    left: '0',\n    bottom: '0',\n    data: context.panel.data.series.map((s) => s.refId),\n    textStyle: {\n      color: 'rgba(128, 128, 128, .9)',\n    },\n  },\n  toolbox: {\n    feature: {\n      dataZoom: {\n        yAxisIndex: 'none',\n        icon: {\n          zoom: 'path://',\n          back: 'path://',\n        },\n      },\n      saveAsImage: {},\n    }\n  },\n  xAxis: {\n    type: 'time',\n  },\n  yAxis: {\n    type: 'value',\n    min: 'dataMin',\n  },\n  grid: {\n    left: '2%',\n    right: '2%',\n    top: '2%',\n    bottom: 24,\n    containLabel: true,\n  },\n  series,\n};",
+        "google": {
+          "callback": "gmapReady",
+          "key": ""
+        },
+        "map": "none",
+        "renderer": "canvas",
+        "themeEditor": {
+          "config": "{}",
+          "name": "default"
+        },
+        "visualEditor": {
+          "code": "// 1. Configuration InfluxDB via Grafana Proxy\n// ⚠️ IMPORTANT : Remplace ces valeurs par ton bon UID et ta bonne DB InfluxDB\nconst INFLUX_UID = \"cfhadglk24agwe\"; // ex: bffi1k5l0fls0e\nconst INFLUX_DB = \"Serre-puit\";\n\n// 2. Génération des abscisses (00:00, 00:30...)\nconst times = [];\nfor (let i = 0; i < 24; i++) {\n  let h = i.toString().padStart(2, '0');\n  times.push(`${h}:00`);\n  times.push(`${h}:30`);\n}\n\n// 3. Initialisation de base\nif (!window.consigneVentilateur) {\n  window.consigneVentilateur = new Array(48).fill(50);\n  window.hasFetchedConsignes = false; // Permet de ne lire InfluxDB qu'au premier chargement\n}\n\n// 4. LECTURE DE L'HISTORIQUE DEPUIS INFLUXDB\nif (!window.hasFetchedConsignes && context.panel && context.panel.data && context.panel.data.state === 'Done') {\n\n  let hasLoadedData = false;\n\n  times.forEach((t, i) => {\n    let fieldName = \"v_\" + t.replace(':', '_'); // ex: v_18_00\n    let foundValue = null;\n\n    for (let series of context.panel.data.series) {\n\n      // 1. On regarde si le nom de la série correspond (ex: \"consignes_ventilateur.last_v_18_00\" finit bien par \"v_18_00\")\n      if (series.name && series.name.endsWith(fieldName)) {\n\n        // 2. Si c'est la bonne série, on prend la colonne contenant les nombres (nommée \"Value\" dans Grafana)\n        let field = series.fields.find(f => f.type === 'number');\n\n        if (field && field.values && field.values.length > 0) {\n          // 3. On récupère la dernière valeur non nulle\n          for (let j = field.values.length - 1; j >= 0; j--) {\n            let val = field.values.get ? field.values.get(j) : field.values[j];\n\n            if (val !== null && val !== undefined && !isNaN(val)) {\n              foundValue = val;\n              break;\n            }\n          }\n        }\n      }\n\n      if (foundValue !== null) break; // Valeur trouvée pour cette heure, on passe à la suivante\n    }\n\n    if (foundValue !== null) {\n      window.consigneVentilateur[i] = foundValue;\n      hasLoadedData = true;\n    }\n  });\n\n  if (hasLoadedData) {\n    window.hasFetchedConsignes = true;\n    console.log(\"✅ Valeurs InfluxDB récupérées avec succès :\", window.consigneVentilateur);\n\n    // On met à jour le graphique\n    if (typeof context !== 'undefined' && context.echartsInstance) {\n      context.echartsInstance.setOption({ series: [{ data: window.consigneVentilateur }] });\n    }\n  } else {\n    console.warn(\"⚠️ Impossible de lire les valeurs. On garde les 50 par défaut.\");\n  }\n}\n\n// 5. Interactivité et dessin à la souris\nsetTimeout(() => {\n  let chart = null;\n\n  if (typeof context !== 'undefined') chart = context.echartsInstance || (context.panel && context.panel.chart);\n  if (!chart && typeof echartsInstance !== 'undefined') chart = echartsInstance;\n\n  if (chart) {\n    chart.getZr().off('mousedown');\n    chart.getZr().off('mousemove');\n    chart.getZr().off('click');\n\n    const updatePoint = (params) => {\n      const pointInPixel = [params.offsetX, params.offsetY];\n\n      if (chart.containPixel('grid', pointInPixel)) {\n        const pointInGrid = chart.convertFromPixel({ seriesIndex: 0 }, pointInPixel);\n        let xIndex = Math.round(pointInGrid[0]);\n        let yRawValue = pointInGrid[1];\n\n        // Arrondi 5% et blocage entre 30% et 100%\n        let yValue = Math.round(yRawValue / 5) * 5;\n        if (yValue > 100) yValue = 100;\n        if (yValue < 30) yValue = 30;\n\n        if (window.consigneVentilateur[xIndex] !== yValue) {\n          window.consigneVentilateur[xIndex] = yValue;\n          chart.setOption({ series: [{ data: window.consigneVentilateur }] });\n        }\n        chart.dispatchAction({ type: 'showTip', seriesIndex: 0, dataIndex: xIndex });\n      }\n    };\n\n    chart.getZr().on('mousedown', function (params) { updatePoint(params); });\n    chart.getZr().on('mousemove', function (params) {\n      if (params.event && params.event.buttons === 1) { updatePoint(params); }\n    });\n  }\n}, 100);\n\n// 6. Rendu du graphique et bouton d'envoi\nreturn {\n  tooltip: {\n    show: true,\n    trigger: 'axis',\n    axisPointer: { type: 'line', lineStyle: { color: '#ff9900', width: 2, type: 'dashed' } },\n    formatter: function (params) {\n      return `🕒 <b>${params[0].name}</b><br/>💨 Consigne : <b style=\"color:#ff9900;\">${params[0].value}%</b>`;\n    }\n  },\n\n  toolbox: {\n    feature: {\n      mySendAction: {\n        show: true,\n        title: 'Envoyer vers InfluxDB',\n        icon: 'path://M2.01 21L23 12 2.01 3 2 10l15 2-15 2z',\n        onclick: function () {\n          let sTemp = 25;\n          let sVit = 100;\n\n          try {\n            if (typeof context !== 'undefined' && context.grafana) {\n              let rawTemp = context.grafana.replaceVariables('${Temperature_Seuil}');\n              let rawVit = context.grafana.replaceVariables('${Vitesse_Seuil}');\n\n              let pTemp = parseFloat(rawTemp);\n              let pVit = parseFloat(rawVit);\n\n              if (!isNaN(pTemp) && !rawTemp.includes('seuil_temp')) sTemp = pTemp;\n              if (!isNaN(pVit) && !rawVit.includes('seuil_vitesse')) sVit = pVit;\n            }\n          } catch (e) {\n            console.error(\"❌ Erreur lecture Grafana :\", e);\n          }\n\n          // Construction de la ligne pour InfluxDB (Line Protocol)\n          let fields = `seuil_temp=${sTemp},seuil_vitesse=${sVit}`;\n\n          times.forEach((t, i) => {\n            let fieldName = \"v_\" + t.replace(':', '_');\n            fields += `,${fieldName}=${window.consigneVentilateur[i]}`;\n          });\n\n          const ligne = `consignes_ventilateur ${fields}`;\n          const url = `/api/datasources/proxy/uid/${INFLUX_UID}/api/v3/write_lp?db=${INFLUX_DB}&precision=second`;\n\n          fetch(url, {\n            method: 'POST',\n            headers: { 'Content-Type': 'text/plain' },\n            body: ligne\n          })\n            .then(response => {\n              if (response.ok) {\n                if (typeof context !== 'undefined' && context.grafana) {\n                  context.grafana.notifySuccess(['Succès', 'Tracé enregistré dans InfluxDB !']);\n                } else {\n                  alert(\"✅ Consignes expédiées avec succès !\");\n                }\n              } else {\n                if (typeof context !== 'undefined' && context.grafana) {\n                  context.grafana.notifyError(['Erreur', 'Code InfluxDB : ' + response.status]);\n                } else {\n                  alert(`❌ Erreur InfluxDB : ${response.status}`);\n                }\n              }\n            })\n            .catch(err => {\n              if (typeof context !== 'undefined' && context.grafana) {\n                context.grafana.notifyError(['Erreur réseau', 'Impossible de joindre la base']);\n              } else {\n                alert(`❌ Impossible de joindre InfluxDB.\\nErreur: ${err}`);\n              }\n            });\n        }\n      }\n    }\n  },\n\n  grid: { left: '5%', right: '5%', bottom: '10%', top: '15%', containLabel: true },\n  xAxis: { type: 'category', data: times },\n  yAxis: { type: 'value', min: 30, max: 100, name: 'Vitesse (%)' },\n  series: [\n    {\n      data: window.consigneVentilateur,\n      type: 'line',\n      step: 'middle',\n      symbolSize: 8,\n      lineStyle: { width: 3, color: '#ff9900' },\n      itemStyle: { color: '#ff9900' },\n      areaStyle: { color: 'rgba(255, 153, 0, 0.2)' }\n    }\n  ]\n};",
+          "dataset": [],
+          "series": []
+        }
+      },
+      "pluginVersion": "7.2.4",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "cfhadglk24agwe"
+          },
+          "query": "SELECT last(*) FROM \"Serre-puit\".\"consignes_ventilateur\" WHERE $timeFilter",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series"
+        }
+      ],
+      "title": "Contrôle Ventilateur",
+      "type": "volkovlabs-echarts-panel"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 9,
+        "x": 15,
+        "y": 11
+      },
+      "id": 8,
+      "options": {
+        "alertInstanceLabelFilter": "",
+        "alertName": "",
+        "dashboardAlerts": false,
+        "folder": {
+          "title": "Puits",
+          "uid": "cfg7779yohtkwc"
+        },
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 20,
+        "showInactiveAlerts": true,
+        "sortOrder": 1,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": true,
+          "pending": true,
+          "recovering": true
+        },
+        "viewMode": "list"
+      },
+      "pluginVersion": "12.4.2",
+      "title": "Alertes",
+      "type": "alertlist"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 42,
+  "tags": [
+    "Général - Puit"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "text": "10",
+          "value": "10"
+        },
+        "description": "Seuil de déclenchement du ventilateur, indépendamment du planning",
+        "name": "Temperature_Seuil",
+        "options": [],
+        "query": "10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45",
+        "type": "custom",
+        "valuesFormat": "csv"
+      },
+      {
+        "current": {
+          "text": "30",
+          "value": "30"
+        },
+        "description": "Vitesse du ventilateur, lorsque le seuil de température est dépassé",
+        "name": "Vitesse_Seuil",
+        "options": [],
+        "query": "30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100",
+        "type": "custom",
+        "valuesFormat": "csv"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "Puits Canadien - Dashboard",
+  "uid": "add7jlh",
+  "version": 31,
+  "weekStart": ""
+}
