@@ -1,1 +1,29 @@
-# Projet IoT Serre Connectée
+# Mr Gardener - Serre Connectée
+
+Ce dépôt contient les sources utilisée dans le projet Mr. Gardener, réalisé en 2026 pour la formation Electronique-Informatique d'année 4 à Polytech Sorbonne.
+
+##  Objectifs du projet
+
+L'objectif principal est de concevoir un système autonome de mesures et de commandes pour la serre de l'école, sur le campus St Cyr l'école.
+Le systême à donc comme caractéristique : 
+
+- **Mesures Environnementale** : Acquisition de données environnementales (Humidité, température, luminosité...) pour la serre et son puits canadien
+- **Basse Consommation** : Le projet fonctionne quasi entièrement sur batterie, et grâce à un rechargement par panneau solaire est en permanence autonome
+- **IA Embarquée** : Proof of concept d'une détection locale de panne du ventilateur de la serre, via une IA de classification Edge Impulse
+- **Collecte et visualisation des données** : Collecte, traitement et visualisation des données, via The Things Network, InfluxDB et Grafana
+
+##  Structure du dépôt
+
+Les dossiers de ce dépôt contiennent les élément suivants :
+
+*  **`Iot_PCB/`** : Projets KiCad (schémas et routages) pour la carte mère et les contrôleurs de ventilateurs
+*  **`code_esp32_WROOM_32E/`** : Firmware principal (ESP32) gérant la lecture des capteurs, la logique de commande et la connectivité LoRa
+*  **`nano_AI/`** : Modèles d'intelligence artificielle et code d'inférence (Edge Impulse) tournant sur l'Arduino Nano
+*  **`Server/`** : Scripts backend (Python) servant de passerelle entre le réseau LoRaWAN et la base de données distante
+
+## Auteurs : 
+- Vinh VO TUAN
+- Fallou CORDELETTE
+- Quentin LE VOURC'H
+- Yanis RAHOUI
+- Taha OUERFILI
