@@ -1,6 +1,7 @@
 # Mr Gardener - Serre Connectée
 
 Ce dépôt contient les sources utilisée dans le projet Mr. Gardener, réalisé en 2026 pour la formation Electronique-Informatique d'année 4 à Polytech Sorbonne.
+
 Ce document n'est qu'une courte description du projet, une documentation plus détaillé peut être trouvée [ici](https://github.com/Vinh1VT/SmartGreenhouse/blob/main/Mr.Gardener%20-%20SmartGreenHouse%20-%20User%20Guide.pdf)
 
 ##  Objectifs du projet
