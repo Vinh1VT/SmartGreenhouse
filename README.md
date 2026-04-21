@@ -13,6 +13,7 @@ Le systême à donc comme caractéristique :
 - **Basse Consommation** : Le projet fonctionne quasi entièrement sur batterie, et grâce à un rechargement par panneau solaire est en permanence autonome
 - **IA Embarquée** : Proof of concept d'une détection locale de panne du ventilateur de la serre, via une IA de classification Edge Impulse
 - **Collecte et visualisation des données** : Collecte, traitement et visualisation des données, via The Things Network, InfluxDB et Grafana
+- **Contrôle du ventilateur** : Prototype d'une contrôleur I2C pour le ventilateur du puits canadien de la serre. Va être remplacé par un système plus robuste
 
 ##  Structure du dépôt
 
